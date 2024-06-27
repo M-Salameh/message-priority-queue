@@ -1,0 +1,22 @@
+	<ItemGroup>
+		<PackageReference Include="Google.Protobuf" Version="3.27.2" />
+		<PackageReference Include="Grpc.Net.Client" Version="2.63.0" />
+		<PackageReference Include="Grpc.Tools" Version="2.64.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+
+	<PropertyGroup>
+		<SteeltoeVersion>3.2.6</SteeltoeVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.*" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Steeltoe.Connector.ConnectorCore" Version="$(SteeltoeVersion)" />
+		<PackageReference Include="Steeltoe.Discovery.Eureka" Version="$(SteeltoeVersion)" />
+	</ItemGroup>
