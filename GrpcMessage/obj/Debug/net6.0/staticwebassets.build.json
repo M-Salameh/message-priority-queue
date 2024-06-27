@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "ieBWMcxV/rnPqrxmBfOecYoavcmgqDcU+l+iU9xZV5M=",
+  "Source": "GrpcMessageNode",
+  "BasePath": "_content/GrpcMessageNode",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

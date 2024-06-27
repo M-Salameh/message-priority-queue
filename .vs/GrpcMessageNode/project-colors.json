@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "e55ed87c-0ee4-4a4c-bbbb-76cbf482188d": {
+      "ProjectGuid": "e55ed87c-0ee4-4a4c-bbbb-76cbf482188d",
+      "DisplayName": "GrpcMessageNode",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "4aff1d13-9653-453a-ad6f-409c68b062b8": {
+      "ProjectGuid": "4aff1d13-9653-453a-ad6f-409c68b062b8",
+      "DisplayName": "ProxyProtocols",
+      "ColorIndex": 1
+    },
+    "b8cfdd28-496f-4d9f-aad2-240f5d262d97": {
+      "ProjectGuid": "b8cfdd28-496f-4d9f-aad2-240f5d262d97",
+      "DisplayName": "ProxyGate",
+      "ColorIndex": 2
+    },
+    "88a03775-3cc7-41a2-ab84-b96963b5e0ce": {
+      "ProjectGuid": "88a03775-3cc7-41a2-ab84-b96963b5e0ce",
+      "DisplayName": "ProxyGate",
+      "ColorIndex": 3
+    },
+    "2b3382ee-564e-44bc-9b3a-2f67273b2802": {
+      "ProjectGuid": "2b3382ee-564e-44bc-9b3a-2f67273b2802",
+      "DisplayName": "CoordinatorOne",
+      "ColorIndex": 4
+    },
+    "494712ab-c5a0-4525-81ae-dd203f249cb9": {
+      "ProjectGuid": "494712ab-c5a0-4525-81ae-dd203f249cb9",
+      "DisplayName": "MessageGeneratorGRPC",
+      "ColorIndex": 5
+    }
+  },
+  "NextColorIndex": 6
+}

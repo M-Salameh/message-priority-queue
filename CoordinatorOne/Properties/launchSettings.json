@@ -1,0 +1,12 @@
+﻿{
+  "profiles": {
+    "CoordinatorOne": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "applicationUrl": "http://localhost:5259;https://localhost:9090",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

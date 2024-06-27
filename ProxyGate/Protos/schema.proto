@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option csharp_namespace = "ProxyGateGRPC";
+
+package Tranmitter;
+
+message Message2 {
+  string clientID = 1;
+  string apiKey = 2;
+  string msgId = 3;
+  string phoneNumber = 4;
+  int32 localPriority = 5;
+  string text = 6;
+}
+
+message Acknowledgement2
+{
+  string replyCode = 1;
+}
+
+service Send {
+  rpc SendMessage(Message2) returns (Acknowledgement2);
+}
+
