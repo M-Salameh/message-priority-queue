@@ -1,0 +1,2 @@
+obj\Debug\net6.0\Protos/Schema-1Grpc.cs \
+obj\Debug\net6.0\Protos/Schema1.cs: Protos/schema-1.proto

@@ -35,7 +35,12 @@
       "ProjectGuid": "494712ab-c5a0-4525-81ae-dd203f249cb9",
       "DisplayName": "MessageGeneratorGRPC",
       "ColorIndex": 5
+    },
+    "676d9604-4597-4935-826a-7f054fd5936a": {
+      "ProjectGuid": "676d9604-4597-4935-826a-7f054fd5936a",
+      "DisplayName": "QueuerNode",
+      "ColorIndex": 6
     }
   },
-  "NextColorIndex": 6
+  "NextColorIndex": 7
 }

@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Protos\schemaQ.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.0" />
   </ItemGroup>
 	<ItemGroup>
@@ -34,6 +38,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Protobuf Include="Protos\schemaQ.proto" GrpcServices="Client" />
 		<Protobuf Include="Protos\schema.proto" GrpcServices="Client" />
 	</ItemGroup>
 	

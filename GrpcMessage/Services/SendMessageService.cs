@@ -19,48 +19,52 @@ namespace GrpcMessageNode.Services
         public override Task<Acknowledgement> SendMessage(Message message, ServerCallContext context)
         {
             Console.WriteLine("Got to Receiver Node");
-            int priority = getPriority(message.ClientID);
 
-            modifyPriority(message, priority);
+            bool res = PriorityHandling.SetPriority.setFinalPriority(message);
 
-            sendToCoordinator(message);
+            if (res == false) // something went wrong
+            {
+                return Task.FromResult(new Acknowledgement
+                {
+                    ReplyCode = "ERRORROROR on Send " + message.MsgId
+                });
+            }
+            Console.WriteLine("WE ARE AFTER THE CHECKING OF RES");
+
+            string reply = sendToCoordinator(message);
 
             return Task.FromResult(new Acknowledgement
             {
-                ReplyCode = "OK on Send " + message.MsgId
+                ReplyCode = reply //"OK on Send " + message.MsgId
             });
         }
 
-        private void modifyPriority (Message message , int priority)
-        {
-            // apply some algorithm here
-            message.LocalPriority += priority;
-        }
-        private int getPriority(string clientID)
-        {
-            // look up in data base
-            int x = 5;
-            return x;
-        }
         private string sendToCoordinator(Message message)
         {
-            string res = "k + ";
-
-           
-            string address = getAddress();
-            using var channel = GrpcChannel.ForAddress(address);
-            var client = new Queue.QueueClient(channel);
-
+            string address = getCoordinatorAddress();
             Message2 message2 = copyMessage(message);
 
-            var reply = client.QueueMessage(message2);
+            using var channel = GrpcChannel.ForAddress(address);
+
+            Console.WriteLine("QueuerNode Address  = " + address);
+
+            var queue_client = new Queue.QueueClient(channel);
+
+            var reply = queue_client.QueueMessage(message2);
 
             Console.WriteLine(reply.ReplyCode);
 
-            Console.WriteLine("Press any key to exit...");
-            Console.ReadKey();
+            return reply.ReplyCode;
+        }
 
-            return res + reply.ReplyCode;
+        //not working -- causing unknown exception with nullable parameter http2
+        private Queue.QueueClient getQueueClient()
+        {
+            string address = getCoordinatorAddress();
+            using var channel = GrpcChannel.ForAddress(address);
+            Console.WriteLine("QueuerNode Address  = " + address);
+            var client = new Queue.QueueClient(channel);
+            return client;
         }
 
         private Message2 copyMessage(Message message)
@@ -75,11 +79,11 @@ namespace GrpcMessageNode.Services
             return message2;
         }
 
-        private string getAddress()
+        private string getCoordinatorAddress()
         {
             string address = "";
 
-            var y = discoveryClient.GetInstances("Coordinator"); /// write names to config file
+            var y = discoveryClient.GetInstances("QueuerNode"); /// write names to config file
 
             address = y[0].Uri.ToString();
 
