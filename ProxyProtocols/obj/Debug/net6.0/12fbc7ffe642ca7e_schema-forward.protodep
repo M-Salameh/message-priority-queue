@@ -1,2 +1,0 @@
-obj\Debug\net6.0\Protos/Schema-forwardGrpc.cs \
-obj\Debug\net6.0\Protos/SchemaForward.cs: Protos/schema-forward.proto

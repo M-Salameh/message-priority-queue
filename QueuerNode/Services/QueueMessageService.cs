@@ -23,7 +23,7 @@ namespace QueuerNode.Services
 
             return Task.FromResult(new Acknowledgement
             {
-                ReplyCode = "OK on Send " + message.MsgId + " , "+ message.LocalPriority + " Message Reached Queue"
+                ReplyCode = "OK on Send : id = " + message.MsgId + " ==> Message Reached Queue"
             });
         }
     }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RvmgMZWpITbGHubrkmEKF+btWTS10U2m6VxylmzSif0WmjBKirP7g+Gza/XFwEZf2h1uUnZoU+CJj5GvaZcG7A==",
+  "dgSpecHash": "l+pS2V6wbE6JC8adlQKjzr3Zk8W+wRwZjOArO+p5ubaEPShZLA7LpF/MPiyJO+zV1p3fdpJPA1c9EfPg67uQFg==",
   "success": true,
-  "projectFilePath": "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\QueuerNode\\QueuerNode.csproj",
+  "projectFilePath": "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\message-priority-queue\\QueuerNode\\QueuerNode.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\moham\\.nuget\\packages\\google.protobuf\\3.27.1\\google.protobuf.3.27.1.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\grpc.aspnetcore\\2.40.0\\grpc.aspnetcore.2.40.0.nupkg.sha512",

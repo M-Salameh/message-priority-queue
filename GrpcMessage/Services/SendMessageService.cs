@@ -18,7 +18,6 @@ namespace GrpcMessageNode.Services
 
         public override Task<Acknowledgement> SendMessage(Message message, ServerCallContext context)
         {
-            Console.WriteLine("Got to Receiver Node");
 
             bool res = PriorityHandling.SetPriority.setFinalPriority(message);
 
@@ -29,8 +28,8 @@ namespace GrpcMessageNode.Services
                     ReplyCode = "ERRORROROR on Send " + message.MsgId
                 });
             }
-            Console.WriteLine("WE ARE AFTER THE CHECKING OF RES");
 
+            //Console.WriteLine("Account Checker Passed ");
             string reply = sendToCoordinator(message);
 
             return Task.FromResult(new Acknowledgement
@@ -46,13 +45,11 @@ namespace GrpcMessageNode.Services
 
             using var channel = GrpcChannel.ForAddress(address);
 
-            Console.WriteLine("QueuerNode Address  = " + address);
-
             var queue_client = new Queue.QueueClient(channel);
 
             var reply = queue_client.QueueMessage(message2);
 
-            Console.WriteLine(reply.ReplyCode);
+           // Console.WriteLine(reply.ReplyCode);
 
             return reply.ReplyCode;
         }
@@ -62,7 +59,7 @@ namespace GrpcMessageNode.Services
         {
             string address = getCoordinatorAddress();
             using var channel = GrpcChannel.ForAddress(address);
-            Console.WriteLine("QueuerNode Address  = " + address);
+            //Console.WriteLine("QueuerNode Address  = " + address);
             var client = new Queue.QueueClient(channel);
             return client;
         }

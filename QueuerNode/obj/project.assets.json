@@ -2438,11 +2438,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\QueuerNode\\QueuerNode.csproj",
+      "projectUniqueName": "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\message-priority-queue\\QueuerNode\\QueuerNode.csproj",
       "projectName": "QueuerNode",
-      "projectPath": "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\QueuerNode\\QueuerNode.csproj",
+      "projectPath": "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\message-priority-queue\\QueuerNode\\QueuerNode.csproj",
       "packagesPath": "C:\\Users\\moham\\.nuget\\packages\\",
-      "outputPath": "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\QueuerNode\\obj\\",
+      "outputPath": "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\message-priority-queue\\QueuerNode\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -2438,11 +2438,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\GrpcMessage\\GrpcMessageNode.csproj",
+      "projectUniqueName": "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\message-priority-queue\\GrpcMessage\\GrpcMessageNode.csproj",
       "projectName": "GrpcMessageNode",
-      "projectPath": "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\GrpcMessage\\GrpcMessageNode.csproj",
+      "projectPath": "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\message-priority-queue\\GrpcMessage\\GrpcMessageNode.csproj",
       "packagesPath": "C:\\Users\\moham\\.nuget\\packages\\",
-      "outputPath": "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\GrpcMessage\\obj\\",
+      "outputPath": "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\message-priority-queue\\GrpcMessage\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

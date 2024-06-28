@@ -1,2 +1,0 @@
-obj\Debug\net6.0\Protos/Schema.cs \
-obj\Debug\net6.0\Protos/SchemaGrpc.cs: Protos/schema.proto
