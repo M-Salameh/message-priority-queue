@@ -6,27 +6,52 @@ using System.Threading.Tasks;
 
 namespace QueuerNode.Helper
 {
-    public static class MessageQueues
+    public class MessageQueues
     {
         private const int priority_levels = 6;
 
         private const int sms_rates = 15;
 
-        private static Queue<Message>[] messageQueue = new Queue<Message>[priority_levels];
+        private Queue<Message>[] messageQueue;// = new Queue<Message>[priority_levels];
 
-        public static void addMessage(Message message)
+        private object[] locks;// = new object[priority_levels];
+
+        public MessageQueues()
+        {
+            messageQueue = new Queue<Message>[priority_levels];
+            locks = new object [priority_levels];
+            for (int i=0; i < priority_levels; i++)
+            {
+                messageQueue[i] = new Queue<Message>();
+                locks[i] = new object();
+            }
+            /*messageQueue = new Queue<Message>[priority_levels];
+            locks = new object[priority_levels];*/
+        }
+
+        public void addMessage(Message message)
         {
             int idx = message.LocalPriority;
             idx = Math.Min(idx, priority_levels - 1);
             idx = Math.Max(idx, 0);
             Console.WriteLine("idx = " + idx);
 
-            messageQueue[idx].Enqueue(message);
+            insert(message, idx);
+            
             Console.WriteLine("Message Queued: " + message.MsgId);
 
         }
 
-        public static void sendMessages()
+        private void insert(Message message , int index)
+        {   
+            lock (locks[index])
+            {
+                messageQueue[index].Enqueue(message);
+                Console.WriteLine("INserted in Q : " + index);
+            }
+        }
+
+        public void sendMessages()
         {
             int x1 = 7, x2 = 5, x3 = 3;
             while(x1>0 && messageQueue[1].Count>0)

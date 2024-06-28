@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option csharp_namespace = "HTTPMessageNode";
+
+package Tranmitter;
+
+message Message {
+  string clientID = 1;
+  string apiKey = 2;
+  string msgId = 3;
+  string phoneNumber = 4;
+  int32 localPriority = 5;
+  string text = 6;
+}
+
+
+message Acknowledgement
+{
+  string replyCode = 1;
+}
+
+service Queue {
+  rpc QueueMessage(Message) returns (Acknowledgement);
+}
+
+
+
+

@@ -40,7 +40,12 @@
       "ProjectGuid": "676d9604-4597-4935-826a-7f054fd5936a",
       "DisplayName": "QueuerNode",
       "ColorIndex": 6
+    },
+    "79a276e9-da51-4434-9241-a0f8e6771232": {
+      "ProjectGuid": "79a276e9-da51-4434-9241-a0f8e6771232",
+      "DisplayName": "HTTPMessageNode",
+      "ColorIndex": 7
     }
   },
-  "NextColorIndex": 7
+  "NextColorIndex": 8
 }
