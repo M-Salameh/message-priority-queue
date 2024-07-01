@@ -24,6 +24,18 @@ namespace HTTPMessageNode.Controllers
         {
             Console.WriteLine("Msg from : " + messageDTO.clientID);
 
+            string validator = getValidatorAddress();
+
+            Message message = copyMessage(messageDTO);
+
+            bool res = PriorityHandling.SetPriority.setFinalPriority(ref message , validator);
+            
+
+            if (res == false)
+            {
+                return "Error";
+            }
+            
             string address = getAddress();
             using var channel = GrpcChannel.ForAddress(address);
             var client = new Queue.QueueClient(channel);
@@ -31,20 +43,13 @@ namespace HTTPMessageNode.Controllers
 
             Console.WriteLine("Sending to " + address);
 
-            Message message = copyMessage(messageDTO);
-            /*Message message = new Message();
-            message.MsgId = messageDTO.msgId;
-            message.Text = messageDTO.text;
-            message.LocalPriority = messageDTO.localPriority;
-            message.PhoneNumber = messageDTO.phoneNumber;
-            message.ApiKey = messageDTO.apiKey;
-            message.ClientID = messageDTO.clientID;*/
+
 
             var reply = client.QueueMessage(message);
 
             Console.WriteLine(reply.ReplyCode);
             
-            return reply.ReplyCode;
+            return (reply.ReplyCode );
             
 
         }
@@ -58,6 +63,7 @@ namespace HTTPMessageNode.Controllers
             message.PhoneNumber = messageDTO.phoneNumber;
             message.ApiKey = messageDTO.apiKey;
             message.ClientID = messageDTO.clientID;
+            message.Tag = messageDTO.tag;
             return message;
         }
         private string getAddress()
@@ -65,6 +71,17 @@ namespace HTTPMessageNode.Controllers
             string address = "";
 
             var y = discoveryClient.GetInstances("QueuerNode"); /// write names to config file
+
+            address = y[0].Uri.ToString();
+
+            return address;
+        }
+
+        private string getValidatorAddress()
+        {
+            string address = "";
+
+            var y = discoveryClient.GetInstances("Validator"); /// write names to config file
 
             address = y[0].Uri.ToString();
 

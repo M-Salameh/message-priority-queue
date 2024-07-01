@@ -7,8 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Protos\validator.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Protobuf Include="Protos\schema.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\schema-queue.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\validator.proto" GrpcServices="Client" />
   </ItemGroup>
 
   <ItemGroup>

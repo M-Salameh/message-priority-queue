@@ -18,9 +18,13 @@ namespace GrpcMessageNode.Services
 
         public override Task<Acknowledgement> SendMessage(Message message, ServerCallContext context)
         {
+            string validator = getValidatorAddress();
+            //Console.WriteLine("Pr = " + message.LocalPriority);
 
-            bool res = PriorityHandling.SetPriority.setFinalPriority(message);
+            bool res = true;
 
+            res = PriorityHandling.SetPriority.setFinalPriority(ref message , validator);
+            
             if (res == false) // something went wrong
             {
                 return Task.FromResult(new Acknowledgement
@@ -28,6 +32,9 @@ namespace GrpcMessageNode.Services
                     ReplyCode = "ERRORROROR on Send " + message.MsgId
                 });
             }
+
+            //Console.WriteLine("new Pr = " + message.LocalPriority);
+
 
             //Console.WriteLine("Account Checker Passed ");
             string reply = sendToCoordinator(message);
@@ -73,6 +80,7 @@ namespace GrpcMessageNode.Services
             message2.ClientID = message.ClientID;
             message2.ApiKey = message.ApiKey;
             message2.PhoneNumber = message.PhoneNumber;
+            message2.Tag = message.Tag; 
             return message2;
         }
 
@@ -81,6 +89,17 @@ namespace GrpcMessageNode.Services
             string address = "";
 
             var y = discoveryClient.GetInstances("QueuerNode"); /// write names to config file
+
+            address = y[0].Uri.ToString();
+
+            return address;
+        }
+
+        private string getValidatorAddress()
+        {
+            string address = "";
+
+            var y = discoveryClient.GetInstances("Validator"); /// write names to config file
 
             address = y[0].Uri.ToString();
 

@@ -27,7 +27,7 @@ namespace MessageGeneratorGRPC
             message.LocalPriority = 1;
             message.MsgId = "msg-id=1";
             message.PhoneNumber = "043 33 00 83";
-
+            message.Tag = "SYR";
             Console.WriteLine("Sending to " + address);
 
 

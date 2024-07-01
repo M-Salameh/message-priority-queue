@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageGeneratorGRPC", "Mes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QueuerNode", "QueuerNode\QueuerNode.csproj", "{676D9604-4597-4935-826A-7F054FD5936A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HTTPMessageNode", "HTTPMessageNode\HTTPMessageNode.csproj", "{79828C38-A68B-4340-9F93-D55C5DCC203A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HTTPMessageNode", "HTTPMessageNode\HTTPMessageNode.csproj", "{79828C38-A68B-4340-9F93-D55C5DCC203A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HTTPMessageGenerator", "HTTPMessageGenerator\HTTPMessageGenerator.csproj", "{C008AEEB-FD9F-4D59-B047-A77BD058C12F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HTTPMessageGenerator", "HTTPMessageGenerator\HTTPMessageGenerator.csproj", "{C008AEEB-FD9F-4D59-B047-A77BD058C12F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validator", "Validator\Validator.csproj", "{D2C3ADDD-BA47-473C-A761-1CE5B1EE6407}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{C008AEEB-FD9F-4D59-B047-A77BD058C12F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C008AEEB-FD9F-4D59-B047-A77BD058C12F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C008AEEB-FD9F-4D59-B047-A77BD058C12F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2C3ADDD-BA47-473C-A761-1CE5B1EE6407}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2C3ADDD-BA47-473C-A761-1CE5B1EE6407}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2C3ADDD-BA47-473C-A761-1CE5B1EE6407}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2C3ADDD-BA47-473C-A761-1CE5B1EE6407}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -14,18 +14,10 @@ message.clientID = "m-salameh";
 message.localPriority = 1;
 message.msgId = "msg-id=1";
 message.phoneNumber = "043 33 00 83";
+message.tag = "SYYR";
 
 
 var client = new HttpClient();
-/*
-using StringContent jsonContent = new(
-       JsonSerializer.Serialize(new
-       {message
-       }),
-       Encoding.UTF8,
-       "application/json");
-
-*/
 
 StringContent payload = new (JsonSerializer.Serialize(message) , Encoding.UTF8 , "application/json");
 

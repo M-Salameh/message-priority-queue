@@ -11,12 +11,14 @@ message Message2 {
   string phoneNumber = 4;
   int32 localPriority = 5;
   string text = 6;
+  string tag = 7;
 }
 
 
 message Acknowledgement2
 {
   string replyCode = 1;
+  string requestID = 2;
 }
 
 service Queue {

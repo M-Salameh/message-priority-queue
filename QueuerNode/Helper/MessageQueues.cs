@@ -12,9 +12,9 @@ namespace QueuerNode.Helper
 
         private const int sms_rates = 15;
 
-        private Queue<Message>[] messageQueue;// = new Queue<Message>[priority_levels];
+        private Queue<Message>[] messageQueue;
 
-        private object[] locks;// = new object[priority_levels];
+        private object[] locks;
 
         public MessageQueues()
         {
@@ -25,8 +25,6 @@ namespace QueuerNode.Helper
                 messageQueue[i] = new Queue<Message>();
                 locks[i] = new object();
             }
-            /*messageQueue = new Queue<Message>[priority_levels];
-            locks = new object[priority_levels];*/
         }
 
         public void addMessage(Message message)

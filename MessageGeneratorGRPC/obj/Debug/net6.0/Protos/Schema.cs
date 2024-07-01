@@ -24,18 +24,19 @@ namespace MessageGeneratorGRPC {
     static SchemaReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChNQcm90b3Mvc2NoZW1hLnByb3RvEgpUcmFubWl0dGVyInQKB01lc3NhZ2US",
-            "EAoIY2xpZW50SUQYASABKAkSDgoGYXBpS2V5GAIgASgJEg0KBW1zZ0lkGAMg",
-            "ASgJEhMKC3Bob25lTnVtYmVyGAQgASgJEhUKDWxvY2FsUHJpb3JpdHkYBSAB",
-            "KAUSDAoEdGV4dBgGIAEoCSIkCg9BY2tub3dsZWRnZW1lbnQSEQoJcmVwbHlD",
-            "b2RlGAEgASgJMkcKBFNlbmQSPwoLU2VuZE1lc3NhZ2USEy5UcmFubWl0dGVy",
-            "Lk1lc3NhZ2UaGy5UcmFubWl0dGVyLkFja25vd2xlZGdlbWVudEIXqgIUTWVz",
-            "c2FnZUdlbmVyYXRvckdSUENiBnByb3RvMw=="));
+            "ChNQcm90b3Mvc2NoZW1hLnByb3RvEgpUcmFubWl0dGVyIoEBCgdNZXNzYWdl",
+            "EhAKCGNsaWVudElEGAEgASgJEg4KBmFwaUtleRgCIAEoCRINCgVtc2dJZBgD",
+            "IAEoCRITCgtwaG9uZU51bWJlchgEIAEoCRIVCg1sb2NhbFByaW9yaXR5GAUg",
+            "ASgFEgwKBHRleHQYBiABKAkSCwoDdGFnGAcgASgJIjcKD0Fja25vd2xlZGdl",
+            "bWVudBIRCglyZXBseUNvZGUYASABKAkSEQoJcmVxdWVzdElEGAIgASgJMkcK",
+            "BFNlbmQSPwoLU2VuZE1lc3NhZ2USEy5UcmFubWl0dGVyLk1lc3NhZ2UaGy5U",
+            "cmFubWl0dGVyLkFja25vd2xlZGdlbWVudEIXqgIUTWVzc2FnZUdlbmVyYXRv",
+            "ckdSUENiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::MessageGeneratorGRPC.Message), global::MessageGeneratorGRPC.Message.Parser, new[]{ "ClientID", "ApiKey", "MsgId", "PhoneNumber", "LocalPriority", "Text" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::MessageGeneratorGRPC.Acknowledgement), global::MessageGeneratorGRPC.Acknowledgement.Parser, new[]{ "ReplyCode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::MessageGeneratorGRPC.Message), global::MessageGeneratorGRPC.Message.Parser, new[]{ "ClientID", "ApiKey", "MsgId", "PhoneNumber", "LocalPriority", "Text", "Tag" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::MessageGeneratorGRPC.Acknowledgement), global::MessageGeneratorGRPC.Acknowledgement.Parser, new[]{ "ReplyCode", "RequestID" }, null, null, null, null)
           }));
     }
     #endregion
@@ -83,6 +84,7 @@ namespace MessageGeneratorGRPC {
       phoneNumber_ = other.phoneNumber_;
       localPriority_ = other.localPriority_;
       text_ = other.text_;
+      tag_ = other.tag_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -164,6 +166,18 @@ namespace MessageGeneratorGRPC {
       }
     }
 
+    /// <summary>Field number for the "tag" field.</summary>
+    public const int TagFieldNumber = 7;
+    private string tag_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Tag {
+      get { return tag_; }
+      set {
+        tag_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -185,6 +199,7 @@ namespace MessageGeneratorGRPC {
       if (PhoneNumber != other.PhoneNumber) return false;
       if (LocalPriority != other.LocalPriority) return false;
       if (Text != other.Text) return false;
+      if (Tag != other.Tag) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -198,6 +213,7 @@ namespace MessageGeneratorGRPC {
       if (PhoneNumber.Length != 0) hash ^= PhoneNumber.GetHashCode();
       if (LocalPriority != 0) hash ^= LocalPriority.GetHashCode();
       if (Text.Length != 0) hash ^= Text.GetHashCode();
+      if (Tag.Length != 0) hash ^= Tag.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -240,6 +256,10 @@ namespace MessageGeneratorGRPC {
         output.WriteRawTag(50);
         output.WriteString(Text);
       }
+      if (Tag.Length != 0) {
+        output.WriteRawTag(58);
+        output.WriteString(Tag);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -274,6 +294,10 @@ namespace MessageGeneratorGRPC {
         output.WriteRawTag(50);
         output.WriteString(Text);
       }
+      if (Tag.Length != 0) {
+        output.WriteRawTag(58);
+        output.WriteString(Tag);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -301,6 +325,9 @@ namespace MessageGeneratorGRPC {
       }
       if (Text.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Text);
+      }
+      if (Tag.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Tag);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -331,6 +358,9 @@ namespace MessageGeneratorGRPC {
       }
       if (other.Text.Length != 0) {
         Text = other.Text;
+      }
+      if (other.Tag.Length != 0) {
+        Tag = other.Tag;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -371,6 +401,10 @@ namespace MessageGeneratorGRPC {
             Text = input.ReadString();
             break;
           }
+          case 58: {
+            Tag = input.ReadString();
+            break;
+          }
         }
       }
     #endif
@@ -408,6 +442,10 @@ namespace MessageGeneratorGRPC {
           }
           case 50: {
             Text = input.ReadString();
+            break;
+          }
+          case 58: {
+            Tag = input.ReadString();
             break;
           }
         }
@@ -453,6 +491,7 @@ namespace MessageGeneratorGRPC {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Acknowledgement(Acknowledgement other) : this() {
       replyCode_ = other.replyCode_;
+      requestID_ = other.requestID_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -474,6 +513,18 @@ namespace MessageGeneratorGRPC {
       }
     }
 
+    /// <summary>Field number for the "requestID" field.</summary>
+    public const int RequestIDFieldNumber = 2;
+    private string requestID_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string RequestID {
+      get { return requestID_; }
+      set {
+        requestID_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -490,6 +541,7 @@ namespace MessageGeneratorGRPC {
         return true;
       }
       if (ReplyCode != other.ReplyCode) return false;
+      if (RequestID != other.RequestID) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -498,6 +550,7 @@ namespace MessageGeneratorGRPC {
     public override int GetHashCode() {
       int hash = 1;
       if (ReplyCode.Length != 0) hash ^= ReplyCode.GetHashCode();
+      if (RequestID.Length != 0) hash ^= RequestID.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -520,6 +573,10 @@ namespace MessageGeneratorGRPC {
         output.WriteRawTag(10);
         output.WriteString(ReplyCode);
       }
+      if (RequestID.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(RequestID);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -534,6 +591,10 @@ namespace MessageGeneratorGRPC {
         output.WriteRawTag(10);
         output.WriteString(ReplyCode);
       }
+      if (RequestID.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(RequestID);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -546,6 +607,9 @@ namespace MessageGeneratorGRPC {
       int size = 0;
       if (ReplyCode.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(ReplyCode);
+      }
+      if (RequestID.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(RequestID);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -561,6 +625,9 @@ namespace MessageGeneratorGRPC {
       }
       if (other.ReplyCode.Length != 0) {
         ReplyCode = other.ReplyCode;
+      }
+      if (other.RequestID.Length != 0) {
+        RequestID = other.RequestID;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -581,6 +648,10 @@ namespace MessageGeneratorGRPC {
             ReplyCode = input.ReadString();
             break;
           }
+          case 18: {
+            RequestID = input.ReadString();
+            break;
+          }
         }
       }
     #endif
@@ -598,6 +669,10 @@ namespace MessageGeneratorGRPC {
             break;
           case 10: {
             ReplyCode = input.ReadString();
+            break;
+          }
+          case 18: {
+            RequestID = input.ReadString();
             break;
           }
         }

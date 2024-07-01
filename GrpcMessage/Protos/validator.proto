@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcMessageNode";
+
+package Validator;
+
+service Validate {
+  rpc ValidateMessage (MessageMetaData) returns (ValidatorReply);
+}
+
+message MessageMetaData {
+	string clientID = 1;
+	string apiKey = 2;
+	string tag = 3;
+}
+
+message ValidatorReply {
+  string replyCode = 1;
+  int32 accountPriority = 2;
+}

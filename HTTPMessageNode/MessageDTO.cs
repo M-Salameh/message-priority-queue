@@ -14,5 +14,6 @@ namespace HTTPMessageNode
         public string? phoneNumber { get; set; }
         public int localPriority { get; set; }
         public string? text { get; set; }
+        public string? tag { get; set; }
     }
 }

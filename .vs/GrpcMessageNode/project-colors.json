@@ -45,7 +45,27 @@
       "ProjectGuid": "79a276e9-da51-4434-9241-a0f8e6771232",
       "DisplayName": "HTTPMessageNode",
       "ColorIndex": 7
+    },
+    "79828c38-a68b-4340-9f93-d55c5dcc203a": {
+      "ProjectGuid": "79828c38-a68b-4340-9f93-d55c5dcc203a",
+      "DisplayName": "HTTPMessageNode",
+      "ColorIndex": 8
+    },
+    "c008aeeb-fd9f-4d59-b047-a77bd058c12f": {
+      "ProjectGuid": "c008aeeb-fd9f-4d59-b047-a77bd058c12f",
+      "DisplayName": "HTTPMessageGenerator",
+      "ColorIndex": 9
+    },
+    "8b5aab7b-c390-40d2-837b-053ede2a4bec": {
+      "ProjectGuid": "8b5aab7b-c390-40d2-837b-053ede2a4bec",
+      "DisplayName": "ttt",
+      "ColorIndex": 10
+    },
+    "d2c3addd-ba47-473c-a761-1ce5b1ee6407": {
+      "ProjectGuid": "d2c3addd-ba47-473c-a761-1ce5b1ee6407",
+      "DisplayName": "Validator",
+      "ColorIndex": 11
     }
   },
-  "NextColorIndex": 8
+  "NextColorIndex": 12
 }
