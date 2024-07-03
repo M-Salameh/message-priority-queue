@@ -20,9 +20,9 @@ namespace HTTPMessageNode.Controllers
         //[HttpGet(Name = "GetWeatherForecast")]
         [Route("/queue-msg")]
         [HttpPost]
-        public string SendMessage([FromBody] MessageDTO messageDTO)
+        public Acknowledgement SendMessage([FromBody] MessageDTO messageDTO)
         {
-            Console.WriteLine("Msg from : " + messageDTO.clientID);
+            //Console.WriteLine("Msg from : " + messageDTO.clientID + " pr  = " + messageDTO.localPriority);
 
             string validator = getValidatorAddress();
 
@@ -33,23 +33,28 @@ namespace HTTPMessageNode.Controllers
 
             if (res == false)
             {
-                return "Error";
+                return new Acknowledgement(){ 
+                ReplyCode = "Error",
+                RequestID = "-1"
+                };
             }
+
+            
             
             string address = getAddress();
             using var channel = GrpcChannel.ForAddress(address);
             var client = new Queue.QueueClient(channel);
 
 
-            Console.WriteLine("Sending to " + address);
+            //Console.WriteLine("Sending to " + address);
 
-
+            //Console.WriteLine(message.Tag + " , " + message.ClientID + " new pr = " + message.LocalPriority); ;
 
             var reply = client.QueueMessage(message);
 
-            Console.WriteLine(reply.ReplyCode);
-            
-            return (reply.ReplyCode );
+            //Console.WriteLine(reply.ReplyCode);
+
+            return reply;
             
 
         }

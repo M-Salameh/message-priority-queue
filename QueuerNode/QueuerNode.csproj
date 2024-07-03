@@ -39,4 +39,8 @@
 		<Protobuf Include="Protos\schema.proto" GrpcServices="Server" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<PackageReference Include="CSRedisCore" Version="3.8.803" />
+		<PackageReference Include="StackExchange.Redis" Version="2.8.0" />
+	</ItemGroup>
 </Project>

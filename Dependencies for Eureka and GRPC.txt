@@ -21,6 +21,14 @@
 		<PackageReference Include="Steeltoe.Discovery.Eureka" Version="$(SteeltoeVersion)" />
 	</ItemGroup>
 
-/**
-if happened any problem , visit the official steeltoe homepage to get coherent versions
-*/
+
+	<ItemGroup>
+		<PackageReference Include="CSRedisCore" Version="3.8.803" />
+		<PackageReference Include="StackExchange.Redis" Version="2.8.0" />
+	</ItemGroup>
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+add redis:
+dotnet add package StackExchange.Redis
