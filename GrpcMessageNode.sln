@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HTTPMessageNode", "HTTPMess
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HTTPMessageGenerator", "HTTPMessageGenerator\HTTPMessageGenerator.csproj", "{C008AEEB-FD9F-4D59-B047-A77BD058C12F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validator", "Validator\Validator.csproj", "{D2C3ADDD-BA47-473C-A761-1CE5B1EE6407}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Validator", "Validator\Validator.csproj", "{D2C3ADDD-BA47-473C-A761-1CE5B1EE6407}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleStreamConsumerTest", "SimpleStreamConsumerTest\SimpleStreamConsumerTest.csproj", "{8F51B680-F3B6-4892-B854-2E2AF840CD71}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{D2C3ADDD-BA47-473C-A761-1CE5B1EE6407}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2C3ADDD-BA47-473C-A761-1CE5B1EE6407}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2C3ADDD-BA47-473C-A761-1CE5B1EE6407}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F51B680-F3B6-4892-B854-2E2AF840CD71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F51B680-F3B6-4892-B854-2E2AF840CD71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F51B680-F3B6-4892-B854-2E2AF840CD71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F51B680-F3B6-4892-B854-2E2AF840CD71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

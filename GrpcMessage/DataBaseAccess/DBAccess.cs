@@ -35,7 +35,7 @@ namespace GrpcMessageNode.DataBaseAccess
             using var channel = GrpcChannel.ForAddress(validatorAddress);
             var client = new Validate.ValidateClient(channel);
             MessageMetaData messageMeta = extractMetaData(message);
-            //Console.WriteLine("Calling GRPC for address = " + validatorAddress);
+            Console.WriteLine("Calling GRPC for address = " + validatorAddress);
             var reply =  client.ValidateMessageAsync(messageMeta);
             
             var ans = reply.GetAwaiter().GetResult();

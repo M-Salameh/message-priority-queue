@@ -33,19 +33,16 @@ namespace GrpcMessageNode.Services
                 });
             }
 
-            //Console.WriteLine("new Pr = " + message.LocalPriority);
+            Console.WriteLine("new Pr = " + message.LocalPriority);
 
 
             //Console.WriteLine("Account Checker Passed ");
-            string reply = sendToCoordinator(message);
+            Acknowledgement reply = sendToCoordinator(message);
 
-            return Task.FromResult(new Acknowledgement
-            {
-                ReplyCode = reply //"OK on Send " + message.MsgId
-            });
+            return Task.FromResult(new Acknowledgement(reply));
         }
 
-        private string sendToCoordinator(Message message)
+        private Acknowledgement sendToCoordinator(Message message)
         {
             string address = getCoordinatorAddress();
             Message2 message2 = copyMessage(message);
@@ -58,7 +55,7 @@ namespace GrpcMessageNode.Services
 
            // Console.WriteLine(reply.ReplyCode);
 
-            return reply.ReplyCode;
+            return new Acknowledgement() { ReplyCode = reply.ReplyCode , RequestID = reply.RequestID};
         }
 
         //not working -- causing unknown exception with nullable parameter http2

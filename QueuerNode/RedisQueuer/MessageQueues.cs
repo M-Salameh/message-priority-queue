@@ -11,11 +11,12 @@ namespace QueuerNode.RedisQueuer
 {
     public class MessageQueues
     {
-        private static string SYRRedisURL = "localhost:48484";
+        private static string SYRRedisURL = "localhost:6379";
         private static string MTNRedisURL = "localhost:48485";
 
         private static string Syriatel = "SYR";
         private static string MTN = "MTN";
+
 
         public static string addMessage(Message message , IDiscoveryClient discoveryClient)
         {
@@ -25,15 +26,14 @@ namespace QueuerNode.RedisQueuer
             {
                 // get url using discovery client
                 var resid = addMessageRedisAsync(message, SYRRedisURL);
-                Console.WriteLine(resid);
-                id = message.Tag + ":" + message.LocalPriority + ":" + resid;
+                
+                id = message.Tag + ":" + message.LocalPriority + ":" + resid.Result;
             }
             else if (message.Tag.Contains(MTN, StringComparison.OrdinalIgnoreCase))
             {
                 var resid = addMessageRedisAsync(message, MTNRedisURL);
-                Console.WriteLine(resid);
-
-                id = message.Tag + ":" + message.LocalPriority + ":" + resid;
+                
+                id = message.Tag + ":" + message.LocalPriority + ":" + resid.Result;
             }
 
             return id;
@@ -42,17 +42,28 @@ namespace QueuerNode.RedisQueuer
         
         private static async Task<string> addMessageRedisAsync(Message message, string URL)
         {
-            /*var redis = ConnectionMultiplexer.Connect(URL);
+            var redis = ConnectionMultiplexer.Connect(URL);
+
 
             string streamName = message.LocalPriority.ToString();
+            Console.WriteLine("stream name  = " + streamName);
 
             var db = redis.GetDatabase();
 
             var serializedMessage = JsonConvert.SerializeObject(message);
 
-            var messageId = await db.StreamAddAsync(streamName, new NameValueEntry[] { }, serializedMessage);
-            */
-            var messageId = "YES";
+            Console.WriteLine("Sending to stream : " + streamName);
+
+            //var messageId = await db.StreamAddAsync(streamName, new NameValueEntry[] { }, serializedMessage);
+
+            var messageId  = await db.StreamAddAsync(streamName,new NameValueEntry[]
+
+            { new("tag", "SYR"), new NameValueEntry("message", serializedMessage) });
+
+
+            Console.WriteLine("Done Sending to stream : " + streamName);
+            Console.WriteLine("Stream msg id = " + messageId);
+            //var messageId = "YES";
             return messageId.ToString();
         }
     }
