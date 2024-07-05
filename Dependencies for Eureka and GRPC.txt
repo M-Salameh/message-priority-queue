@@ -32,3 +32,30 @@
 
 add redis:
 dotnet add package StackExchange.Redis
+
+
+-enter redis cli:
+ docker exec -it <container redis name> redis-cli 
+ docker exec -it redis redis-cli 
+
+-delete stream :
+  del <stream_name>
+
+-list streams :
+  SCAN 0 TYPE stream
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

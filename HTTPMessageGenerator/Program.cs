@@ -6,7 +6,6 @@ using System.Net;
 using System.Text;
 using System.Text.Json;
 
-Console.WriteLine("Hello, World!");
 MessageDTO message = new MessageDTO();
 message.text = "Hello World !";
 message.apiKey = "Api-Key";
@@ -21,10 +20,15 @@ var client = new HttpClient();
 
 StringContent payload = new (JsonSerializer.Serialize(message) , Encoding.UTF8 , "application/json");
 
+try
+{
+    HttpResponseMessage reply = await client.PostAsync("https://localhost:7095/queue-msg", payload);
 
-HttpResponseMessage reply = await client.PostAsync("https://localhost:7095/queue-msg", payload);
 
-
-Console.WriteLine(reply.Content.ToString());
-
+    Console.WriteLine(reply.Content.ToString());
+}
+catch (Exception ex)
+{
+    Console.Error.WriteLine("Error Processing - Connection Problem");
+}
 //Console.WriteLine(reply.Result);

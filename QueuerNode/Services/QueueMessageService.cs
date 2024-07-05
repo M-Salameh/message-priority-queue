@@ -10,6 +10,8 @@ namespace QueuerNode.Services
     {
         private readonly ILogger<QueueMessageService> _logger;
         private readonly IDiscoveryClient _client;
+
+        private readonly static string ErrorQueuing = "Error";
         public QueueMessageService(ILogger<QueueMessageService> logger , IDiscoveryClient client)
         {
             _logger = logger;
@@ -23,12 +25,19 @@ namespace QueuerNode.Services
 
             string reqId = MessageQueues.addMessage(message, _client);
 
+            if (reqId.Equals(MessageQueues.RedisConnectionError))
+            {
+                return Task.FromResult(new Acknowledgement
+                {
+                    ReplyCode = ErrorQueuing,
+                    RequestID = reqId,
+                });
+            }
+
             return Task.FromResult(new Acknowledgement
             {
                 ReplyCode = "OK on Send : id = " + message.MsgId + " ==> Message Reached Queue"
-                + " with priority : " + message.LocalPriority
-                
-                ,
+                + " with priority : " + message.LocalPriority ,
                 
                 RequestID = reqId
             });

@@ -9,14 +9,8 @@ var token = tokenSource.Token;
 var muxer = ConnectionMultiplexer.Connect("localhost");
 var db = muxer.GetDatabase();
 
-const string streamName = "5";
+const string streamName = "4";
 
-
-Dictionary<string, string> ParseResult(StreamEntry entry)
-    => entry.Values.ToDictionary(x => x.Name.ToString(), x => x.Value.ToString());
-
-
-int read = 0;
 var readTask = Task.Run(async () =>
 {
     string id = string.Empty;
@@ -27,9 +21,10 @@ var readTask = Task.Run(async () =>
         {
             // Get the message ID
             var messageId = entry.Id;
-
+            Console.WriteLine(messageId);
             // Access the message data (serialized JSON)
-            string? serializedMessage = entry.Values.ToString();
+            string? serializedMessage = entry.Values[0].Value.ToString();
+            Console.WriteLine(serializedMessage);
 
             if (serializedMessage == null) continue;
             // Deserialize the JSON back to a Message object (if needed)
@@ -46,7 +41,7 @@ var readTask = Task.Run(async () =>
 
 
 
-tokenSource.CancelAfter(TimeSpan.FromSeconds(20));
+//tokenSource.CancelAfter(TimeSpan(20));
 
 await Task.WhenAll(readTask);
 

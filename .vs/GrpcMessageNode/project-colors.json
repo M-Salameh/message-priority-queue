@@ -65,7 +65,12 @@
       "ProjectGuid": "d2c3addd-ba47-473c-a761-1ce5b1ee6407",
       "DisplayName": "Validator",
       "ColorIndex": 11
+    },
+    "8f51b680-f3b6-4892-b854-2e2af840cd71": {
+      "ProjectGuid": "8f51b680-f3b6-4892-b854-2e2af840cd71",
+      "DisplayName": "SimpleStreamConsumerTest",
+      "ColorIndex": 12
     }
   },
-  "NextColorIndex": 12
+  "NextColorIndex": 13
 }

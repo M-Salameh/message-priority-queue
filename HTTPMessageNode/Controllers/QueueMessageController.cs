@@ -11,6 +11,13 @@ namespace HTTPMessageNode.Controllers
 
         private readonly ILogger<QueueMessageController> _logger;
         private readonly IDiscoveryClient discoveryClient;
+        private static readonly string ErrorConnection = "Error Connecting to Servers";
+        private static readonly string QueuerNode = "QueuerNode"; //put them in files!
+        private static readonly string Validator = "Validator";
+        private static readonly string ErrorDBConnection = "Error Connecting to DataBase";
+        private static readonly string ErrorValidation = "Error When Validating Request";
+        private static readonly string ErrorGRPCConnection = "Error Connecting to GRPC Servers";
+
         public QueueMessageController(ILogger<QueueMessageController> logger , IDiscoveryClient discovery)
         {
             _logger = logger;
@@ -24,38 +31,69 @@ namespace HTTPMessageNode.Controllers
         {
             //Console.WriteLine("Msg from : " + messageDTO.clientID + " pr  = " + messageDTO.localPriority);
 
-            string validator = getValidatorAddress();
+            string validator = getAddressOfInstance(Validator);
+            if (validator == ErrorConnection)
+            {
+                return (new Acknowledgement
+                {
+                    ReplyCode = ErrorConnection,
+                    RequestID = ErrorDBConnection
+                });
+            }
 
             Message message = copyMessage(messageDTO);
 
-            bool res = PriorityHandling.SetPriority.setFinalPriority(ref message , validator);
-            
+            Console.WriteLine("old prio = " + message.LocalPriority);
 
-            if (res == false)
+            string res = PriorityHandling.SetPriority.setFinalPriority(ref message , validator);
+
+
+            if (!res.Equals(DataBaseAccess.DBAccess.OK)) // something went wrong
             {
-                return new Acknowledgement(){ 
-                ReplyCode = "Error",
-                RequestID = "-1"
-                };
+                return (new Acknowledgement
+                {
+                    ReplyCode = res,
+                    RequestID = ErrorValidation + " : " + res
+                });
             }
 
-            
-            
-            string address = getAddress();
+            Console.WriteLine("new prio = " + message.LocalPriority);
+
+
+            string address = getAddressOfInstance(QueuerNode);
+            if (address == ErrorConnection)
+            {
+                return (new Acknowledgement
+                {
+                    ReplyCode = ErrorConnection,
+                    RequestID = ErrorConnection
+                });
+            }
             using var channel = GrpcChannel.ForAddress(address);
             var client = new Queue.QueueClient(channel);
-
 
             //Console.WriteLine("Sending to " + address);
 
             //Console.WriteLine(message.Tag + " , " + message.ClientID + " new pr = " + message.LocalPriority); ;
 
-            var reply = client.QueueMessage(message);
 
-            //Console.WriteLine(reply.ReplyCode);
+            try
+            {
+                var reply = client.QueueMessage(message);
 
-            return reply;
-            
+                // Console.WriteLine(reply.ReplyCode);
+
+                return new Acknowledgement() { ReplyCode = reply.ReplyCode, RequestID = reply.RequestID };
+            }
+            catch (Exception e)
+            {
+                return new Acknowledgement()
+                {
+                    ReplyCode = ErrorConnection,
+                    RequestID = ErrorGRPCConnection
+                };
+            }
+
 
         }
 
@@ -71,26 +109,24 @@ namespace HTTPMessageNode.Controllers
             message.Tag = messageDTO.tag;
             return message;
         }
-        private string getAddress()
+
+
+        private string getAddressOfInstance(string instanceName)
         {
             string address = "";
+            try
+            {
+                // instanceName = "Validator" or "QueuerNode" ... etc
+                var y = discoveryClient.GetInstances(instanceName); /// write names to config file
 
-            var y = discoveryClient.GetInstances("QueuerNode"); /// write names to config file
+                address = y[0].Uri.ToString();
 
-            address = y[0].Uri.ToString();
-
-            return address;
-        }
-
-        private string getValidatorAddress()
-        {
-            string address = "";
-
-            var y = discoveryClient.GetInstances("Validator"); /// write names to config file
-
-            address = y[0].Uri.ToString();
-
-            return address;
+                return address;
+            }
+            catch (Exception ex)
+            {
+                return ErrorConnection;
+            }
         }
     }
 }

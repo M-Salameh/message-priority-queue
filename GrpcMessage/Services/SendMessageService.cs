@@ -10,6 +10,14 @@ namespace GrpcMessageNode.Services
     {
         private readonly ILogger<SendMessageService> _logger;
         private readonly IDiscoveryClient discoveryClient;
+        private static readonly string ErrorValidation = "Error When Validating Request";
+        private static readonly string ErrorDBConnection = "Error Connecting to DataBase";
+        private static readonly string ErrorConnection = "Error Connecting to Servers";
+        private static readonly string ErrorGRPCConnection = "Error Connecting to GRPC Servers";
+        private static readonly string QueuerNode = "QueuerNode";
+        private static readonly string Validator = "Validator";
+
+
         public SendMessageService(ILogger<SendMessageService> logger , IDiscoveryClient client)
         {
             _logger = logger;
@@ -18,18 +26,27 @@ namespace GrpcMessageNode.Services
 
         public override Task<Acknowledgement> SendMessage(Message message, ServerCallContext context)
         {
-            string validator = getValidatorAddress();
-            //Console.WriteLine("Pr = " + message.LocalPriority);
-
-            bool res = true;
-
-            res = PriorityHandling.SetPriority.setFinalPriority(ref message , validator);
-            
-            if (res == false) // something went wrong
+            string validator = getAddressOfInstance(Validator);
+            if (validator == ErrorConnection)
             {
                 return Task.FromResult(new Acknowledgement
                 {
-                    ReplyCode = "ERRORROROR on Send " + message.MsgId
+                    ReplyCode = ErrorConnection,
+                    RequestID = ErrorDBConnection
+                }) ;
+            }
+            Console.WriteLine("Pr = " + message.LocalPriority);
+
+            
+            string res = PriorityHandling.SetPriority.setFinalPriority(ref message , validator);
+            
+            if (!res.Equals(DataBaseAccess.DBAccess.OK)) // something went wrong
+            {
+                Console.WriteLine("Error when set Final setFinalPriority is called");
+                return Task.FromResult(new Acknowledgement
+                {
+                    ReplyCode = res,
+                    RequestID = ErrorValidation + " : " + res
                 });
             }
 
@@ -44,24 +61,42 @@ namespace GrpcMessageNode.Services
 
         private Acknowledgement sendToCoordinator(Message message)
         {
-            string address = getCoordinatorAddress();
+            string address = getAddressOfInstance(QueuerNode);
+            if (address == ErrorConnection)
+            {
+                return (new Acknowledgement
+                {
+                    ReplyCode = ErrorConnection,
+                    RequestID = ErrorConnection
+                });
+            }
             Message2 message2 = copyMessage(message);
 
             using var channel = GrpcChannel.ForAddress(address);
 
             var queue_client = new Queue.QueueClient(channel);
+            try
+            {
+                var reply = queue_client.QueueMessage(message2);
 
-            var reply = queue_client.QueueMessage(message2);
+                // Console.WriteLine(reply.ReplyCode);
 
-           // Console.WriteLine(reply.ReplyCode);
-
-            return new Acknowledgement() { ReplyCode = reply.ReplyCode , RequestID = reply.RequestID};
+                return new Acknowledgement() { ReplyCode = reply.ReplyCode, RequestID = reply.RequestID };
+            }
+            catch (Exception e)
+            {
+                return new Acknowledgement()
+                {
+                    ReplyCode = ErrorConnection,
+                    RequestID = ErrorGRPCConnection
+                };
+            }
         }
 
         //not working -- causing unknown exception with nullable parameter http2
         private Queue.QueueClient getQueueClient()
         {
-            string address = getCoordinatorAddress();
+            string address = getAddressOfInstance(QueuerNode);
             using var channel = GrpcChannel.ForAddress(address);
             //Console.WriteLine("QueuerNode Address  = " + address);
             var client = new Queue.QueueClient(channel);
@@ -81,26 +116,23 @@ namespace GrpcMessageNode.Services
             return message2;
         }
 
-        private string getCoordinatorAddress()
+
+        private string getAddressOfInstance(string instanceName)
         {
             string address = "";
+            try
+            {
+                // instanceName = "Validator" or "QueuerNode" ... etc
+                var y = discoveryClient.GetInstances(instanceName); /// write names to config file
 
-            var y = discoveryClient.GetInstances("QueuerNode"); /// write names to config file
+                address = y[0].Uri.ToString();
 
-            address = y[0].Uri.ToString();
-
-            return address;
-        }
-
-        private string getValidatorAddress()
-        {
-            string address = "";
-
-            var y = discoveryClient.GetInstances("Validator"); /// write names to config file
-
-            address = y[0].Uri.ToString();
-
-            return address;
+                return address;
+            }
+            catch (Exception ex)
+            {
+                return ErrorConnection;
+            }
         }
     }
 }
