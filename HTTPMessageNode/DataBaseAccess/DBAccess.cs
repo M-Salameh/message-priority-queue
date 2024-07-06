@@ -29,6 +29,7 @@ namespace HTTPMessageNode.DataBaseAccess
         public static string getPriority(ref Message message, string validatorAddress)
         {
             //Console.WriteLine("Validating NOW IN GRPC !! ");
+            int x = message.LocalPriority;
             ValidatorReply reply = ValidateAsync(message, validatorAddress);
 
             if (reply.ReplyCode == ValidatorConnectionAndValidationError)
@@ -40,7 +41,7 @@ namespace HTTPMessageNode.DataBaseAccess
                 return reply.ReplyCode;
             }
             Console.WriteLine("Prio from validator = " + reply.AccountPriority);
-            message.LocalPriority = reply.AccountPriority;
+            message.LocalPriority = x+reply.AccountPriority;
             return OK;
         }
 

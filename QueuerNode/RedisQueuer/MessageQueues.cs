@@ -11,14 +11,41 @@ namespace QueuerNode.RedisQueuer
 {
     public class MessageQueues
     {
-        private static string SYRRedisURL = "localhost:6379";
-        private static string MTNRedisURL = "localhost:48485";
+        private static string MTNRedisURL = "localhost:6373";
+        private static string SYRRedisURL = "localhost:6374";
         public static string RedisConnectionError = "Error Writing to Redis";
 
         private static string Syriatel = "SYR";
         private static string MTN = "MTN";
 
+        private static int LEVELS = 6;
 
+        public static void init()
+        {
+            Console.WriteLine("Initing");
+           /* var redis = ConnectionMultiplexer.Connect(SYRRedisURL);
+            var db = redis.GetDatabase();
+            for (int i=0; i < LEVELS; i++)
+            {
+               bool k = db.StreamCreateConsumerGroup(i.ToString(),
+                   "SYS_MSGS", 
+                   "$",
+                   true);
+                if(k)
+                {
+                    Console.WriteLine("OK");
+                }
+            }
+            redis = ConnectionMultiplexer.Connect(MTNRedisURL);
+            db = redis.GetDatabase();
+            for (int i = 0; i < LEVELS; i++)
+            {
+                bool k = db.StreamCreateConsumerGroup(i.ToString(),
+                    "SYS_MSGS",
+                    "$",
+                    true);
+            }*/
+        }
         public static string addMessage(Message message , IDiscoveryClient discoveryClient)
         {
             string id = "Error";

@@ -22,7 +22,7 @@
 
             int account_p = message.LocalPriority;
 
-            int x = account_p + message.LocalPriority;
+            int x = message.LocalPriority;
             if (x > MAX_PRIRITY) x = MAX_PRIRITY;
             if (x < MIN_PRIRITY && x != -1) x = MIN_PRIRITY;
             message.LocalPriority = x;

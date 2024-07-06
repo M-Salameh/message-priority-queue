@@ -34,9 +34,16 @@ add redis:
 dotnet add package StackExchange.Redis
 
 
+
+
+docker run -d --name redis-test -p 6377(port on host):6379 (port for container) redis
+maps the 6377 from host to 6379 to container
+
 -enter redis cli:
  docker exec -it <container redis name> redis-cli 
  docker exec -it redis redis-cli 
+
+
 
 -delete stream :
   del <stream_name>

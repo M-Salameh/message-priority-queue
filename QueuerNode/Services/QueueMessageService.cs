@@ -16,6 +16,7 @@ namespace QueuerNode.Services
         {
             _logger = logger;
             _client = client;
+            MessageQueues.init();
         }
 
         public override Task<Acknowledgement> QueueMessage(Message message, ServerCallContext context)
@@ -24,6 +25,8 @@ namespace QueuerNode.Services
             //Console.WriteLine("Message Receieved to Queuer !!");
 
             string reqId = MessageQueues.addMessage(message, _client);
+
+            Console.WriteLine("req id grcp que = " + reqId);
 
             if (reqId.Equals(MessageQueues.RedisConnectionError))
             {
