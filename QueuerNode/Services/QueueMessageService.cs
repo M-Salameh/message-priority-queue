@@ -2,9 +2,9 @@
 using Grpc.Core;
 using Steeltoe.Common.Discovery;
 using Steeltoe.Discovery;
-using QueuerNode.RedisQueuer;
+using SchedulerNode.RedisQueuer;
 
-namespace QueuerNode.Services
+namespace SchedulerNode.Services
 {
     public class QueueMessageService : Queue.QueueBase
     {
@@ -12,11 +12,12 @@ namespace QueuerNode.Services
         private readonly IDiscoveryClient _client;
 
         private readonly static string ErrorQueuing = "Error";
+        public readonly static string ErrorConnection = "Error Connecting to Redis";
         public QueueMessageService(ILogger<QueueMessageService> logger , IDiscoveryClient client)
         {
             _logger = logger;
             _client = client;
-            MessageQueues.init();
+            //MessageQueues.init();
         }
 
         public override Task<Acknowledgement> QueueMessage(Message message, ServerCallContext context)

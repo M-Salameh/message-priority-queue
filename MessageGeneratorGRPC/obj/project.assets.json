@@ -2299,9 +2299,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\message-priority-queue\\MessageGeneratorGRPC\\MessageGeneratorGRPC.csproj",
-      "projectName": "MessageGeneratorGRPC",
-      "projectPath": "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\message-priority-queue\\MessageGeneratorGRPC\\MessageGeneratorGRPC.csproj",
+      "projectUniqueName": "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\message-priority-queue\\MessageGeneratorGRPC\\GRPCMessageGenerator.csproj",
+      "projectName": "GRPCMessageGenerator",
+      "projectPath": "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\message-priority-queue\\MessageGeneratorGRPC\\GRPCMessageGenerator.csproj",
       "packagesPath": "C:\\Users\\moham\\.nuget\\packages\\",
       "outputPath": "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\message-priority-queue\\MessageGeneratorGRPC\\obj\\",
       "projectStyle": "PackageReference",

@@ -33,12 +33,12 @@
     },
     "494712ab-c5a0-4525-81ae-dd203f249cb9": {
       "ProjectGuid": "494712ab-c5a0-4525-81ae-dd203f249cb9",
-      "DisplayName": "MessageGeneratorGRPC",
+      "DisplayName": "GRPCMessageGenerator",
       "ColorIndex": 5
     },
     "676d9604-4597-4935-826a-7f054fd5936a": {
       "ProjectGuid": "676d9604-4597-4935-826a-7f054fd5936a",
-      "DisplayName": "QueuerNode",
+      "DisplayName": "Scheduler",
       "ColorIndex": 6
     },
     "79a276e9-da51-4434-9241-a0f8e6771232": {
@@ -70,7 +70,17 @@
       "ProjectGuid": "8f51b680-f3b6-4892-b854-2e2af840cd71",
       "DisplayName": "SimpleStreamConsumerTest",
       "ColorIndex": 12
+    },
+    "1bf34fa7-e2a8-4fac-a7a5-d57264b98b98": {
+      "ProjectGuid": "1bf34fa7-e2a8-4fac-a7a5-d57264b98b98",
+      "DisplayName": "ManualStreamConsumer",
+      "ColorIndex": 13
+    },
+    "4f286608-7770-4511-bf37-2b94f5351d42": {
+      "ProjectGuid": "4f286608-7770-4511-bf37-2b94f5351d42",
+      "DisplayName": "PriorityStream",
+      "ColorIndex": 14
     }
   },
-  "NextColorIndex": 13
+  "NextColorIndex": 15
 }

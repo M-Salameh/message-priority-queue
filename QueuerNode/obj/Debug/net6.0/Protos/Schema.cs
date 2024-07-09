@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace QueuerNode {
+namespace SchedulerNode {
 
   /// <summary>Holder for reflection information generated from Protos/schema.proto</summary>
   public static partial class SchemaReflection {
@@ -30,13 +30,13 @@ namespace QueuerNode {
             "ASgFEgwKBHRleHQYBiABKAkSCwoDdGFnGAcgASgJIjcKD0Fja25vd2xlZGdl",
             "bWVudBIRCglyZXBseUNvZGUYASABKAkSEQoJcmVxdWVzdElEGAIgASgJMkkK",
             "BVF1ZXVlEkAKDFF1ZXVlTWVzc2FnZRITLlRyYW5taXR0ZXIuTWVzc2FnZRob",
-            "LlRyYW5taXR0ZXIuQWNrbm93bGVkZ2VtZW50Qg2qAgpRdWV1ZXJOb2RlYgZw",
-            "cm90bzM="));
+            "LlRyYW5taXR0ZXIuQWNrbm93bGVkZ2VtZW50QhCqAg1TY2hlZHVsZXJOb2Rl",
+            "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::QueuerNode.Message), global::QueuerNode.Message.Parser, new[]{ "ClientID", "ApiKey", "MsgId", "PhoneNumber", "LocalPriority", "Text", "Tag" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::QueuerNode.Acknowledgement), global::QueuerNode.Acknowledgement.Parser, new[]{ "ReplyCode", "RequestID" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::SchedulerNode.Message), global::SchedulerNode.Message.Parser, new[]{ "ClientID", "ApiKey", "MsgId", "PhoneNumber", "LocalPriority", "Text", "Tag" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SchedulerNode.Acknowledgement), global::SchedulerNode.Acknowledgement.Parser, new[]{ "ReplyCode", "RequestID" }, null, null, null, null)
           }));
     }
     #endregion
@@ -58,7 +58,7 @@ namespace QueuerNode {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::QueuerNode.SchemaReflection.Descriptor.MessageTypes[0]; }
+      get { return global::SchedulerNode.SchemaReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -470,7 +470,7 @@ namespace QueuerNode {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::QueuerNode.SchemaReflection.Descriptor.MessageTypes[1]; }
+      get { return global::SchedulerNode.SchemaReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

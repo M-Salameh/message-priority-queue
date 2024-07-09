@@ -1,4 +1,4 @@
-using MessageGeneratorGRPC;
+using GGRPCMessageGenerator;
 using Steeltoe.Discovery.Client;
 
 IHost host = Host.CreateDefaultBuilder(args)

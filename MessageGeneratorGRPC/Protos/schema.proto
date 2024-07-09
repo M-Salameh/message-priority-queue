@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option csharp_namespace = "MessageGeneratorGRPC";
+option csharp_namespace = "GGRPCMessageGenerator";
 
 package Tranmitter;
 

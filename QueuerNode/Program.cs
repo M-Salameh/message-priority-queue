@@ -1,4 +1,5 @@
-using QueuerNode.Services;
+using SchedulerNode.RedisQueuer;
+using SchedulerNode.Services;
 using Steeltoe.Discovery.Client;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddGrpc();
 builder.Services.AddDiscoveryClient();
-
+MessageQueues.init();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

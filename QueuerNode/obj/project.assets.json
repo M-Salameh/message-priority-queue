@@ -2663,9 +2663,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\message-priority-queue\\QueuerNode\\QueuerNode.csproj",
-      "projectName": "QueuerNode",
-      "projectPath": "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\message-priority-queue\\QueuerNode\\QueuerNode.csproj",
+      "projectUniqueName": "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\message-priority-queue\\QueuerNode\\Scheduler.csproj",
+      "projectName": "Scheduler",
+      "projectPath": "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\message-priority-queue\\QueuerNode\\Scheduler.csproj",
       "packagesPath": "C:\\Users\\moham\\.nuget\\packages\\",
       "outputPath": "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\message-priority-queue\\QueuerNode\\obj\\",
       "projectStyle": "PackageReference",

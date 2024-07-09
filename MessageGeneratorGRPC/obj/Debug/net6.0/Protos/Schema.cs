@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace MessageGeneratorGRPC {
+namespace GGRPCMessageGenerator {
 
   /// <summary>Holder for reflection information generated from Protos/schema.proto</summary>
   public static partial class SchemaReflection {
@@ -30,13 +30,13 @@ namespace MessageGeneratorGRPC {
             "ASgFEgwKBHRleHQYBiABKAkSCwoDdGFnGAcgASgJIjcKD0Fja25vd2xlZGdl",
             "bWVudBIRCglyZXBseUNvZGUYASABKAkSEQoJcmVxdWVzdElEGAIgASgJMkcK",
             "BFNlbmQSPwoLU2VuZE1lc3NhZ2USEy5UcmFubWl0dGVyLk1lc3NhZ2UaGy5U",
-            "cmFubWl0dGVyLkFja25vd2xlZGdlbWVudEIXqgIUTWVzc2FnZUdlbmVyYXRv",
-            "ckdSUENiBnByb3RvMw=="));
+            "cmFubWl0dGVyLkFja25vd2xlZGdlbWVudEIYqgIVR0dSUENNZXNzYWdlR2Vu",
+            "ZXJhdG9yYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::MessageGeneratorGRPC.Message), global::MessageGeneratorGRPC.Message.Parser, new[]{ "ClientID", "ApiKey", "MsgId", "PhoneNumber", "LocalPriority", "Text", "Tag" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::MessageGeneratorGRPC.Acknowledgement), global::MessageGeneratorGRPC.Acknowledgement.Parser, new[]{ "ReplyCode", "RequestID" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::GGRPCMessageGenerator.Message), global::GGRPCMessageGenerator.Message.Parser, new[]{ "ClientID", "ApiKey", "MsgId", "PhoneNumber", "LocalPriority", "Text", "Tag" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GGRPCMessageGenerator.Acknowledgement), global::GGRPCMessageGenerator.Acknowledgement.Parser, new[]{ "ReplyCode", "RequestID" }, null, null, null, null)
           }));
     }
     #endregion
@@ -58,7 +58,7 @@ namespace MessageGeneratorGRPC {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::MessageGeneratorGRPC.SchemaReflection.Descriptor.MessageTypes[0]; }
+      get { return global::GGRPCMessageGenerator.SchemaReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -470,7 +470,7 @@ namespace MessageGeneratorGRPC {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::MessageGeneratorGRPC.SchemaReflection.Descriptor.MessageTypes[1]; }
+      get { return global::GGRPCMessageGenerator.SchemaReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

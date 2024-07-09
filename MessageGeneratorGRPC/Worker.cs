@@ -1,7 +1,7 @@
 using Grpc.Net.Client;
 using Steeltoe.Discovery;
 
-namespace MessageGeneratorGRPC
+namespace GGRPCMessageGenerator
 {
     public class Worker : BackgroundService
     {

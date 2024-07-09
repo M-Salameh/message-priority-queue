@@ -7,7 +7,7 @@
 
 using grpc = global::Grpc.Core;
 
-namespace MessageGeneratorGRPC {
+namespace GGRPCMessageGenerator {
   public static partial class Send
   {
     static readonly string __ServiceName = "Tranmitter.Send";
@@ -46,12 +46,12 @@ namespace MessageGeneratorGRPC {
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::MessageGeneratorGRPC.Message> __Marshaller_Tranmitter_Message = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::MessageGeneratorGRPC.Message.Parser));
+    static readonly grpc::Marshaller<global::GGRPCMessageGenerator.Message> __Marshaller_Tranmitter_Message = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::GGRPCMessageGenerator.Message.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::MessageGeneratorGRPC.Acknowledgement> __Marshaller_Tranmitter_Acknowledgement = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::MessageGeneratorGRPC.Acknowledgement.Parser));
+    static readonly grpc::Marshaller<global::GGRPCMessageGenerator.Acknowledgement> __Marshaller_Tranmitter_Acknowledgement = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::GGRPCMessageGenerator.Acknowledgement.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::MessageGeneratorGRPC.Message, global::MessageGeneratorGRPC.Acknowledgement> __Method_SendMessage = new grpc::Method<global::MessageGeneratorGRPC.Message, global::MessageGeneratorGRPC.Acknowledgement>(
+    static readonly grpc::Method<global::GGRPCMessageGenerator.Message, global::GGRPCMessageGenerator.Acknowledgement> __Method_SendMessage = new grpc::Method<global::GGRPCMessageGenerator.Message, global::GGRPCMessageGenerator.Acknowledgement>(
         grpc::MethodType.Unary,
         __ServiceName,
         "SendMessage",
@@ -61,7 +61,7 @@ namespace MessageGeneratorGRPC {
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
     {
-      get { return global::MessageGeneratorGRPC.SchemaReflection.Descriptor.Services[0]; }
+      get { return global::GGRPCMessageGenerator.SchemaReflection.Descriptor.Services[0]; }
     }
 
     /// <summary>Client for Send</summary>
@@ -92,22 +92,22 @@ namespace MessageGeneratorGRPC {
       }
 
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::MessageGeneratorGRPC.Acknowledgement SendMessage(global::MessageGeneratorGRPC.Message request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual global::GGRPCMessageGenerator.Acknowledgement SendMessage(global::GGRPCMessageGenerator.Message request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return SendMessage(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::MessageGeneratorGRPC.Acknowledgement SendMessage(global::MessageGeneratorGRPC.Message request, grpc::CallOptions options)
+      public virtual global::GGRPCMessageGenerator.Acknowledgement SendMessage(global::GGRPCMessageGenerator.Message request, grpc::CallOptions options)
       {
         return CallInvoker.BlockingUnaryCall(__Method_SendMessage, null, options, request);
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::MessageGeneratorGRPC.Acknowledgement> SendMessageAsync(global::MessageGeneratorGRPC.Message request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual grpc::AsyncUnaryCall<global::GGRPCMessageGenerator.Acknowledgement> SendMessageAsync(global::GGRPCMessageGenerator.Message request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return SendMessageAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::MessageGeneratorGRPC.Acknowledgement> SendMessageAsync(global::MessageGeneratorGRPC.Message request, grpc::CallOptions options)
+      public virtual grpc::AsyncUnaryCall<global::GGRPCMessageGenerator.Acknowledgement> SendMessageAsync(global::GGRPCMessageGenerator.Message request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_SendMessage, null, options, request);
       }

@@ -10,9 +10,9 @@ namespace HTTPMessageNode.Controllers
     {
 
         private readonly ILogger<QueueMessageController> _logger;
-        private readonly IDiscoveryClient discoveryClient;
-        private static readonly string ErrorConnection = "Error Connecting to Servers";
-        private static readonly string QueuerNode = "QueuerNode"; //put them in files!
+        private IDiscoveryClient discoveryClient;
+        public static readonly string ErrorConnection = "Error Connecting to Servers";
+        private static readonly string Scheduler = "SchedulerNode"; //put them in files!
         private static readonly string Validator = "Validator";
         private static readonly string ErrorDBConnection = "Error Connecting to DataBase";
         private static readonly string ErrorValidation = "Error When Validating Request";
@@ -31,7 +31,7 @@ namespace HTTPMessageNode.Controllers
         {
             //Console.WriteLine("Msg from : " + messageDTO.clientID + " pr  = " + messageDTO.localPriority);
 
-            string validator = getAddressOfInstance(Validator);
+            string validator = LoadBalancer.AddressResolver.getAddressOfInstance(Validator, ref discoveryClient);
             if (validator == ErrorConnection)
             {
                 return (new Acknowledgement
@@ -60,7 +60,7 @@ namespace HTTPMessageNode.Controllers
             Console.WriteLine("new prio = " + message.LocalPriority);
 
 
-            string address = getAddressOfInstance(QueuerNode);
+            string address = LoadBalancer.AddressResolver.getAddressOfInstance(Scheduler, ref discoveryClient);
             if (address == ErrorConnection)
             {
                 return (new Acknowledgement
@@ -111,12 +111,12 @@ namespace HTTPMessageNode.Controllers
         }
 
 
-        private string getAddressOfInstance(string instanceName)
+        /*private string getAddressOfInstance(string instanceName)
         {
             string address = "";
             try
             {
-                // instanceName = "Validator" or "QueuerNode" ... etc
+                // instanceName = "Validator" or "Scheduler" ... etc
                 var y = discoveryClient.GetInstances(instanceName); /// write names to config file
 
                 address = y[0].Uri.ToString();
@@ -127,6 +127,6 @@ namespace HTTPMessageNode.Controllers
             {
                 return ErrorConnection;
             }
-        }
+        }*/
     }
 }

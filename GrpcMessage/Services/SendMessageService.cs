@@ -9,12 +9,12 @@ namespace GrpcMessageNode.Services
     public class SendMessageService : Send.SendBase
     {
         private readonly ILogger<SendMessageService> _logger;
-        private readonly IDiscoveryClient discoveryClient;
+        private IDiscoveryClient discoveryClient;
         private static readonly string ErrorValidation = "Error When Validating Request";
         private static readonly string ErrorDBConnection = "Error Connecting to DataBase";
-        private static readonly string ErrorConnection = "Error Connecting to Servers";
+        public static readonly string ErrorConnection = "Error Connecting to Servers";
         private static readonly string ErrorGRPCConnection = "Error Connecting to GRPC Servers";
-        private static readonly string QueuerNode = "QueuerNode";
+        private static readonly string Scheduler = "SchedulerNode";
         private static readonly string Validator = "Validator";
 
 
@@ -26,7 +26,7 @@ namespace GrpcMessageNode.Services
 
         public override Task<Acknowledgement> SendMessage(Message message, ServerCallContext context)
         {
-            string validator = getAddressOfInstance(Validator);
+            string validator = LoadBalancer.AddressResolver.getAddressOfInstance(Validator , ref discoveryClient);
             if (validator == ErrorConnection)
             {
                 return Task.FromResult(new Acknowledgement
@@ -61,7 +61,7 @@ namespace GrpcMessageNode.Services
 
         private Acknowledgement sendToCoordinator(Message message)
         {
-            string address = getAddressOfInstance(QueuerNode);
+            string address = LoadBalancer.AddressResolver.getAddressOfInstance(Scheduler , ref discoveryClient);
             if (address == ErrorConnection)
             {
                 return (new Acknowledgement
@@ -94,14 +94,14 @@ namespace GrpcMessageNode.Services
         }
 
         //not working -- causing unknown exception with nullable parameter http2
-        private Queue.QueueClient getQueueClient()
+        /*private Queue.QueueClient getQueueClient()
         {
-            string address = getAddressOfInstance(QueuerNode);
+            string address = LoadBalancer.AddressResolver.getAddressOfInstance(Scheduler , ref discoveryClient);
             using var channel = GrpcChannel.ForAddress(address);
-            //Console.WriteLine("QueuerNode Address  = " + address);
+            //Console.WriteLine("Scheduler Address  = " + address);
             var client = new Queue.QueueClient(channel);
             return client;
-        }
+        }*/
 
         private Message2 copyMessage(Message message)
         {
@@ -117,12 +117,12 @@ namespace GrpcMessageNode.Services
         }
 
 
-        private string getAddressOfInstance(string instanceName)
+        /*private string getAddressOfInstance(string instanceName)
         {
             string address = "";
             try
             {
-                // instanceName = "Validator" or "QueuerNode" ... etc
+                // instanceName = "Validator" or "Scheduler" ... etc
                 var y = discoveryClient.GetInstances(instanceName); /// write names to config file
 
                 address = y[0].Uri.ToString();
@@ -133,6 +133,6 @@ namespace GrpcMessageNode.Services
             {
                 return ErrorConnection;
             }
-        }
+        }*/
     }
 }

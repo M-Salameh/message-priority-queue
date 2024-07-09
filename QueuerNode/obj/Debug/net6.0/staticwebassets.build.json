@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "jwsHyxMcsCIhrAowi7ZmK+gfik0vlNHRNwAmNQHrcsg=",
-  "Source": "QueuerNode",
-  "BasePath": "_content/QueuerNode",
+  "Hash": "Gm3EdnfsjLPGjYrXFyx3NG0YPm+1XCjTjQvju9AHd3E=",
+  "Source": "Scheduler",
+  "BasePath": "_content/Scheduler",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],

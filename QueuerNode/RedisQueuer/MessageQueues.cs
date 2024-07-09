@@ -7,12 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QueuerNode.RedisQueuer
+namespace SchedulerNode.RedisQueuer
 {
     public class MessageQueues
     {
-        private static string MTNRedisURL = "localhost:6373";
-        private static string SYRRedisURL = "localhost:6374";
+        private static string RedisURL = "localhost:6379";
         public static string RedisConnectionError = "Error Writing to Redis";
 
         private static string Syriatel = "SYR";
@@ -22,29 +21,35 @@ namespace QueuerNode.RedisQueuer
 
         public static void init()
         {
-            Console.WriteLine("Initing");
-           /* var redis = ConnectionMultiplexer.Connect(SYRRedisURL);
+
+            var redis = ConnectionMultiplexer.Connect(RedisURL);
             var db = redis.GetDatabase();
             for (int i=0; i < LEVELS; i++)
             {
-               bool k = db.StreamCreateConsumerGroup(i.ToString(),
-                   "SYS_MSGS", 
-                   "$",
-                   true);
-                if(k)
+                try
                 {
-                    Console.WriteLine("OK");
+                    bool k1 = db.StreamCreateConsumerGroup(Syriatel+"_"+i.ToString(),
+                        "SYS_MSGS",
+                        "$",
+                        true);
+
+                    bool k2 = db.StreamCreateConsumerGroup(MTN+"_"+i.ToString(),
+                        "SYS_MSGS",
+                        "$",
+                        true);
+
+
+                    if (k1 && k2)
+                    {
+                        Console.WriteLine("OK");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    continue;
                 }
             }
-            redis = ConnectionMultiplexer.Connect(MTNRedisURL);
-            db = redis.GetDatabase();
-            for (int i = 0; i < LEVELS; i++)
-            {
-                bool k = db.StreamCreateConsumerGroup(i.ToString(),
-                    "SYS_MSGS",
-                    "$",
-                    true);
-            }*/
+           
         }
         public static string addMessage(Message message , IDiscoveryClient discoveryClient)
         {
@@ -53,13 +58,7 @@ namespace QueuerNode.RedisQueuer
             if (message.Tag.Contains(Syriatel, StringComparison.OrdinalIgnoreCase))
             {
                 // get url using discovery client
-                var resid = addMessageRedisAsync(message, SYRRedisURL);    
-                temp = resid.Result;
-            }
-
-            else if (message.Tag.Contains(MTN, StringComparison.OrdinalIgnoreCase))
-            {
-                var resid = addMessageRedisAsync(message, MTNRedisURL);
+                var resid = addMessageRedisAsync(message, RedisURL);
                 temp = resid.Result;
             }
 
@@ -78,7 +77,10 @@ namespace QueuerNode.RedisQueuer
             {
                 var redis = ConnectionMultiplexer.Connect(URL);
 
-                string streamName = message.LocalPriority.ToString();
+                string tag = getTag(ref message);
+
+                string streamName = tag + "_" + message.LocalPriority.ToString();
+
                 Console.WriteLine("stream name  = " + streamName);
 
                 var db = redis.GetDatabase();
@@ -86,8 +88,6 @@ namespace QueuerNode.RedisQueuer
                 var serializedMessage = JsonConvert.SerializeObject(message);
 
                 Console.WriteLine("Sending to stream : " + streamName);
-
-                //var messageId = await db.StreamAddAsync(streamName, new NameValueEntry[] { }, serializedMessage);
 
                 var messageId = await db.StreamAddAsync
                                     (streamName,
@@ -107,6 +107,22 @@ namespace QueuerNode.RedisQueuer
             {
                 return await Task.FromResult(RedisConnectionError);
             }
+        }
+
+        private static string getTag (ref Message message)
+        {
+            
+            if(message.Tag.Contains(Syriatel, StringComparison.OrdinalIgnoreCase))
+            {
+                return Syriatel;
+            }
+
+            else
+            {
+                return MTN;
+            }
+
+            
         }
     }
 }

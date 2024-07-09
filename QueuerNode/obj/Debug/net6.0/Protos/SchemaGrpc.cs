@@ -7,7 +7,7 @@
 
 using grpc = global::Grpc.Core;
 
-namespace QueuerNode {
+namespace SchedulerNode {
   public static partial class Queue
   {
     static readonly string __ServiceName = "Tranmitter.Queue";
@@ -46,12 +46,12 @@ namespace QueuerNode {
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::QueuerNode.Message> __Marshaller_Tranmitter_Message = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::QueuerNode.Message.Parser));
+    static readonly grpc::Marshaller<global::SchedulerNode.Message> __Marshaller_Tranmitter_Message = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SchedulerNode.Message.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::QueuerNode.Acknowledgement> __Marshaller_Tranmitter_Acknowledgement = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::QueuerNode.Acknowledgement.Parser));
+    static readonly grpc::Marshaller<global::SchedulerNode.Acknowledgement> __Marshaller_Tranmitter_Acknowledgement = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::SchedulerNode.Acknowledgement.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::QueuerNode.Message, global::QueuerNode.Acknowledgement> __Method_QueueMessage = new grpc::Method<global::QueuerNode.Message, global::QueuerNode.Acknowledgement>(
+    static readonly grpc::Method<global::SchedulerNode.Message, global::SchedulerNode.Acknowledgement> __Method_QueueMessage = new grpc::Method<global::SchedulerNode.Message, global::SchedulerNode.Acknowledgement>(
         grpc::MethodType.Unary,
         __ServiceName,
         "QueueMessage",
@@ -61,7 +61,7 @@ namespace QueuerNode {
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
     {
-      get { return global::QueuerNode.SchemaReflection.Descriptor.Services[0]; }
+      get { return global::SchedulerNode.SchemaReflection.Descriptor.Services[0]; }
     }
 
     /// <summary>Base class for server-side implementations of Queue</summary>
@@ -69,7 +69,7 @@ namespace QueuerNode {
     public abstract partial class QueueBase
     {
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::QueuerNode.Acknowledgement> QueueMessage(global::QueuerNode.Message request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::SchedulerNode.Acknowledgement> QueueMessage(global::SchedulerNode.Message request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -92,7 +92,7 @@ namespace QueuerNode {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     public static void BindService(grpc::ServiceBinderBase serviceBinder, QueueBase serviceImpl)
     {
-      serviceBinder.AddMethod(__Method_QueueMessage, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::QueuerNode.Message, global::QueuerNode.Acknowledgement>(serviceImpl.QueueMessage));
+      serviceBinder.AddMethod(__Method_QueueMessage, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::SchedulerNode.Message, global::SchedulerNode.Acknowledgement>(serviceImpl.QueueMessage));
     }
 
   }
