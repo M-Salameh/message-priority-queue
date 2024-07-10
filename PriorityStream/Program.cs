@@ -2,32 +2,50 @@
 using StackExchange.Redis;
 using Newtonsoft.Json;
 using PriorityStream;
+using PriorityStream.Extractor;
+using PriorityStream.Writer;
 
 var tokenSource = new CancellationTokenSource();
 var token = tokenSource.Token;
 
-string REDIS = "localhost:6379";
+string RedisRead = "localhost:6379";
+string RedisWrite = "localhost:6379";
 
-var muxer = ConnectionMultiplexer.Connect(REDIS);
-var db = muxer.GetDatabase();
+int[] levels = new int[] { 1, 2, 3 };
 
-var server = muxer.GetServers();
+int sms_rate = 10;
 
-const string streamName = "SYR_3";
-const string groupName = "SYS_MSGS";
-const string myConsumerID = "some-id";
+if (!Extractor.setDatabase(RedisRead , sms_rate)   )
+{
+    Console.WriteLine("Error Connecting to Redis Read on host :  " + RedisRead);
+    return;
+}
 
-const int count = 1554; // at most reads (count) messages from a stream
+if (!Writer.setDatabase(RedisWrite))
+{
+    Console.WriteLine("Error Connecting to Redis Write on host :  " + RedisWrite);
+    return;
+}
+while (!token.IsCancellationRequested)
+{
+    for (int level = 0; level < levels.Length; level++)
+    {
+        List<MessageDTO> messages = Extractor.ExtractMessages(level);
+        Writer.writeMessages(messages);
+    }
+}
 
-Console.WriteLine(server[0].DatabaseSize());
+
 
 /*
+const int counttt = 1554; // at most reads (counttt) messages from a stream
+
 var readManual = Task.Run(async () =>
 {
     List<RedisValue> msgsID = new List<RedisValue>();
     while (!token.IsCancellationRequested)
     {
-        var messages = await db.StreamReadGroupAsync(streamName, groupName, myConsumerID, ">", count, true); ;
+        var messages = await db.StreamReadGroupAsync(streamName, groupName, myConsumerID, ">", counttt, true);
         //db.StreamDeleteAsync(streamName, msgsID);
         foreach (var entry in messages)
         {
@@ -80,10 +98,10 @@ await Task.WhenAll(readManual);
 Console.WriteLine($"length: {res32.Length}, radix-tree-keys: {res32.RadixTreeKeys}, radix-tree-nodes: {res32.RadixTreeNodes}, last-generated-id: {res32.LastGeneratedId}, first-entry: {$"{res32.FirstEntry.Id}: [{string.Join(", ", res32.FirstEntry.Values.Select(b => $"{b.Name}: {b.Value}"))}]"}, last-entry: {$"{res32.LastEntry.Id}: [{string.Join(", ", res32.LastEntry.Values.Select(b => $"{b.Name}: {b.Value}"))}]"}");
 var x = res32.FirstEntry.Id;
 var y = res32.LastEntry.Id;
-RedisValue[] redisValues = new RedisValue[2];
-redisValues[0] = x;
-redisValues[1] = y;
-await db.StreamDeleteAsync(streamName , redisValues);*/
+RedisValue[] RedisValues = new RedisValue[2];
+RedisValues[0] = x;
+RedisValues[1] = y;
+await db.StreamDeleteAsync(streamName , RedisValues);*/
 
 
 

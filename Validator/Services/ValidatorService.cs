@@ -17,7 +17,7 @@ namespace Validator.Services
             return Task.FromResult(new Reply
             {
                 ReplyCode = "OK ok 200 + validated !! ",
-                AccountPriority = 3
+                AccountPriority = 0
             }) ;
         }
 

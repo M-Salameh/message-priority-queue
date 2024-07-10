@@ -11,45 +11,15 @@ string SYR = "localhost:6374";
 var muxer = ConnectionMultiplexer.Connect(SYR);
 var db = muxer.GetDatabase();
 
-const string streamName3 = "3";
-const string groupName = "SYS_MSGS";
+const int sms_rate = 10;
+const string streamName = "SYR";
+const string groupName = "SYS";
 const string myConsumerID = "some-id";
 
-const int count = 1554; // at most reads (count) messages from a stream
-
+const int count = sms_rate; // at most reads (count) messages from a stream
+/*
 var readManual = Task.Run(async () =>
 {
-    /*TimeSpan blockTime = TimeSpan.FromSeconds(0.2);
-    string rest = "GROUP " + groupName + " id "
-     + "BLOCK " + blockTime.TotalMilliseconds + " "
-     + "COUNT " + count 
-     + " STREAMS " + streamName3 + " >";
-    
-    string[] rest2 = { "GROUP "
-                        , groupName
-                        , myConsumerID
-                        , "COUNT " 
-                        , count.ToString()
-                        , "BLOCK " 
-                        , blockTime.TotalMilliseconds.ToString()
-                        , "STREAMS " 
-                        , streamName3
-                        ,">"};
-    
-    string[] rest3 = {groupName
-                        , myConsumerID
-                        , count.ToString()
-                        , blockTime.TotalMilliseconds.ToString()
-                        , streamName3
-                        ,">"};*/
-
-    string cmd = "XREADGROUP";
-
-
-    /*
-      items = r.xreadgroup("GROUP",GroupName,ConsumerName,"BLOCK","2000","COUNT","10","STREAMS",:my_stream_key,myid)
-     */
-    // var res = db.Execute(cmd , rest3);
     while (!token.IsCancellationRequested)
     {
         var res = await db.ExecuteAsync(cmd, "GROUP", groupName, myConsumerID, "BLOCK", 2000, "COUNT", 10, "STREAMS", streamName3, ">");
@@ -68,6 +38,7 @@ var readManual = Task.Run(async () =>
         ///
         /// mesg -> Value -> [0] -> [1] -> [1]
         ///
+        /*
         var messages = res[0].ToDictionary();
 
         
@@ -93,7 +64,7 @@ tokenSource.CancelAfter(TimeSpan.FromSeconds(300));
 
 await Task.WhenAll(readManual);
 
-
+*/
 
 
 
