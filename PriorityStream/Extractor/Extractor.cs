@@ -10,26 +10,30 @@ namespace PriorityStream.Extractor
 {
     public class Extractor
     {
-        private static string Provider = "SYR";
         private static string groupName = "SYS_MSGS";
-        private static string myConsumerID = "syr-1";
+        private static string myConsumerID = "cons-1";
 
-        private static int LOW = 1;
-        private static int Medium = 2;
-        private static int High = 3;
+        private static int VeryLow = 1;
+        private static int Low = 2;
+        private static int Medium = 3;
+        private static int High = 4;
+        private static int VeryHigh = 5;
 
-        private static int sms_rate = 10;
+        private static int[] shares;
+
+        private static int sms_rate = 100;
 
         private static IDatabase db = null;
 
-        public static bool setDatabase(string REDIS , int _sms_rate)
-        {
+        public static bool setDatabase(string REDIS , int _sms_rate = 100)
+        {            
             try
             {
                 var muxer = ConnectionMultiplexer.Connect(REDIS);
                 db = muxer.GetDatabase();
                 sms_rate = _sms_rate;
                 //Console.WriteLine("Got DB");
+                setShares();
                 return true;
             }
             catch (Exception ex)
@@ -39,74 +43,95 @@ namespace PriorityStream.Extractor
             }
         }
 
-        public static List<MessageDTO> ExtractMessages(int priority)
+        private static void setShares()
         {
-            string stream = Provider + "_" + priority;
-            
-            if (priority == LOW)
-            {
-                return GetMessagesAsync(stream, 2).Result;
-            }
-            else if (priority == Medium)
-            {
-                return GetMessagesAsync(stream, 3).Result;
-            }
-            else if (priority == High)
-            {
-                return GetMessagesAsync(stream, 5).Result;
-            }
-            else
-            {
-                return new List<MessageDTO>();
-            }
-        }
+            shares = new int[VeryHigh + 1];
+            int sum = 0;
+            sum += shares[VeryHigh] = (35 * sms_rate) / 100;
+            sum += shares[High] = (30 * sms_rate) / 100;
+            sum += shares[Medium] = (20 * sms_rate) / 100;
+            sum += shares[Low] = (10 * sms_rate) / 100;
+            sum += shares[VeryLow] = (5 * sms_rate) / 100;
 
-        private static async Task<List<MessageDTO>> GetMessagesAsync(string stream , int count)
+            shares[VeryHigh] += ((sms_rate - sum) > 0 ? sms_rate - sum : 0);
+        }
+           
+
+        public static async Task<RedisValue> ProcessMessagesAsync(string stream, RedisValue id)
         {
             try
             {
-                List<RedisValue> msgsID = new List<RedisValue>();
+                int priority = getPriority(stream);
 
-                List<MessageDTO> msgs = new List<MessageDTO>();
-                var messages = await db.StreamReadGroupAsync(stream, groupName, myConsumerID, ">", count, true);
+                string write_stream = getWriteStream(stream);
+
+                int count = shares[priority];
+
+                var messages = await db.StreamReadGroupAsync(stream, groupName, myConsumerID, id, count);
+                
+                bool has_pending = true;
+
+                if (messages.Length == 0)
+                {
+                    id = ">";
+                    messages = await db.StreamReadGroupAsync(stream, groupName, myConsumerID, id, count);
+                    has_pending = false;
+                }
 
                 foreach (var entry in messages)
                 {
-                    // Get the message ID
+                    Console.WriteLine("EXtraacting");
+
                     var messageId = entry.Id;
-                    msgsID.Add(messageId);
-                    Console.WriteLine(messageId);
-                    // Access the message data (serialized JSON)
+
+                    //Console.WriteLine(messageId);
+
                     string? serializedMessage = entry.Values[0].Value.ToString();
+
                     Console.WriteLine(serializedMessage);
 
-                    if (serializedMessage == null) continue;
-                    // Deserialize the JSON back to a Message object (if needed)
                     MessageDTO? message = JsonConvert.DeserializeObject<MessageDTO>(serializedMessage);
 
-                    if (message == null) continue;
-                    msgs.Add(message);
-                    // Process the message data 
-                    Console.WriteLine($"Message ID: {messageId}, Text: {message.msgId}, tag: {message.tag}");
+                    Console.WriteLine(message);
+
+                    bool success = await Writer.Writer.writeMessageAsync(message, write_stream);
+
+                    if (success)
+                    {
+                        db.StreamAcknowledge(stream, stream, messageId);
+                        id = messageId;
+                    }
+                    else
+                    {
+                        has_pending = true;
+                        break;
+                    }
+
                 }
 
-                try
-                {
-                    await db.StreamDeleteAsync(stream, msgsID.ToArray());
+                if (!has_pending) id = ">";
 
-                }
-                catch (Exception ex)
-                {
-                    return await Task.FromResult(new List<MessageDTO>());   
-                }
-                return await Task.FromResult(msgs);
-                
+                return await Task.FromResult(id);
+
             }
             catch (Exception ex)
             {
-                return await Task.FromResult(new List<MessageDTO>());
+                Console.WriteLine("Error while Reading or Acking");
+                return await Task.FromResult(id);
             }
 
+        }
+
+        private static string getWriteStream(string stream)
+        {
+            string[] write_prio = stream.Split("_");
+            return write_prio[0];
+        }
+
+        private static int getPriority(string stream)
+        {
+            string[] write_prio = stream.Split("_");
+            return int.Parse(write_prio[1]);
         }
     }
 }

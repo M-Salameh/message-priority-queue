@@ -80,7 +80,12 @@
       "ProjectGuid": "4f286608-7770-4511-bf37-2b94f5351d42",
       "DisplayName": "PriorityStream",
       "ColorIndex": 14
+    },
+    "4239ec44-4415-4369-8da3-809610735e98": {
+      "ProjectGuid": "4239ec44-4415-4369-8da3-809610735e98",
+      "DisplayName": "TestMongoDBValidator",
+      "ColorIndex": 15
     }
   },
-  "NextColorIndex": 15
+  "NextColorIndex": 0
 }

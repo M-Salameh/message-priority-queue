@@ -18,24 +18,24 @@ namespace SchedulerNode.RedisQueuer
         private static string MTN = "MTN";
 
         private static int LEVELS = 6;
-
+        private static IDatabase db = null;
         public static void init()
         {
 
             var redis = ConnectionMultiplexer.Connect(RedisURL);
-            var db = redis.GetDatabase();
-            for (int i=0; i < LEVELS; i++)
+            db = redis.GetDatabase();
+            for (int i=1; i < LEVELS; i++)
             {
                 try
                 {
                     bool k1 = db.StreamCreateConsumerGroup(Syriatel+"_"+i.ToString(),
                         "SYS_MSGS",
-                        "$",
+                        0,
                         true);
 
                     bool k2 = db.StreamCreateConsumerGroup(MTN+"_"+i.ToString(),
                         "SYS_MSGS",
-                        "$",
+                        0,
                         true);
 
 
@@ -55,7 +55,7 @@ namespace SchedulerNode.RedisQueuer
         {
             string id = "Error";
             string temp = string.Empty;
-            if (message.Tag.Contains(Syriatel, StringComparison.OrdinalIgnoreCase))
+            //if (message.Tag.Contains(Syriatel, StringComparison.OrdinalIgnoreCase))
             {
                 // get url using discovery client
                 var resid = addMessageRedisAsync(message, RedisURL);
@@ -75,15 +75,11 @@ namespace SchedulerNode.RedisQueuer
         {
             try
             {
-                var redis = ConnectionMultiplexer.Connect(URL);
-
                 string tag = getTag(ref message);
 
                 string streamName = tag + "_" + message.LocalPriority.ToString();
 
                 Console.WriteLine("stream name  = " + streamName);
-
-                var db = redis.GetDatabase();
 
                 var serializedMessage = JsonConvert.SerializeObject(message);
 
@@ -121,8 +117,6 @@ namespace SchedulerNode.RedisQueuer
             {
                 return MTN;
             }
-
-            
         }
     }
 }

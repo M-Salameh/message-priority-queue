@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace PriorityStream.Writer
 {
-
     public class Writer
     {
         private static string Provider = "SYR";
+        private static string Provider2 = "MTN";
 
         private static IDatabase db = null;
 
@@ -21,8 +21,7 @@ namespace PriorityStream.Writer
             {
                 var muxer = ConnectionMultiplexer.Connect(REDIS);
                 db = muxer.GetDatabase();
-                return 
-                createConsumerGroup();
+                return createConsumerGroup();
             }
             catch (Exception ex)
             {
@@ -35,31 +34,54 @@ namespace PriorityStream.Writer
         {
             try
             {
-                bool k1 = db.StreamCreateConsumerGroup(Provider,
-                        Provider,
-                        "$",
-                        true);
+                bool k1 = db.StreamCreateConsumerGroup
+                            (
+                                Provider,
+                                Provider,
+                                0,
+                                true
+                            );
+
+                bool k2 = db.StreamCreateConsumerGroup
+                        (
+                            Provider2,
+                            Provider2,
+                            0,
+                            true
+                        );
                 return true;
             }
             catch (Exception ex)
             {
                 //Console.WriteLine(ex.Message);
-                return (ex.Message.Contains("already exists" , StringComparison.OrdinalIgnoreCase));
+                return (ex.Message.Contains("already exists", StringComparison.OrdinalIgnoreCase));
             }
         }
 
-        public static void writeMessages(List<MessageDTO> messages)
+        public static async Task<bool> writeMessageAsync(MessageDTO message, string provider)
         {
-            foreach (var message in messages)
+            try
             {
                 var serializedMessage = JsonConvert.SerializeObject(message);
-                db.StreamAddAsync
-                        (Provider,
+
+                Console.WriteLine("Writing  : " + message);
+               
+                var temp = await db.StreamAddAsync
+                        (provider,
                                 new NameValueEntry[]
                                     {
-                                    new NameValueEntry("message", serializedMessage)
+                                new NameValueEntry("message", serializedMessage)
                                     });
+
+                return await Task.FromResult(true);
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error while Writing");
+                return await Task.FromResult(false);
+
+            }
+
         }
 
     }

@@ -18,10 +18,11 @@ namespace HTTPMessageNode.Controllers
         private static readonly string ErrorValidation = "Error When Validating Request";
         private static readonly string ErrorGRPCConnection = "Error Connecting to GRPC Servers";
 
-        public QueueMessageController(ILogger<QueueMessageController> logger , IDiscoveryClient discovery)
+        public QueueMessageController(ILogger<QueueMessageController> logger , IDiscoveryClient discovery, IConfiguration configuration)
         {
             _logger = logger;
             discoveryClient = discovery;
+            //Console.WriteLine("Conf = " + configuration.GetValue<string>("database:conn"));
         }
 
         //[HttpGet(Name = "GetWeatherForecast")]
