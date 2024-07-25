@@ -11,7 +11,12 @@ service Validate {
 message MessageMetaData {
 	string clientID = 1;
 	string apiKey = 2;
-	string tag = 3;
+	string tag = 3;  
+	int32 year = 4;
+	int32 month = 5;
+	int32 day = 6;
+	int32 hour = 7;
+	int32 minute = 8;
 }
 
 message ValidatorReply {

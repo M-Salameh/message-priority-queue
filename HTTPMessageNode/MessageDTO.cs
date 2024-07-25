@@ -15,5 +15,10 @@ namespace HTTPMessageNode
         public int localPriority { get; set; }
         public string? text { get; set; }
         public string? tag { get; set; }
+        public int year { get; set; }
+        public int month { get; set; }
+        public int day { get; set; }
+        public int hour { get; set; }
+        public int minute { get; set; }
     }
 }

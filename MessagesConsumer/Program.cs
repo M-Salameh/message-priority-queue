@@ -6,7 +6,7 @@ using MessagesConsumer.StreamsHandler;
 var tokenSource = new CancellationTokenSource();
 var token = tokenSource.Token;
 
-string redis_read = "localhost:6379";
+string redis_read = "localhost:6400";
 
 try
 {

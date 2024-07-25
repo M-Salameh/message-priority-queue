@@ -85,7 +85,27 @@
       "ProjectGuid": "4239ec44-4415-4369-8da3-809610735e98",
       "DisplayName": "TestMongoDBValidator",
       "ColorIndex": 15
+    },
+    "ea05977f-a221-49af-99ea-2086c63e8fb1": {
+      "ProjectGuid": "ea05977f-a221-49af-99ea-2086c63e8fb1",
+      "DisplayName": "MessagesConsumer",
+      "ColorIndex": 0
+    },
+    "e79d172b-80db-4396-ae93-461a9ab3eaf1": {
+      "ProjectGuid": "e79d172b-80db-4396-ae93-461a9ab3eaf1",
+      "DisplayName": "ScheduledMessagesHandler",
+      "ColorIndex": 1
+    },
+    "af47ce2a-6fdd-4315-b8fe-1470a1909547": {
+      "ProjectGuid": "af47ce2a-6fdd-4315-b8fe-1470a1909547",
+      "DisplayName": "ScheduledMessagesHandler",
+      "ColorIndex": 2
+    },
+    "62d17724-6487-4586-9f2f-c2c0175280a5": {
+      "ProjectGuid": "62d17724-6487-4586-9f2f-c2c0175280a5",
+      "DisplayName": "ScheduledMessagesHandler",
+      "ColorIndex": 3
     }
   },
-  "NextColorIndex": 0
+  "NextColorIndex": 4
 }

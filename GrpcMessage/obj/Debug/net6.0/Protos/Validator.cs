@@ -24,17 +24,18 @@ namespace GrpcMessageNode {
     static ValidatorReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChZQcm90b3MvdmFsaWRhdG9yLnByb3RvEglWYWxpZGF0b3IiQAoPTWVzc2Fn",
-            "ZU1ldGFEYXRhEhAKCGNsaWVudElEGAEgASgJEg4KBmFwaUtleRgCIAEoCRIL",
-            "CgN0YWcYAyABKAkiPAoOVmFsaWRhdG9yUmVwbHkSEQoJcmVwbHlDb2RlGAEg",
-            "ASgJEhcKD2FjY291bnRQcmlvcml0eRgCIAEoBTJUCghWYWxpZGF0ZRJICg9W",
-            "YWxpZGF0ZU1lc3NhZ2USGi5WYWxpZGF0b3IuTWVzc2FnZU1ldGFEYXRhGhku",
-            "VmFsaWRhdG9yLlZhbGlkYXRvclJlcGx5QhKqAg9HcnBjTWVzc2FnZU5vZGVi",
-            "BnByb3RvMw=="));
+            "ChZQcm90b3MvdmFsaWRhdG9yLnByb3RvEglWYWxpZGF0b3IiiAEKD01lc3Nh",
+            "Z2VNZXRhRGF0YRIQCghjbGllbnRJRBgBIAEoCRIOCgZhcGlLZXkYAiABKAkS",
+            "CwoDdGFnGAMgASgJEgwKBHllYXIYBCABKAUSDQoFbW9udGgYBSABKAUSCwoD",
+            "ZGF5GAYgASgFEgwKBGhvdXIYByABKAUSDgoGbWludXRlGAggASgFIjwKDlZh",
+            "bGlkYXRvclJlcGx5EhEKCXJlcGx5Q29kZRgBIAEoCRIXCg9hY2NvdW50UHJp",
+            "b3JpdHkYAiABKAUyVAoIVmFsaWRhdGUSSAoPVmFsaWRhdGVNZXNzYWdlEhou",
+            "VmFsaWRhdG9yLk1lc3NhZ2VNZXRhRGF0YRoZLlZhbGlkYXRvci5WYWxpZGF0",
+            "b3JSZXBseUISqgIPR3JwY01lc3NhZ2VOb2RlYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::GrpcMessageNode.MessageMetaData), global::GrpcMessageNode.MessageMetaData.Parser, new[]{ "ClientID", "ApiKey", "Tag" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GrpcMessageNode.MessageMetaData), global::GrpcMessageNode.MessageMetaData.Parser, new[]{ "ClientID", "ApiKey", "Tag", "Year", "Month", "Day", "Hour", "Minute" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GrpcMessageNode.ValidatorReply), global::GrpcMessageNode.ValidatorReply.Parser, new[]{ "ReplyCode", "AccountPriority" }, null, null, null, null)
           }));
     }
@@ -80,6 +81,11 @@ namespace GrpcMessageNode {
       clientID_ = other.clientID_;
       apiKey_ = other.apiKey_;
       tag_ = other.tag_;
+      year_ = other.year_;
+      month_ = other.month_;
+      day_ = other.day_;
+      hour_ = other.hour_;
+      minute_ = other.minute_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -125,6 +131,66 @@ namespace GrpcMessageNode {
       }
     }
 
+    /// <summary>Field number for the "year" field.</summary>
+    public const int YearFieldNumber = 4;
+    private int year_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Year {
+      get { return year_; }
+      set {
+        year_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "month" field.</summary>
+    public const int MonthFieldNumber = 5;
+    private int month_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Month {
+      get { return month_; }
+      set {
+        month_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "day" field.</summary>
+    public const int DayFieldNumber = 6;
+    private int day_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Day {
+      get { return day_; }
+      set {
+        day_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "hour" field.</summary>
+    public const int HourFieldNumber = 7;
+    private int hour_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Hour {
+      get { return hour_; }
+      set {
+        hour_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "minute" field.</summary>
+    public const int MinuteFieldNumber = 8;
+    private int minute_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Minute {
+      get { return minute_; }
+      set {
+        minute_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -143,6 +209,11 @@ namespace GrpcMessageNode {
       if (ClientID != other.ClientID) return false;
       if (ApiKey != other.ApiKey) return false;
       if (Tag != other.Tag) return false;
+      if (Year != other.Year) return false;
+      if (Month != other.Month) return false;
+      if (Day != other.Day) return false;
+      if (Hour != other.Hour) return false;
+      if (Minute != other.Minute) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -153,6 +224,11 @@ namespace GrpcMessageNode {
       if (ClientID.Length != 0) hash ^= ClientID.GetHashCode();
       if (ApiKey.Length != 0) hash ^= ApiKey.GetHashCode();
       if (Tag.Length != 0) hash ^= Tag.GetHashCode();
+      if (Year != 0) hash ^= Year.GetHashCode();
+      if (Month != 0) hash ^= Month.GetHashCode();
+      if (Day != 0) hash ^= Day.GetHashCode();
+      if (Hour != 0) hash ^= Hour.GetHashCode();
+      if (Minute != 0) hash ^= Minute.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -183,6 +259,26 @@ namespace GrpcMessageNode {
         output.WriteRawTag(26);
         output.WriteString(Tag);
       }
+      if (Year != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(Year);
+      }
+      if (Month != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(Month);
+      }
+      if (Day != 0) {
+        output.WriteRawTag(48);
+        output.WriteInt32(Day);
+      }
+      if (Hour != 0) {
+        output.WriteRawTag(56);
+        output.WriteInt32(Hour);
+      }
+      if (Minute != 0) {
+        output.WriteRawTag(64);
+        output.WriteInt32(Minute);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -205,6 +301,26 @@ namespace GrpcMessageNode {
         output.WriteRawTag(26);
         output.WriteString(Tag);
       }
+      if (Year != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(Year);
+      }
+      if (Month != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(Month);
+      }
+      if (Day != 0) {
+        output.WriteRawTag(48);
+        output.WriteInt32(Day);
+      }
+      if (Hour != 0) {
+        output.WriteRawTag(56);
+        output.WriteInt32(Hour);
+      }
+      if (Minute != 0) {
+        output.WriteRawTag(64);
+        output.WriteInt32(Minute);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -223,6 +339,21 @@ namespace GrpcMessageNode {
       }
       if (Tag.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Tag);
+      }
+      if (Year != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Year);
+      }
+      if (Month != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Month);
+      }
+      if (Day != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Day);
+      }
+      if (Hour != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Hour);
+      }
+      if (Minute != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Minute);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -244,6 +375,21 @@ namespace GrpcMessageNode {
       }
       if (other.Tag.Length != 0) {
         Tag = other.Tag;
+      }
+      if (other.Year != 0) {
+        Year = other.Year;
+      }
+      if (other.Month != 0) {
+        Month = other.Month;
+      }
+      if (other.Day != 0) {
+        Day = other.Day;
+      }
+      if (other.Hour != 0) {
+        Hour = other.Hour;
+      }
+      if (other.Minute != 0) {
+        Minute = other.Minute;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -272,6 +418,26 @@ namespace GrpcMessageNode {
             Tag = input.ReadString();
             break;
           }
+          case 32: {
+            Year = input.ReadInt32();
+            break;
+          }
+          case 40: {
+            Month = input.ReadInt32();
+            break;
+          }
+          case 48: {
+            Day = input.ReadInt32();
+            break;
+          }
+          case 56: {
+            Hour = input.ReadInt32();
+            break;
+          }
+          case 64: {
+            Minute = input.ReadInt32();
+            break;
+          }
         }
       }
     #endif
@@ -297,6 +463,26 @@ namespace GrpcMessageNode {
           }
           case 26: {
             Tag = input.ReadString();
+            break;
+          }
+          case 32: {
+            Year = input.ReadInt32();
+            break;
+          }
+          case 40: {
+            Month = input.ReadInt32();
+            break;
+          }
+          case 48: {
+            Day = input.ReadInt32();
+            break;
+          }
+          case 56: {
+            Hour = input.ReadInt32();
+            break;
+          }
+          case 64: {
+            Minute = input.ReadInt32();
             break;
           }
         }

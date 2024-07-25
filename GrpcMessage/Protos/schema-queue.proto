@@ -12,6 +12,11 @@ message Message2 {
   int32 localPriority = 5;
   string text = 6;
   string tag = 7;
+  int32 year = 8;
+  int32 month = 9;
+  int32 day = 10;
+  int32 hour = 11;
+  int32 minute = 12;
 }
 
 

@@ -1,3 +1,4 @@
+using Scheduler.MongoMessages;
 using SchedulerNode.RedisQueuer;
 using SchedulerNode.Services;
 using Steeltoe.Discovery.Client;
@@ -10,8 +11,15 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddGrpc();
 builder.Services.AddDiscoveryClient();
+
 MessageQueues.init();
+
+string MyId = "Scheduler-1";
+MongoMessagesShceduler.init(MyId);
+
 var app = builder.Build();
+
+
 
 // Configure the HTTP request pipeline.
 app.MapGrpcService<QueueMessageService>();

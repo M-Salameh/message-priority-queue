@@ -108,6 +108,11 @@ namespace HTTPMessageNode.Controllers
             message.ApiKey = messageDTO.apiKey;
             message.ClientID = messageDTO.clientID;
             message.Tag = messageDTO.tag;
+            message.Year = messageDTO.year;
+            message.Month = messageDTO.month;
+            message.Day = messageDTO.day;
+            message.Hour = messageDTO.hour;
+            message.Minute = messageDTO.minute;
             return message;
         }
 

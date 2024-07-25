@@ -51,17 +51,14 @@ namespace SchedulerNode.RedisQueuer
             }
            
         }
-        public static string addMessage(Message message , IDiscoveryClient discoveryClient)
+        public static string addMessage(Message message)
         {
             string id = "Error";
             string temp = string.Empty;
-            //if (message.Tag.Contains(Syriatel, StringComparison.OrdinalIgnoreCase))
-            {
-                // get url using discovery client
-                var resid = addMessageRedisAsync(message, RedisURL);
-                temp = resid.Result;
-            }
-
+           
+            var resid = addMessageRedisAsync(message, RedisURL);
+            temp = resid.Result;
+            
             if (temp.Equals(RedisConnectionError))
             {
                 return RedisConnectionError;
