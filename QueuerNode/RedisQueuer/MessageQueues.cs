@@ -64,6 +64,7 @@ namespace SchedulerNode.RedisQueuer
                 return RedisConnectionError;
             }
             id = message.Tag + ":" + message.LocalPriority + ":" + temp;
+            //id = Guid.NewGuid().ToString();
             return id;
         }
        

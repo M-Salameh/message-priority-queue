@@ -54,11 +54,9 @@ namespace SchedulerNode.Services
 
             return (new Acknowledgement
             {
-                ReplyCode = "OK on Send : id = " + message.MsgId + " ==> Message Reached Queue"
-                + " with priority : " + message.LocalPriority,
-
-                RequestID = reqId
-            });
+                ReplyCode = "OK ",
+                RequestID = Guid.NewGuid().ToString() + ":" + MyId
+        });
         }
     
     
@@ -78,7 +76,7 @@ namespace SchedulerNode.Services
                 return new Acknowledgement
                 {
                     ReplyCode = res,
-                    RequestID = "id = some id"
+                    RequestID = Guid.NewGuid().ToString() + ":" + MyId
                 };
             }
         }
