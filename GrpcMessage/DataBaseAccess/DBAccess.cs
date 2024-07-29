@@ -15,12 +15,11 @@ namespace GrpcMessageNode.DataBaseAccess
 
 
         /// <summary>
-        /// check message for tag , Authentication , Quota perhaps from service validator with address
-        /// passed as a parameter to the function
+        /// Validate Message by its MetaData (quota - api key ...) by a Validator Node
         /// </summary>
         /// <param name="message" > the message we received to check</param>
         /// <param name="validatorAddress"> The validator service address which as a mongodb service </param>
-        /// <returns> validator reply which is ok if we can proceed with account priority</returns>
+        /// <returns> string : Success or an Error</returns>
         public static string getPriority(ref Message message , string validatorAddress)
         {
             Console.WriteLine("Validating NOW IN GRPC !! ");
@@ -39,6 +38,12 @@ namespace GrpcMessageNode.DataBaseAccess
             return OK;
         }
 
+        /// <summary>
+        /// Calls the Validator Service and Gets the Reply
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="validatorAddress"></param>
+        /// <returns>Validator Reply</returns>
         private static ValidatorReply ValidateAsync(Message message, string validatorAddress)
         {
             using var channel = GrpcChannel.ForAddress(validatorAddress);
@@ -66,6 +71,12 @@ namespace GrpcMessageNode.DataBaseAccess
 
         }
 
+
+        /// <summary>
+        /// Extracts Message MetaData from a Message that Concerns us with the Validation Process
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns>Message Meta Data</returns>
         private static MessageMetaData extractMetaData(Message message)
         {
             MessageMetaData metaData = new MessageMetaData();

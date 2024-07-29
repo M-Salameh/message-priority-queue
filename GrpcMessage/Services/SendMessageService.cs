@@ -59,6 +59,12 @@ namespace GrpcMessageNode.Services
             return Task.FromResult(new Acknowledgement(reply));
         }
 
+        /// <summary>
+        /// Selects a Coordinator (Scheduler Node) with client side 
+        /// load-balancing and send the message to it
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns>Acknowledgment of the Message containing the status (Success + Failure)</returns>
         private Acknowledgement sendToCoordinator(Message message)
         {
             string address = LoadBalancer.AddressResolver.getAddressOfInstance(Scheduler , ref discoveryClient);
@@ -93,16 +99,6 @@ namespace GrpcMessageNode.Services
             }
         }
 
-        //not working -- causing unknown exception with nullable parameter http2
-        /*private Queue.QueueClient getQueueClient()
-        {
-            string address = LoadBalancer.AddressResolver.getAddressOfInstance(Scheduler , ref discoveryClient);
-            using var channel = GrpcChannel.ForAddress(address);
-            //Console.WriteLine("Scheduler Address  = " + address);
-            var client = new Queue.QueueClient(channel);
-            return client;
-        }*/
-
         private Message2 copyMessage(Message message)
         {
             Message2 message2 = new Message2();
@@ -115,24 +111,5 @@ namespace GrpcMessageNode.Services
             message2.Tag = message.Tag; 
             return message2;
         }
-
-
-        /*private string getAddressOfInstance(string instanceName)
-        {
-            string address = "";
-            try
-            {
-                // instanceName = "Validator" or "Scheduler" ... etc
-                var y = discoveryClient.GetInstances(instanceName); /// write names to config file
-
-                address = y[0].Uri.ToString();
-
-                return address;
-            }
-            catch (Exception ex)
-            {
-                return ErrorConnection;
-            }
-        }*/
     }
 }

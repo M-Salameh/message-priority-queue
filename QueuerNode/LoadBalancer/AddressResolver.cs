@@ -9,6 +9,14 @@ namespace Scheduler.LoadBalancer
         private static Random random = new Random();    
 
         private static int offset = random.Next(200000,int.MaxValue);
+
+        /// <summary>
+        /// Utilizes the Eureka Service to get Address of A Node by its name
+        /// with client-side load-balancing
+        /// </summary>
+        /// <param name="instanceName">name of service (node) we are looking for</param>
+        /// <param name="discoveryClient"></param>
+        /// <returns>string : address of the node or error message</returns>
         public static string getAddressOfInstance(string instanceName , ref IDiscoveryClient discoveryClient)
         {
             string address = "";

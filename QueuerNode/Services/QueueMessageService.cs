@@ -23,9 +23,11 @@ namespace SchedulerNode.Services
 
         public override Task<Acknowledgement> QueueMessage(Message message, ServerCallContext context)
         {
+            DateTime current = DateTime.Now;
+            DateTime des = new DateTime(message.Year, message.Month, message.Day, message.Hour, message.Minute, 0);
 
             //Console.WriteLine("Message Receieved to Queuer !!");
-            if (message.Year == 0)
+            if (message.Year == 0 || DateTime.Compare(des,current)<=0)
             {
                 return Task.FromResult(SendAsap(ref message));
             }
@@ -37,7 +39,12 @@ namespace SchedulerNode.Services
 
         }
 
-        public Acknowledgement SendAsap(ref Message message)
+        /// <summary>
+        /// Send Message to Redis Stream ASAP
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns>Acknowledgment: status of request and id if all goes well</returns>
+        private Acknowledgement SendAsap(ref Message message)
         {
             string reqId = MessageQueues.addMessage(message);
 
@@ -58,8 +65,13 @@ namespace SchedulerNode.Services
                 RequestID = Guid.NewGuid().ToString() + ":" + MyId
         });
         }
-    
-    
+
+
+        /// <summary>
+        /// Schedule Message and Write it to MongoDB to Send it When Dued
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns>Acknowledgment: status of request and id if all goes well</returns>
         private Acknowledgement Schedule(ref Message message)
         {
             string res = MongoMessagesShceduler.insertMessage(ref message);

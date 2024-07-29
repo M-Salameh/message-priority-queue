@@ -25,7 +25,6 @@ namespace HTTPMessageNode.Controllers
             //Console.WriteLine("Conf = " + configuration.GetValue<string>("database:conn"));
         }
 
-        //[HttpGet(Name = "GetWeatherForecast")]
         [Route("/queue-msg")]
         [HttpPost]
         public Acknowledgement SendMessage([FromBody] MessageDTO messageDTO)
@@ -98,6 +97,11 @@ namespace HTTPMessageNode.Controllers
 
         }
 
+        /// <summary>
+        /// Cast MessageDTO to A Message and Return it to Send it Through GRPC
+        /// </summary>
+        /// <param name="messageDTO"></param>
+        /// <returns>Message with Members Values identical to the members of MessageDTO</returns>
         private Message copyMessage(MessageDTO messageDTO)
         {
             Message message = new Message();
@@ -116,23 +120,5 @@ namespace HTTPMessageNode.Controllers
             return message;
         }
 
-
-        /*private string getAddressOfInstance(string instanceName)
-        {
-            string address = "";
-            try
-            {
-                // instanceName = "Validator" or "Scheduler" ... etc
-                var y = discoveryClient.GetInstances(instanceName); /// write names to config file
-
-                address = y[0].Uri.ToString();
-
-                return address;
-            }
-            catch (Exception ex)
-            {
-                return ErrorConnection;
-            }
-        }*/
     }
 }

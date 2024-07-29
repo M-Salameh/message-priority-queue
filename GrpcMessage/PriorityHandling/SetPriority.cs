@@ -8,7 +8,13 @@
         private static int MAX_PRIRITY = 5;
         private static int MIN_PRIRITY = 1;
    
-
+        /// <summary>
+        /// Send the Message to A Valuidtor Node wich validate the message and gets the 
+        /// Account Priority then sets the final priority of the message
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="validatorAddress"></param>
+        /// <returns>String : Status of the Validation Request</returns>
         public static string setFinalPriority(ref Message message , string validatorAddress)
         {
             string res = DataBaseAccess.DBAccess.getPriority(ref message , validatorAddress);

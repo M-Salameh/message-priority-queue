@@ -12,18 +12,17 @@ namespace MessagesConsumer.Extractor
     {
         private static string myConsumerID = "cons-1";
 
-        private static int VeryLow = 1;
-        private static int Low = 2;
-        private static int Medium = 3;
-        private static int High = 4;
-        private static int VeryHigh = 5;
-
-        private static int[] shares;
-
         private static int sms_rate = 100;
 
         private static IDatabase db = null;
 
+        /// <summary>
+        /// Gets Redis DataBase of which we shall consume messages while read
+        /// by sms_rate messages per second
+        /// </summary>
+        /// <param name="REDIS"></param>
+        /// <param name="_sms_rate"></param>
+        /// <returns>boolean : if we could connect to database or not</returns>
         public static bool setDatabase(string REDIS , int _sms_rate = 100)
         {            
             try
@@ -31,8 +30,6 @@ namespace MessagesConsumer.Extractor
                 var muxer = ConnectionMultiplexer.Connect(REDIS);
                 db = muxer.GetDatabase();
                 sms_rate = _sms_rate;
-                //Console.WriteLine("Got DB");
-                setShares();
                 return true;
             }
             catch (Exception ex)
@@ -41,21 +38,15 @@ namespace MessagesConsumer.Extractor
                 return false;
             }
         }
-
-        private static void setShares()
-        {
-            shares = new int[VeryHigh + 1];
-            int sum = 0;
-            sum += shares[VeryHigh] = (35 * sms_rate) / 100;
-            sum += shares[High] = (30 * sms_rate) / 100;
-            sum += shares[Medium] = (20 * sms_rate) / 100;
-            sum += shares[Low] = (10 * sms_rate) / 100;
-            sum += shares[VeryLow] = (5 * sms_rate) / 100;
-
-            shares[VeryHigh] += ((sms_rate - sum) > 0 ? sms_rate - sum : 0);
-        }
            
-
+        /// <summary>
+        /// Reads Messages from Stream starting with the id provided (its track is kept by the TotalWorker)
+        /// After Extracting Messages they are prcocessed and Written throgh the WRITER 
+        /// then Acked
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static async Task<RedisValue> ProcessMessagesAsync(string stream, RedisValue id)
         {
             try
@@ -106,5 +97,6 @@ namespace MessagesConsumer.Extractor
             }
 
         }
+    
     }
 }

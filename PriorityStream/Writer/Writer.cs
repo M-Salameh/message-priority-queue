@@ -12,10 +12,21 @@ namespace PriorityStream.Writer
     {
         private static string Provider = "SYR";
         private static string Provider2 = "MTN";
+        /// <summary>
+        /// Stream Max Length Set to One Hundred Million which means stores only one 
+        /// Hundred Million Messages in a stream, if more messages came , old ones are erased
+        /// </summary>
         private static int StreamMaxLength = 100000000;
 
         private static IDatabase db = null;
 
+        /// <summary>
+        /// Get Redis DataBase To Which We Write Messages 
+        /// in Order to Exrtact Them Later Easily, And Creates the Consumer Groups 
+        /// for Each Provider so that consumers can work properly
+        /// </summary>
+        /// <param name="REDIS"></param>
+        /// <returns>boolean: true if we can get database and all consumer groups are created</returns>
         public static bool setDatabase(string REDIS)
         {
             try
@@ -59,6 +70,16 @@ namespace PriorityStream.Writer
             }
         }
 
+
+
+        /// <summary>
+        /// Writes A Message after Casting the MessageDTO to the coherent stream which matches
+        /// the name of the provider (MTN , SYR ..)
+        /// this method keeps the streams sizes limited so no over storage happens
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="provider"></param>
+        /// <returns>async task (bool): true if we could write the messages</returns>
         public static async Task<bool> writeMessageAsync(MessageDTO message, string provider)
         {
             try
@@ -95,10 +116,5 @@ namespace PriorityStream.Writer
 
         }
 
-    
-        public static void trimStream(string stream , RedisValue id)
-        {
-            
-        }
     }
 }

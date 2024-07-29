@@ -17,6 +17,10 @@ namespace ScheduledMessagesHandler.MongoMessages
         private static string NotTaken = "Not-Taken";
         private static int limit = 100000;
         
+        /// <summary>
+        /// Connects to MongoDB Where Scheduled Messages Are Stored by The Scheduler Service
+        /// </summary>
+        /// <returns>string : ok if every thing goes fine</returns>
         public static string init()
         {
             try
@@ -36,6 +40,9 @@ namespace ScheduledMessagesHandler.MongoMessages
 
         }
 
+        /// <summary>
+        /// extract dued scheduled messages cautiously and write them to Redis Stream by Priority
+        /// </summary>
         public static void getDuedMessagesAndQueue()
         {
             bool thereArePending = true;
@@ -50,11 +57,16 @@ namespace ScheduledMessagesHandler.MongoMessages
                 {
                     thereArePending = getBulkMessages(NotTaken);
                 }
-                //Task.Delay(5000);
+                
             }
             
         }
 
+        /// <summary>
+        /// extract dued messages with status as passed and process them 
+        /// </summary>
+        /// <param name="status"></param>
+        /// <returns></returns>
         private static bool getBulkMessages(string status)
         {
             var specificTime = DateTime.UtcNow;

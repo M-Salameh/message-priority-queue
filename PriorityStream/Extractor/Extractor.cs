@@ -25,6 +25,14 @@ namespace PriorityStream.Extractor
 
         private static IDatabase db = null;
 
+        /// <summary>
+        /// Gets Redis DataBase of which we shall consume messages while read and it is the same redis that
+        /// Scheduler Nodes Writes To
+        /// by associating number of messages limit to read to each priority which are precentage of sms_rate
+        /// </summary>
+        /// <param name="REDIS"></param>
+        /// <param name="_sms_rate"></param>
+        /// <returns>boolean : if we could connect to database or not</returns>
         public static bool setDatabase(string REDIS , int _sms_rate = 100)
         {            
             try
@@ -55,8 +63,15 @@ namespace PriorityStream.Extractor
 
             shares[VeryHigh] += ((sms_rate - sum) > 0 ? sms_rate - sum : 0);
         }
-           
 
+        /// <summary>
+        /// Reads Messages from Stream starting with the id provided (its track is kept by the StreamsHandler.TotalWorker)
+        /// After Extracting Messages they are prcocessed and Written through the WRITER to 
+        /// another Redis where MessageConsumer Services Reads them, then Ack Messages after Writing Them
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static async Task<RedisValue> ProcessMessagesAsync(string stream, RedisValue id)
         {
             try

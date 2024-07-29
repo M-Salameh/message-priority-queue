@@ -17,6 +17,10 @@ namespace ScheduledMessagesHandler.RedisQueuer
         private static int StreamMaxLength = 100000000;
         private static IDatabase db = null;
         
+        /// <summary>
+        /// Connects to Redis Stream With Streams for Each Priority and create consuming groups
+        /// if not created
+        /// </summary>
         public static void init()
         {
 
@@ -50,6 +54,11 @@ namespace ScheduledMessagesHandler.RedisQueuer
            
         }
         
+        /// <summary>
+        /// Add a Message by Casting the MessageDTO to According Redis Stream 
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
         public static string addMessage(MessageDTO message)
         {
             string id = "Error";

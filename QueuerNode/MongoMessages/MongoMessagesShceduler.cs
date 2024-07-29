@@ -16,6 +16,11 @@ namespace Scheduler.MongoMessages
 
         private static string NotTaken = "Not-Taken";
         
+        /// <summary>
+        /// Connects to MongoDB to Store Messges and Set Things Up
+        /// </summary>
+        /// <param name="MyId"></param>
+        /// <returns>string : ok if all goes well , otherwise something else</returns>
         public static string init(string MyId)
         {
             try
@@ -35,6 +40,11 @@ namespace Scheduler.MongoMessages
 
         }
         
+        /// <summary>
+        /// insert a scheduled message in the mongodb 
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns>string: ok or else</returns>
         public static string insertMessage(ref Message message)
         {
             try 
@@ -62,74 +72,5 @@ namespace Scheduler.MongoMessages
             }
         }
 
-
-        /*
-        //getBulkOfMessages where their Oks is MyId (not Acked)
-        //queue them
-        //then ack them (ok = Acked)
-        //when finished get Oks = 0 and put their Ok as MyId
-        public static void getDuedMessagesAndQueue()
-        {
-            bool thereArePending = true;
-            while (true)
-            {
-                if (thereArePending)
-                {
-                   thereArePending = getBulkMessages(Pending);  
-                }
-
-                if (! thereArePending)
-                {
-                    thereArePending = getBulkMessages(NotTaken);
-                }
-                Task.Delay(5000);
-            }
-            
-        }
-
-        private static bool getBulkMessages(string status)
-        {
-            var specificTime = DateTime.UtcNow;
-
-            var filter = Builders<BsonDocument>.Filter.And(
-                        Builders<BsonDocument>.Filter.Lte("timestamp", specificTime),
-                        Builders<BsonDocument>.Filter.Eq("status", status)
-                        );
-            var docs = collection.Find(filter).Limit(limit).ToList<BsonDocument>();
-            
-            if (docs.Count == 0)
-            {
-                return false;
-            }
-
-
-            UpdateDefinition<BsonDocument> updatePending = Builders<BsonDocument>.Update.Set("status", Pending);
-            UpdateDefinition<BsonDocument> updateAcj = Builders<BsonDocument>.Update.Set("status", Acked);
-            foreach (var doc in docs)
-            {
-                Message message = getMessage(doc);
-                var _filter =  Builders<BsonDocument>.Filter.Eq("_id", doc["_id"]);
-                collection.UpdateOne(_filter, updatePending);
-                
-            }
-
-            return true;
-            
-        }
-
-        private static Message getMessage(BsonDocument doc)
-        {
-            Message message = new Message();
-            message.ClientID = (string)doc["sender"];
-            message.Text = (string)doc["content"];
-            message.Tag = (string)doc["tag"];
-            message.LocalPriority = (int)doc["priority"];
-            message.PhoneNumber = (string)doc["phone-number"];
-            message.MsgId = (string)doc["msg-id"];
-            message.ApiKey = (string)doc["api-key"];
-            message.Year = message.Month = message.Day = message.Hour = message.Minute = 0;
-            return message;
-        }
-        */
     }
 }
