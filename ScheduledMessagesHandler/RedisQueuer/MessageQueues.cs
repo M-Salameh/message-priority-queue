@@ -14,6 +14,7 @@ namespace ScheduledMessagesHandler.RedisQueuer
         private static string MTN = "MTN";
 
         private static int LEVELS = 6;
+        private static int StreamMaxLength = 100000000;
         private static IDatabase db = null;
         
         public static void init()
@@ -86,7 +87,10 @@ namespace ScheduledMessagesHandler.RedisQueuer
                                           new NameValueEntry[]
                                              {
                                                  new NameValueEntry("message", serializedMessage)
-                                             });
+                                             },
+                                null,
+                                StreamMaxLength,
+                                true);
 
 
                 //Console.WriteLine("Done Sending to stream : " + streamName);

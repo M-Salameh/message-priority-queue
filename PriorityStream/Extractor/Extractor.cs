@@ -109,6 +109,8 @@ namespace PriorityStream.Extractor
 
                 }
 
+                Writer.Writer.trimStream(stream, id);
+
                 if (!has_pending) id = ">";
 
                 return await Task.FromResult(id);

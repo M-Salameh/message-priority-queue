@@ -12,6 +12,7 @@ namespace PriorityStream.Writer
     {
         private static string Provider = "SYR";
         private static string Provider2 = "MTN";
+        private static int StreamMaxLength = 100000000;
 
         private static IDatabase db = null;
 
@@ -65,13 +66,23 @@ namespace PriorityStream.Writer
                 var serializedMessage = JsonConvert.SerializeObject(message);
 
                 Console.WriteLine("Writing  : " + message);
-               
+
                 var temp = await db.StreamAddAsync
                         (provider,
                                 new NameValueEntry[]
                                     {
                                 new NameValueEntry("message", serializedMessage)
-                                    });
+                                    },
+                                null,
+                                StreamMaxLength,
+                                true
+                        );
+                /*var temp = await db.StreamAddAsync
+                        (provider,
+                                new NameValueEntry[]
+                                    {
+                                new NameValueEntry("message", serializedMessage)
+                         );*/
 
                 return await Task.FromResult(true);
             }
@@ -84,5 +95,10 @@ namespace PriorityStream.Writer
 
         }
 
+    
+        public static void trimStream(string stream , RedisValue id)
+        {
+            
+        }
     }
 }
