@@ -4,6 +4,8 @@ using ScheduledMessagesHandler.MongoMessages;
 using ScheduledMessagesHandler.RedisQueuer;
 using Steeltoe.Discovery.Client;
 
+
+IConfiguration config; 
 IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureServices(services =>
     {
@@ -12,7 +14,10 @@ IHost host = Host.CreateDefaultBuilder(args)
     })
     .Build();
 
+config = host.Services.GetRequiredService<IConfiguration>();
 
+
+host.InitRedis();
 MessageQueues.init();
 
 MongoMessagesShceduler.init();

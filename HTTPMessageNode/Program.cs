@@ -9,7 +9,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDiscoveryClient();
-builder.Configuration.GetValue<string>("database:conn");
+//builder.Configuration.GetValue<string>("database:conn");
 
 
 
