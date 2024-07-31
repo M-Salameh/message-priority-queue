@@ -70,13 +70,25 @@
               "target": "Package",
               "version": "[2.27.0, )"
             },
+            "OpenTelemetry.Collector.AspNetCore": {
+              "target": "Package",
+              "version": "[0.2.0-alpha.179, )"
+            },
+            "OpenTelemetry.Collector.Dependencies": {
+              "target": "Package",
+              "version": "[0.2.0-alpha.179, )"
+            },
+            "OpenTelemetry.Exporter.ApplicationInsights": {
+              "target": "Package",
+              "version": "[0.2.0-alpha.179, )"
+            },
+            "OpenTelemetry.Exporter.Console": {
+              "target": "Package",
+              "version": "(, )"
+            },
             "OpenTelemetry.Exporter.Jaeger": {
               "target": "Package",
-              "version": "[1.5.1, )"
-            },
-            "OpenTelemetry.Exporter.OpenTelemetryProtocol": {
-              "target": "Package",
-              "version": "[1.9.0, )"
+              "version": "(, )"
             },
             "OpenTelemetry.Extensions.Hosting": {
               "target": "Package",
@@ -85,6 +97,10 @@
             "OpenTelemetry.Instrumentation.AspNetCore": {
               "target": "Package",
               "version": "[1.9.0, )"
+            },
+            "OpenTelemetry.Instrumentation.GrpcNetClient": {
+              "target": "Package",
+              "version": "[1.9.0-beta.1, )"
             },
             "StackExchange.Redis": {
               "target": "Package",

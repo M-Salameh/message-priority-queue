@@ -2,7 +2,10 @@ using Scheduler.MongoMessages;
 using SchedulerNode.RedisQueuer;
 using SchedulerNode.Services;
 using Steeltoe.Discovery.Client;
-
+using OpenTelemetry.Logs;
+using OpenTelemetry.Metrics;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 var builder = WebApplication.CreateBuilder(args);
 
 // Additional configuration is required to successfully run gRPC on macOS.
@@ -14,8 +17,32 @@ builder.Services.AddDiscoveryClient();
 
 MessageQueues.init();
 
-string MyId = "Scheduler-1";
-MongoMessagesShceduler.init(MyId);
+MongoMessagesShceduler.init();
+
+const string serviceName = "Scheduler-1";
+
+builder.Logging.AddOpenTelemetry(options =>
+{
+    options
+        .SetResourceBuilder(
+            ResourceBuilder.CreateDefault()
+                .AddService(serviceName))
+        .AddConsoleExporter();
+
+});
+
+
+builder.Services.AddOpenTelemetry()
+      .ConfigureResource(resource => resource.AddService(serviceName))
+      .WithTracing(tracing => tracing
+          .AddAspNetCoreInstrumentation()
+          .AddGrpcClientInstrumentation()
+          .AddJaegerExporter())
+
+      .WithMetrics(metrics => metrics
+      .AddAspNetCoreInstrumentation()
+      );
+
 
 var app = builder.Build();
 

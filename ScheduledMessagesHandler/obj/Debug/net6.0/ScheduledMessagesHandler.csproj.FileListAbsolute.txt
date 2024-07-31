@@ -38,7 +38,6 @@ D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\ScheduledMe
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\ScheduledMessagesHandler\bin\Debug\net6.0\runtimes\linux\native\libmongocrypt.so
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\ScheduledMessagesHandler\bin\Debug\net6.0\runtimes\osx\native\libmongocrypt.dylib
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\ScheduledMessagesHandler\bin\Debug\net6.0\runtimes\win\native\mongocrypt.dll
-D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\ScheduledMessagesHandler\obj\Debug\net6.0\ScheduledMessagesHandler.csproj.AssemblyReference.cache
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\ScheduledMessagesHandler\obj\Debug\net6.0\ScheduledMessagesHandler.GeneratedMSBuildEditorConfig.editorconfig
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\ScheduledMessagesHandler\obj\Debug\net6.0\ScheduledMessagesHandler.AssemblyInfoInputs.cache
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\ScheduledMessagesHandler\obj\Debug\net6.0\ScheduledMessagesHandler.AssemblyInfo.cs

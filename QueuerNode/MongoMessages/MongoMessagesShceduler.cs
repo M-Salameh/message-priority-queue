@@ -21,7 +21,7 @@ namespace Scheduler.MongoMessages
         /// </summary>
         /// <param name="MyId"></param>
         /// <returns>string : ok if all goes well , otherwise something else</returns>
-        public static string init(string MyId)
+        public static string init()
         {
             try
             {

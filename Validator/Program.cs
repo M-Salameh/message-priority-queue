@@ -1,6 +1,9 @@
 using Steeltoe.Discovery.Client;
 using Validator.Services;
-
+using OpenTelemetry.Logs;
+using OpenTelemetry.Metrics;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 var builder = WebApplication.CreateBuilder(args);
 
 // Additional configuration is required to successfully run gRPC on macOS.
@@ -9,6 +12,30 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddGrpc();
 builder.Services.AddDiscoveryClient();
+const string serviceName = "Vaidator-1";
+
+builder.Logging.AddOpenTelemetry(options =>
+{
+    options
+        .SetResourceBuilder(
+            ResourceBuilder.CreateDefault()
+                .AddService(serviceName))
+        .AddConsoleExporter();
+
+});
+
+
+builder.Services.AddOpenTelemetry()
+      .ConfigureResource(resource => resource.AddService(serviceName))
+      .WithTracing(tracing => tracing
+          .AddAspNetCoreInstrumentation()
+          .AddGrpcClientInstrumentation()
+          .AddJaegerExporter())
+
+      .WithMetrics(metrics => metrics
+      .AddAspNetCoreInstrumentation()
+      );
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

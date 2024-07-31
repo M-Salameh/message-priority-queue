@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "8qs+neyl4ix1rqIfNGzed7bwqnkkH+8zOCYatELHQpnIEUOKWwoC5i1T1oDUOmZ5PqS8uwrUvESWmb3AQd9P0w==",
+  "dgSpecHash": "0Xw6pTZU2KVKv7oaWpJL+9h1ivddmyxiLq4+V9IfV1l9CBL5mPZ1roluH7+OXGc4T2bzYi2mtxtrow8FAJ60BQ==",
   "success": true,
   "projectFilePath": "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\message-priority-queue\\HTTPMessageNode\\HTTPMessageNode.csproj",
   "expectedPackageFiles": [
@@ -13,6 +13,9 @@
     "C:\\Users\\moham\\.nuget\\packages\\grpc.net.clientfactory\\2.40.0\\grpc.net.clientfactory.2.40.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\grpc.net.common\\2.63.0\\grpc.net.common.2.63.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\grpc.tools\\2.64.0\\grpc.tools.2.64.0.nupkg.sha512",
+    "C:\\Users\\moham\\.nuget\\packages\\microsoft.applicationinsights\\2.11.0\\microsoft.applicationinsights.2.11.0.nupkg.sha512",
+    "C:\\Users\\moham\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.0.0\\microsoft.aspnetcore.http.abstractions.2.0.0.nupkg.sha512",
+    "C:\\Users\\moham\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.0.0\\microsoft.aspnetcore.http.features.2.0.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\3.1.0\\microsoft.extensions.caching.abstractions.3.1.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\microsoft.extensions.configuration\\8.0.0\\microsoft.extensions.configuration.8.0.0.nupkg.sha512",
@@ -44,13 +47,20 @@
     "C:\\Users\\moham\\.nuget\\packages\\microsoft.extensions.options\\8.0.0\\microsoft.extensions.options.8.0.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\microsoft.extensions.options.configurationextensions\\8.0.0\\microsoft.extensions.options.configurationextensions.8.0.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
+    "C:\\Users\\moham\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\moham\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\opentelemetry\\1.9.0\\opentelemetry.1.9.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\opentelemetry.api\\1.9.0\\opentelemetry.api.1.9.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\opentelemetry.api.providerbuilderextensions\\1.9.0\\opentelemetry.api.providerbuilderextensions.1.9.0.nupkg.sha512",
+    "C:\\Users\\moham\\.nuget\\packages\\opentelemetry.collector.aspnetcore\\0.2.0-alpha.179\\opentelemetry.collector.aspnetcore.0.2.0-alpha.179.nupkg.sha512",
+    "C:\\Users\\moham\\.nuget\\packages\\opentelemetry.collector.dependencies\\0.2.0-alpha.179\\opentelemetry.collector.dependencies.0.2.0-alpha.179.nupkg.sha512",
+    "C:\\Users\\moham\\.nuget\\packages\\opentelemetry.exporter.applicationinsights\\0.2.0-alpha.179\\opentelemetry.exporter.applicationinsights.0.2.0-alpha.179.nupkg.sha512",
+    "C:\\Users\\moham\\.nuget\\packages\\opentelemetry.exporter.console\\1.0.1\\opentelemetry.exporter.console.1.0.1.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\opentelemetry.exporter.jaeger\\1.0.1\\opentelemetry.exporter.jaeger.1.0.1.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\opentelemetry.extensions.hosting\\1.9.0\\opentelemetry.extensions.hosting.1.9.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\opentelemetry.instrumentation.aspnetcore\\1.9.0\\opentelemetry.instrumentation.aspnetcore.1.9.0.nupkg.sha512",
+    "C:\\Users\\moham\\.nuget\\packages\\opentelemetry.instrumentation.grpcnetclient\\1.9.0-beta.1\\opentelemetry.instrumentation.grpcnetclient.1.9.0-beta.1.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\steeltoe.common\\3.2.6\\steeltoe.common.3.2.6.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\steeltoe.common.abstractions\\3.2.6\\steeltoe.common.abstractions.3.2.6.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\steeltoe.common.http\\3.2.6\\steeltoe.common.http.3.2.6.nupkg.sha512",
@@ -67,13 +77,31 @@
     "C:\\Users\\moham\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.4.0\\swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\system.diagnostics.diagnosticsource\\8.0.0\\system.diagnostics.diagnosticsource.8.0.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\system.diagnostics.eventlog\\6.0.0\\system.diagnostics.eventlog.6.0.0.nupkg.sha512",
+    "C:\\Users\\moham\\.nuget\\packages\\system.io\\4.3.0\\system.io.4.3.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\system.net.http.json\\3.2.1\\system.net.http.json.3.2.1.nupkg.sha512",
+    "C:\\Users\\moham\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\system.reflection.metadataloadcontext\\4.6.0\\system.reflection.metadataloadcontext.4.6.0.nupkg.sha512",
+    "C:\\Users\\moham\\.nuget\\packages\\system.reflection.primitives\\4.3.0\\system.reflection.primitives.4.3.0.nupkg.sha512",
+    "C:\\Users\\moham\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\moham\\.nuget\\packages\\system.runtime.handles\\4.3.0\\system.runtime.handles.4.3.0.nupkg.sha512",
+    "C:\\Users\\moham\\.nuget\\packages\\system.runtime.interopservices\\4.3.0\\system.runtime.interopservices.4.3.0.nupkg.sha512",
+    "C:\\Users\\moham\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\system.text.encodings.web\\6.0.0\\system.text.encodings.web.6.0.0.nupkg.sha512",
-    "C:\\Users\\moham\\.nuget\\packages\\system.text.json\\6.0.0\\system.text.json.6.0.0.nupkg.sha512"
+    "C:\\Users\\moham\\.nuget\\packages\\system.text.json\\6.0.0\\system.text.json.6.0.0.nupkg.sha512",
+    "C:\\Users\\moham\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512"
   ],
   "logs": [
+    {
+      "code": "NU1604",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Project dependency OpenTelemetry.Exporter.Console does not contain an inclusive lower bound. Include a lower bound in the dependency version to ensure consistent restore results.",
+      "libraryId": "OpenTelemetry.Exporter.Console",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v6.0"
+      ]
+    },
     {
       "code": "NU1604",
       "level": "Warning",
