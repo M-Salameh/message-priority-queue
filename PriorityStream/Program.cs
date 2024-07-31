@@ -34,7 +34,7 @@ while (!token.IsCancellationRequested)
 
     turn ^= 1;
 
-    Console.WriteLine("**************************************************");
+    //Console.WriteLine("**************************************************");
 
     await Task.Delay(1000);
 }

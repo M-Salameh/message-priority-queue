@@ -25,6 +25,7 @@ D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\MessageGene
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\MessageGeneratorGRPC\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\MessageGeneratorGRPC\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\MessageGeneratorGRPC\bin\Debug\net6.0\System.Reflection.MetadataLoadContext.dll
+D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\MessageGeneratorGRPC\obj\Debug\net6.0\GRPCMessageGenerator.csproj.AssemblyReference.cache
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\MessageGeneratorGRPC\obj\Debug\net6.0\GRPCMessageGenerator.GeneratedMSBuildEditorConfig.editorconfig
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\MessageGeneratorGRPC\obj\Debug\net6.0\GRPCMessageGenerator.AssemblyInfoInputs.cache
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\MessageGeneratorGRPC\obj\Debug\net6.0\GRPCMessageGenerator.AssemblyInfo.cs

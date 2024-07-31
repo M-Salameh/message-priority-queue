@@ -55,6 +55,7 @@ D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\HTTPMessage
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\HTTPMessageNode\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\HTTPMessageNode\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\HTTPMessageNode\bin\Debug\net6.0\System.Reflection.MetadataLoadContext.dll
+D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\HTTPMessageNode\obj\Debug\net6.0\HTTPMessageNode.csproj.AssemblyReference.cache
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\HTTPMessageNode\obj\Debug\net6.0\HTTPMessageNode.GeneratedMSBuildEditorConfig.editorconfig
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\HTTPMessageNode\obj\Debug\net6.0\HTTPMessageNode.AssemblyInfoInputs.cache
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\HTTPMessageNode\obj\Debug\net6.0\HTTPMessageNode.AssemblyInfo.cs

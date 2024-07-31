@@ -10,7 +10,6 @@ D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\PriorityStr
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\PriorityStream\bin\Debug\net6.0\Pipelines.Sockets.Unofficial.dll
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\PriorityStream\bin\Debug\net6.0\StackExchange.Redis.dll
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\PriorityStream\bin\Debug\net6.0\System.IO.Pipelines.dll
-D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\PriorityStream\obj\Debug\net6.0\PriorityStream.csproj.AssemblyReference.cache
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\PriorityStream\obj\Debug\net6.0\PriorityStream.GeneratedMSBuildEditorConfig.editorconfig
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\PriorityStream\obj\Debug\net6.0\PriorityStream.AssemblyInfoInputs.cache
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\PriorityStream\obj\Debug\net6.0\PriorityStream.AssemblyInfo.cs

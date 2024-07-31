@@ -15,7 +15,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDiscoveryClient();
 //builder.Configuration.GetValue<string>("database:conn");
 const string serviceName = "http-protocol-node";
-
+/*
 builder.Logging.AddOpenTelemetry(options =>
 {
     options
@@ -24,7 +24,7 @@ builder.Logging.AddOpenTelemetry(options =>
                 .AddService(serviceName))
         .AddConsoleExporter();
 
-});
+});*/
 
 
 builder.Services.AddOpenTelemetry()

@@ -55,6 +55,7 @@ D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\Validator\b
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\Validator\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\Validator\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\Validator\bin\Debug\net6.0\System.Reflection.MetadataLoadContext.dll
+D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\Validator\obj\Debug\net6.0\Validator.csproj.AssemblyReference.cache
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\Validator\obj\Debug\net6.0\Validator.GeneratedMSBuildEditorConfig.editorconfig
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\Validator\obj\Debug\net6.0\Validator.AssemblyInfoInputs.cache
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\Validator\obj\Debug\net6.0\Validator.AssemblyInfo.cs

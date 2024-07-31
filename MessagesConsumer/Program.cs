@@ -28,13 +28,13 @@ while (!token.IsCancellationRequested)
 
     turn ^= 1;
 
-    Console.WriteLine("\n\n\n\n");
+    //Console.WriteLine("\n\n\n\n");
     
     TotalWorker.work(provs[turn]);
     
     turn ^= 1;
 
-    Console.WriteLine("**************************************************");
+    //Console.WriteLine("**************************************************");
 
     await Task.Delay(1000);
 }

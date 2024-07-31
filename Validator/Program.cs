@@ -13,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddGrpc();
 builder.Services.AddDiscoveryClient();
 const string serviceName = "Vaidator-1";
-
+/*
 builder.Logging.AddOpenTelemetry(options =>
 {
     options
@@ -24,7 +24,7 @@ builder.Logging.AddOpenTelemetry(options =>
 
 });
 
-
+*/
 builder.Services.AddOpenTelemetry()
       .ConfigureResource(resource => resource.AddService(serviceName))
       .WithTracing(tracing => tracing

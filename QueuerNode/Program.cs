@@ -20,7 +20,7 @@ MessageQueues.init();
 MongoMessagesShceduler.init();
 
 const string serviceName = "Scheduler-1";
-
+/*
 builder.Logging.AddOpenTelemetry(options =>
 {
     options
@@ -30,7 +30,7 @@ builder.Logging.AddOpenTelemetry(options =>
         .AddConsoleExporter();
 
 });
-
+*/
 
 builder.Services.AddOpenTelemetry()
       .ConfigureResource(resource => resource.AddService(serviceName))

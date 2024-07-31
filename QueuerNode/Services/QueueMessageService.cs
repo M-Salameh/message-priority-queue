@@ -24,10 +24,16 @@ namespace SchedulerNode.Services
         public override Task<Acknowledgement> QueueMessage(Message message, ServerCallContext context)
         {
             DateTime current = DateTime.Now;
-            DateTime des = new DateTime(message.Year, message.Month, message.Day, message.Hour, message.Minute, 0);
 
             //Console.WriteLine("Message Receieved to Queuer !!");
-            if (message.Year == 0 || DateTime.Compare(des,current)<=0)
+            if (message.Year == 0 || message.Day == 0 || message.Month == 0)
+            {
+                return Task.FromResult(SendAsap(ref message));
+            }
+            
+            DateTime des = new DateTime(message.Year, message.Month, message.Day, message.Hour, message.Minute, 0);
+            
+            if (DateTime.Compare(des,current)<=0)
             {
                 return Task.FromResult(SendAsap(ref message));
             }
