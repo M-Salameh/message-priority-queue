@@ -22,7 +22,7 @@ public class Program
         builder.Services.AddDiscoveryClient(builder.Configuration);
         const string serviceName = "http_2-protocol-node";
 
-        builder.Logging.AddOpenTelemetry(options =>
+        /*builder.Logging.AddOpenTelemetry(options =>
         {
             options
                 .SetResourceBuilder(
@@ -30,7 +30,7 @@ public class Program
                         .AddService(serviceName))
                 .AddConsoleExporter();
 
-        });
+        });*/
 
 
         builder.Services.AddOpenTelemetry()

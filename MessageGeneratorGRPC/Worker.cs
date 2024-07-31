@@ -35,6 +35,8 @@ namespace GGRPCMessageGenerator
                 message.MsgId = "msg-id=1";
                 message.PhoneNumber = "043 33 00 83";
                 message.Tag = "SYR";
+                message.Minute = message.Hour = message.Day = message.Month = message.Year = 0;
+
                 Console.WriteLine("Sending to " + address);
 
 

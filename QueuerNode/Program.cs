@@ -6,6 +6,8 @@ using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
+using Scheduler.Initializer;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Additional configuration is required to successfully run gRPC on macOS.
@@ -14,7 +16,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddGrpc();
 builder.Services.AddDiscoveryClient();
-
+IConfiguration config = builder.Configuration;
+Initializer.init(ref config);
 MessageQueues.init();
 
 MongoMessagesShceduler.init();
