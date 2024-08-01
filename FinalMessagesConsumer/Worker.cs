@@ -1,3 +1,4 @@
+using FinalMessagesConsumer.Initializer;
 using FinalMessagesConsumer.StreamsHandler;
 
 namespace FinalMessagesConsumer
@@ -13,25 +14,16 @@ namespace FinalMessagesConsumer
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            string[] provs = new string[] { "MTN", "SYR" };
+            string[] provs = new string[] { ProvidersInfoParser.Syriatel, ProvidersInfoParser.MTN };
             int turn = 0;
-
             while (true)
             {
-
-                TotalWorker.work(provs[turn]);
-
+                
+                TotalWorker.work(provs[turn]); 
                 turn ^= 1;
-
-                //Console.WriteLine("\n\n\n\n");
-
-                TotalWorker.work(provs[turn]);
-
-                turn ^= 1;
-
                 //Console.WriteLine("**************************************************");
 
-                await Task.Delay(1000);
+                await Task.Delay(100000);
             }
         }
     }

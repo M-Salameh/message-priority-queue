@@ -18,11 +18,12 @@ builder.Services.AddGrpc();
 builder.Services.AddDiscoveryClient();
 IConfiguration config = builder.Configuration;
 Initializer.init(ref config);
+
 MessageQueues.init();
 
 MongoMessagesShceduler.init();
 
-const string serviceName = "Scheduler-1";
+string serviceName = ServiceNameParser.serviceName;
 /*
 builder.Logging.AddOpenTelemetry(options =>
 {

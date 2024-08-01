@@ -1,3 +1,4 @@
+using GrpcMessageNode.Initializer;
 using GrpcMessageNode.Services;
 using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
@@ -20,7 +21,10 @@ public class Program
         builder.Services.AddGrpc();
         
         builder.Services.AddDiscoveryClient(builder.Configuration);
-        const string serviceName = "http_2-protocol-node";
+
+        IConfiguration config = builder.Configuration;
+        Initializer.init(ref config);
+        string serviceName = ServiceNameParser.serviceName;
 
         /*builder.Logging.AddOpenTelemetry(options =>
         {

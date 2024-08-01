@@ -3,6 +3,7 @@ using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
+using HTTPMessageNode.Initializer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,8 +14,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDiscoveryClient();
-//builder.Configuration.GetValue<string>("database:conn");
-const string serviceName = "http-protocol-node";
+
+IConfiguration conf = builder.Configuration;
+Initializer.init(ref conf);
+
+string serviceName = ServiceNameParser.serviceName;
 /*
 builder.Logging.AddOpenTelemetry(options =>
 {

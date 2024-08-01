@@ -1,4 +1,5 @@
-﻿using StackExchange.Redis;
+﻿using PriorityStreamsExtractor.Initializer;
+using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,12 @@ namespace PriorityStreamsExtractor.StreamsHandler
         /// </summary>
         /// <param name="RedisRead"></param>
         /// <exception cref="throws exeception if could not connect to redis database"> </exception>
-        public static void setAll(string RedisRead, string RedisWrite)
+
+        private static readonly string RedisRead = ReadRedisInfoParser.connection;
+
+        private static readonly string RedisWrite = WriteRedisInfoParser.connection;
+        
+        public static void setAll()
         {
             if (!Extractor.Extractor.setDatabase(RedisRead))
             {

@@ -1,4 +1,5 @@
-﻿using StackExchange.Redis;
+﻿using FinalMessagesConsumer.Initializer;
+using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace FinalMessagesConsumer.StreamsHandler
         /// </summary>
         public static Dictionary<string, RedisValue> lastId = new Dictionary<string, RedisValue>();
 
+        private static string RedisRead = ReadRedisInfoParser.connection;
 
         /// <summary>
         /// Sets the database from which we will extract messages.
@@ -23,7 +25,7 @@ namespace FinalMessagesConsumer.StreamsHandler
         /// </summary>
         /// <param name="RedisRead"></param>
         /// <exception cref="throws exeception if could not connect to redis database"> </exception>
-        public static void setAll(string RedisRead)
+        public static void setAll()
         {
             if (!Extractor.Extractor.setDatabase(RedisRead))
             {

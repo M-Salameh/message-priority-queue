@@ -105,7 +105,17 @@
       "ProjectGuid": "62d17724-6487-4586-9f2f-c2c0175280a5",
       "DisplayName": "ScheduledMessagesHandler",
       "ColorIndex": 3
+    },
+    "fd51e864-bf79-4d63-a31c-d017c0239c3a": {
+      "ProjectGuid": "fd51e864-bf79-4d63-a31c-d017c0239c3a",
+      "DisplayName": "PriorityStreamsExtractor",
+      "ColorIndex": 4
+    },
+    "8f0b7aed-41d9-4326-a17c-89057e166331": {
+      "ProjectGuid": "8f0b7aed-41d9-4326-a17c-89057e166331",
+      "DisplayName": "FinalMessagesConsumer",
+      "ColorIndex": 5
     }
   },
-  "NextColorIndex": 4
+  "NextColorIndex": 6
 }

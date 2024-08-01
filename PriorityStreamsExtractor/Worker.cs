@@ -1,3 +1,4 @@
+using PriorityStreamsExtractor.Initializer;
 using PriorityStreamsExtractor.StreamsHandler;
 
 namespace PriorityStreamsExtractor
@@ -13,7 +14,7 @@ namespace PriorityStreamsExtractor
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            string[] provs = new string[] { "MTN", "SYR" };
+            string[] provs = new string[] { ProvidersInfoParser.Syriatel, ProvidersInfoParser.MTN };
             int turn = 0;
             int[] levels = new int[] { 1, 2, 3, 4, 5 };
 

@@ -1,15 +1,18 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
+using ScheduledMessagesHandler.Initializer;
 using ScheduledMessagesHandler.RedisQueuer;
 
 namespace ScheduledMessagesHandler.MongoMessages
 {
     public class MongoMessagesShceduler
     {
-        private static string MONGODB = "mongodb://127.0.0.1:27017";
-        private static string DataBaseName = "scheduled-messages";
-        private static string myCollection = "messages";
-        public static string ConnectionError = "Error Connecting to MongoDB on : " + MONGODB;
+        private static string MongoURL = MessagesMongoDBParser.connection;
+        private static string DataBaseName = MessagesMongoDBParser.database;
+        private static string myCollection = MessagesMongoDBParser.collection;
+
+
+        public static string ConnectionError = "Error Connecting to MongoDB on : " + MongoURL;
         private static IMongoCollection<BsonDocument> collection;
         private static string Pending = "Pending";
         private static string Acked = "Acked";
@@ -25,7 +28,7 @@ namespace ScheduledMessagesHandler.MongoMessages
         {
             try
             {
-                var client = new MongoClient(MONGODB);
+                var client = new MongoClient(MongoURL);
 
                 var database = client.GetDatabase(DataBaseName);
 

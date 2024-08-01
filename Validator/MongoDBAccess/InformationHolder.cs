@@ -1,8 +1,12 @@
-﻿namespace Validator.MongoDBAccess
+﻿using Validator.Initializer;
+
+namespace Validator.MongoDBAccess
 {
     public class InformationHolder
     {
-        private static string MongoDB = "localhost:6565";
+        private static readonly string URL = AccountsDBParser.connection;
+        private static readonly string DBName = AccountsDBParser.DBName;
+        private static readonly string collection = AccountsDBParser.collection;
 
         public static void checkMessage(MessageMetaData metaData)
         {

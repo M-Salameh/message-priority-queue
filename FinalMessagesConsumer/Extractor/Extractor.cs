@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using FinalMessagesConsumer.Initializer;
+using Newtonsoft.Json;
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
@@ -10,12 +11,11 @@ namespace FinalMessagesConsumer.Extractor
 {
     public class Extractor
     {
-        private static string myConsumerID = "cons-1";
-
-        private static int sms_rate = 100;
+        private static string myConsumerID = ReadRedisInfoParser.consumer_id;
 
         private static IDatabase db = null;
-
+        
+        private static Dictionary<string, int> _sms_rate = new Dictionary<string, int>();
         /// <summary>
         /// Gets Redis DataBase of which we shall consume messages while read
         /// by sms_rate messages per second
@@ -23,13 +23,15 @@ namespace FinalMessagesConsumer.Extractor
         /// <param name="REDIS"></param>
         /// <param name="_sms_rate"></param>
         /// <returns>boolean : if we could connect to database or not</returns>
-        public static bool setDatabase(string REDIS , int _sms_rate = 100)
+        public static bool setDatabase(string REDIS)
         {            
             try
             {
                 var muxer = ConnectionMultiplexer.Connect(REDIS);
                 db = muxer.GetDatabase();
-                sms_rate = _sms_rate;
+                _sms_rate[ProvidersInfoParser.Syriatel] = ProvidersInfoParser.syr_rate;
+                _sms_rate[ProvidersInfoParser.MTN] = ProvidersInfoParser.mtn_rate;
+
                 return true;
             }
             catch (Exception ex)
@@ -51,7 +53,7 @@ namespace FinalMessagesConsumer.Extractor
         {
             try
             {
-
+                int sms_rate = _sms_rate[stream];
                 var messages = await db.StreamReadGroupAsync(stream, stream, myConsumerID, id, sms_rate);
                 
                 bool has_pending = true;
@@ -93,6 +95,7 @@ namespace FinalMessagesConsumer.Extractor
             catch (Exception ex)
             {
                 Console.WriteLine("Error while Reading or Acking");
+                Console.WriteLine(ex.Message);
                 return await Task.FromResult(id);
             }
 

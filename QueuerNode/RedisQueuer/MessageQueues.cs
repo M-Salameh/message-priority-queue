@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Scheduler.Initializer;
 using StackExchange.Redis;
 using Steeltoe.Discovery;
 using System;
@@ -11,15 +12,15 @@ namespace SchedulerNode.RedisQueuer
 {
     public class MessageQueues
     {
-        private static string RedisURL = "localhost:6379";
-        public static string RedisConnectionError = "Error Writing to Redis";
+        private readonly static string RedisURL = RedisInfoParser.connection;
 
-        private static string Syriatel = "SYR";
-        private static string MTN = "MTN";
+        private readonly static string Syriatel = RedisInfoParser.Syriatel;
+        private readonly static string MTN = RedisInfoParser.MTN;
 
-        private static int LEVELS = 6;
+        private readonly static int LEVELS = 6;
         private static int StreamMaxLength = 100000000;
         private static IDatabase db = null;
+        public readonly static string RedisConnectionError = "Error Writing to Redis";
 
         /// <summary>
         /// Connects to Redis Stream With Streams for Each Priority and create consuming groups

@@ -11,12 +11,13 @@ IHost host = Host.CreateDefaultBuilder(args)
 
 IConfiguration config = host.Services.GetRequiredService<IConfiguration>();
 Initializer.init(ref config);
-string redis_read = "localhost:6379";
-string redis_wite = "localhost:6400";
+
+string redis_read = ReadRedisInfoParser.connection;
+string redis_wite = WriteRedisInfoParser.connection;
 
 try
 {
-    TotalWorker.setAll(redis_read, redis_wite);
+    TotalWorker.setAll();
 }
 
 catch (Exception ex)

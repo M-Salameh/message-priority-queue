@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using PriorityStreamsExtractor.Initializer;
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,8 @@ namespace PriorityStreamsExtractor.Extractor
 {
     public class Extractor
     {
-        private static string groupName = "SYS_MSGS";
-        private static string myConsumerID = "cons-1";
+        private static string groupName = ReadRedisInfoParser.group_name;
+        private static string myConsumerID = ReadRedisInfoParser.consumer_id;
 
         private static int VeryLow = 1;
         private static int Low = 2;
@@ -19,9 +20,9 @@ namespace PriorityStreamsExtractor.Extractor
         private static int High = 4;
         private static int VeryHigh = 5;
 
-        private static int[] shares;
+        private static Dictionary<string, int[]> shares = new Dictionary<string, int[]>();
 
-        private static int sms_rate = 100;
+        private static Dictionary<string, int> sms_rate = new Dictionary<string, int>();
 
         private static IDatabase db = null;
 
@@ -31,15 +32,15 @@ namespace PriorityStreamsExtractor.Extractor
         /// by associating number of messages limit to read to each priority which are precentage of sms_rate
         /// </summary>
         /// <param name="REDIS"></param>
-        /// <param name="_sms_rate"></param>
         /// <returns>boolean : if we could connect to database or not</returns>
-        public static bool setDatabase(string REDIS , int _sms_rate = 100)
+        public static bool setDatabase(string REDIS)
         {            
             try
             {
                 var muxer = ConnectionMultiplexer.Connect(REDIS);
                 db = muxer.GetDatabase();
-                sms_rate = _sms_rate;
+                sms_rate[ProvidersInfoParser.Syriatel] = ProvidersInfoParser.syr_rate;
+                sms_rate[ProvidersInfoParser.MTN] = ProvidersInfoParser.mtn_rate;
                 //Console.WriteLine("Got DB");
                 setShares();
                 return true;
@@ -53,17 +54,21 @@ namespace PriorityStreamsExtractor.Extractor
 
         private static void setShares()
         {
-            shares = new int[VeryHigh + 1];
-            int sum = 0;
-            sum += shares[VeryHigh] = (35 * sms_rate) / 100;
-            sum += shares[High] = (30 * sms_rate) / 100;
-            sum += shares[Medium] = (20 * sms_rate) / 100;
-            sum += shares[Low] = (10 * sms_rate) / 100;
-            sum += shares[VeryLow] = (5 * sms_rate) / 100;
-
-            shares[VeryHigh] += ((sms_rate - sum) > 0 ? sms_rate - sum : 0);
+            foreach (KeyValuePair <string,int> entry in sms_rate)
+            {
+                string provider = entry.Key;
+                int rate = entry.Value;
+                int sum = 0;
+                shares[provider] = new int[VeryHigh + 1];
+                sum += shares[provider][VeryHigh] = (35 * rate) / 100;
+                sum += shares[provider][High] = (30 * rate) / 100;
+                sum += shares[provider][Medium] = (20 * rate) / 100;
+                sum += shares[provider][Low] = (10 * rate) / 100;
+                sum += shares[provider][VeryLow] = (5 * rate) / 100;
+                shares[provider][VeryHigh] += ((rate - sum) > 0 ? rate - sum : 0);
+            }
         }
-
+        
         /// <summary>
         /// Reads Messages from Stream starting with the id provided (its track is kept by the StreamsHandler.TotalWorker)
         /// After Extracting Messages they are prcocessed and Written through the WRITER to 
@@ -80,7 +85,7 @@ namespace PriorityStreamsExtractor.Extractor
 
                 string write_stream = getWriteStream(stream);
 
-                int count = shares[priority];
+                int count = shares[write_stream][priority];
 
                 var messages = await db.StreamReadGroupAsync(stream, groupName, myConsumerID, id, count);
                 

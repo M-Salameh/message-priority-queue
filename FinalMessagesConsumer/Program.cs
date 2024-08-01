@@ -1,4 +1,5 @@
 using FinalMessagesConsumer;
+using FinalMessagesConsumer.Initializer;
 using FinalMessagesConsumer.StreamsHandler;
 
 IHost host = Host.CreateDefaultBuilder(args)
@@ -7,11 +8,14 @@ IHost host = Host.CreateDefaultBuilder(args)
         services.AddHostedService<Worker>();
     })
     .Build();
-string redis_read = "localhost:6400";
+IConfiguration config = host.Services.GetRequiredService<IConfiguration>();
+Initializer.init(ref config);
+
+string redis_read = ReadRedisInfoParser.connection;
 
 try
 {
-    TotalWorker.setAll(redis_read);
+    TotalWorker.setAll();
 }
 
 catch (Exception ex)

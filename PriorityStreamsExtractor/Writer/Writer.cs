@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using PriorityStreamsExtractor.Initializer;
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,6 @@ namespace PriorityStreamsExtractor.Writer
 {
     public class Writer
     {
-        private static string Provider = "SYR";
-        private static string Provider2 = "MTN";
         /// <summary>
         /// Stream Max Length Set to One Hundred Million which means stores only one 
         /// Hundred Million Messages in a stream, if more messages came , old ones are erased
@@ -48,16 +47,16 @@ namespace PriorityStreamsExtractor.Writer
             {
                 bool k1 = db.StreamCreateConsumerGroup
                             (
-                                Provider,
-                                Provider,
+                                ProvidersInfoParser.Syriatel,
+                                ProvidersInfoParser.Syriatel,
                                 0,
                                 true
                             );
 
                 bool k2 = db.StreamCreateConsumerGroup
                         (
-                            Provider2,
-                            Provider2,
+                           ProvidersInfoParser.MTN,
+                           ProvidersInfoParser.MTN,
                             0,
                             true
                         );

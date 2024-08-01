@@ -16,9 +16,9 @@ IHost host = Host.CreateDefaultBuilder(args)
     .Build();
 
 config = host.Services.GetRequiredService<IConfiguration>();
+
 Initializer.init(ref config);
 
-//host.InitRedis();
 MessageQueues.init();
 
 MongoMessagesShceduler.init();

@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using ScheduledMessagesHandler;
+using ScheduledMessagesHandler.Initializer;
 using StackExchange.Redis;
 using Steeltoe.Discovery;
 
@@ -7,11 +8,11 @@ namespace ScheduledMessagesHandler.RedisQueuer
 {
     public class MessageQueues
     {
-        private static string RedisURL = "localhost:6379";
-        public static string RedisConnectionError = "Error Writing to Redis";
+        private readonly static string RedisURL = RedisInfoParser.connection;
 
-        private static string Syriatel = "SYR";
-        private static string MTN = "MTN";
+        private readonly static string Syriatel = RedisInfoParser.Syriatel;
+        private readonly static string MTN = RedisInfoParser.MTN;
+        public readonly static string RedisConnectionError = "Error Writing to Redis";
 
         private static int LEVELS = 6;
         private static int StreamMaxLength = 100000000;
