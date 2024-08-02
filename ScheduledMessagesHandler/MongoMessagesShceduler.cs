@@ -31,8 +31,16 @@ namespace ScheduledMessagesHandler.MongoMessages
                 var client = new MongoClient(MongoURL);
 
                 var database = client.GetDatabase(DataBaseName);
-
+                
                 collection = database.GetCollection<BsonDocument>(myCollection);
+
+                var keys = Builders<BsonDocument>.IndexKeys.Ascending("timestamp").Ascending("status");
+
+                var indexOptions = new CreateIndexOptions { Background = true };
+
+                var indexModel = new CreateIndexModel<BsonDocument>(keys, indexOptions);
+
+                collection.Indexes.CreateOne(indexModel);
 
                 return "ok";
             }
@@ -79,7 +87,12 @@ namespace ScheduledMessagesHandler.MongoMessages
                         Builders<BsonDocument>.Filter.Eq("status", status)
                         );
 
-            var docs = collection.Find(filter).Limit(limit).ToList<BsonDocument>();
+            var sort = Builders<BsonDocument>.Sort.Ascending("timestamp");
+
+            var docs = collection.Find(filter)
+                                 .Limit(limit)
+                                 .Sort(sort)
+                                 .ToList<BsonDocument>();
             
             if (docs.Count == 0)
             {
