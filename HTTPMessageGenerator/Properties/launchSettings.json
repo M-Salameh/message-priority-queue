@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "HTTPMessageGenerator": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

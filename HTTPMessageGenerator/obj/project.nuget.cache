@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "2fzG40GLh4JB4Og+1xyJRvcu4067pikGe318shFQhNzjxNN5e64lfhNEsocxSiSxBtM8W9Rr7/LX3e7bhpanng==",
+  "dgSpecHash": "hvhxNVWl3xBDqrMvu6VWatncnfUjb5bdvUbqRzfZSxOIjc9NTy/NlDjQGx2VphtT4D6fYBeXSfmK9/29Ex7Qyg==",
   "success": true,
   "projectFilePath": "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\message-priority-queue\\HTTPMessageGenerator\\HTTPMessageGenerator.csproj",
   "expectedPackageFiles": [
@@ -44,6 +44,7 @@
     "C:\\Users\\moham\\.nuget\\packages\\microsoft.extensions.options.configurationextensions\\6.0.0\\microsoft.extensions.options.configurationextensions.6.0.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\moham\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.14.0\\microsoft.visualstudio.azure.containers.tools.targets.1.14.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\steeltoe.common\\3.2.6\\steeltoe.common.3.2.6.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\steeltoe.common.abstractions\\3.2.6\\steeltoe.common.abstractions.3.2.6.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\steeltoe.common.http\\3.2.6\\steeltoe.common.http.3.2.6.nupkg.sha512",

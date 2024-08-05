@@ -1,0 +1,7 @@
+
+docker build -t scheduled-msgs-handler .
+
+docker run --name scheduled-msgs-handler-1 -d -v  (absolute path to new appsettings.json):/app/appsettings.json scheduled-msgs-handler
+
+
+docker run --name <container-name> -d -v  (absolute path to new appsettings.json):/app/appsettings.json <image-name>

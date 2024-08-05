@@ -5,6 +5,9 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>dotnet-FinalMessagesConsumer-C27D36D8-44DD-48C5-BC19-18A03CCAEAF1</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <OutputType>Exe</OutputType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,6 +15,7 @@
   </ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="CSRedisCore" Version="3.8.803" />
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
 		<PackageReference Include="StackExchange.Redis" Version="2.8.0" />
 	</ItemGroup>
 </Project>

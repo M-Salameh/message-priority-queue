@@ -100,7 +100,6 @@ D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\GrpcMessage
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\GrpcMessage\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\GrpcMessage\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\GrpcMessage\bin\Debug\net6.0\System.Reflection.MetadataLoadContext.dll
-D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\GrpcMessage\obj\Debug\net6.0\GrpcMessageNode.csproj.AssemblyReference.cache
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\GrpcMessage\obj\Debug\net6.0\GrpcMessageNode.GeneratedMSBuildEditorConfig.editorconfig
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\GrpcMessage\obj\Debug\net6.0\GrpcMessageNode.AssemblyInfoInputs.cache
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\GrpcMessage\obj\Debug\net6.0\GrpcMessageNode.AssemblyInfo.cs

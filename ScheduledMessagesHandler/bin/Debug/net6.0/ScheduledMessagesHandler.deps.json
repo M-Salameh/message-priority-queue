@@ -10,6 +10,7 @@
         "dependencies": {
           "CSRedisCore": "3.8.803",
           "Microsoft.Extensions.Hosting": "6.0.0",
+          "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.14.0",
           "MongoDB.Driver": "2.27.0",
           "StackExchange.Redis": "2.8.0",
           "Steeltoe.Connector.ConnectorCore": "3.2.6",
@@ -277,6 +278,7 @@
           }
         }
       },
+      "Microsoft.VisualStudio.Azure.Containers.Tools.Targets/1.14.0": {},
       "Microsoft.Win32.Registry/5.0.0": {
         "dependencies": {
           "System.Security.AccessControl": "5.0.0",
@@ -885,6 +887,13 @@
       "sha512": "sha512-Nug3rO+7Kl5/SBAadzSMAVgqDlfGjJZ0GenQrLywJ84XGKO0uRqkunz5Wyl0SDwcR71bAATXvSdbdzPrYRYKGw==",
       "path": "microsoft.openapi/1.2.3",
       "hashPath": "microsoft.openapi.1.2.3.nupkg.sha512"
+    },
+    "Microsoft.VisualStudio.Azure.Containers.Tools.Targets/1.14.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yORzATlNmCp4kEwkxznLZ3maTaUJc5yTcu3aPufY8Tq4141/bRRWsa91u8I24MR3BTCCJlZO98xuQWB4arlKCw==",
+      "path": "microsoft.visualstudio.azure.containers.tools.targets/1.14.0",
+      "hashPath": "microsoft.visualstudio.azure.containers.tools.targets.1.14.0.nupkg.sha512"
     },
     "Microsoft.Win32.Registry/5.0.0": {
       "type": "package",

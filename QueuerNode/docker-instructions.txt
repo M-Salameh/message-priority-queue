@@ -1,0 +1,7 @@
+
+docker build -t scheduler .
+
+docker run --name scheduler-1 -d -v  (absolute path to new appsettings.json):/app/appsettings.json scheduler
+
+
+docker run --name <container-name> -d -v  (absolute path to new appsettings.json):/app/appsettings.json <image-name>

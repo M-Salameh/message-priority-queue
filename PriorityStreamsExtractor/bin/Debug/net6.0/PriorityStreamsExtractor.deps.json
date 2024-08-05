@@ -10,6 +10,7 @@
         "dependencies": {
           "CSRedisCore": "3.8.803",
           "Microsoft.Extensions.Hosting": "6.0.0",
+          "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.14.0",
           "StackExchange.Redis": "2.8.0"
         },
         "runtime": {
@@ -366,6 +367,7 @@
           }
         }
       },
+      "Microsoft.VisualStudio.Azure.Containers.Tools.Targets/1.14.0": {},
       "Newtonsoft.Json/13.0.1": {
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {
@@ -634,6 +636,13 @@
       "sha512": "sha512-9+PnzmQFfEFNR9J2aDTfJGGupShHjOuGw4VUv+JB044biSHrnmCIMD+mJHmb2H7YryrfBEXDurxQ47gJZdCKNQ==",
       "path": "microsoft.extensions.primitives/6.0.0",
       "hashPath": "microsoft.extensions.primitives.6.0.0.nupkg.sha512"
+    },
+    "Microsoft.VisualStudio.Azure.Containers.Tools.Targets/1.14.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yORzATlNmCp4kEwkxznLZ3maTaUJc5yTcu3aPufY8Tq4141/bRRWsa91u8I24MR3BTCCJlZO98xuQWB4arlKCw==",
+      "path": "microsoft.visualstudio.azure.containers.tools.targets/1.14.0",
+      "hashPath": "microsoft.visualstudio.azure.containers.tools.targets.1.14.0.nupkg.sha512"
     },
     "Newtonsoft.Json/13.0.1": {
       "type": "package",

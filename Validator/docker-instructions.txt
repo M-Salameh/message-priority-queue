@@ -1,0 +1,7 @@
+
+docker build -t validator .
+
+docker run --name validator-1 -d -v  (absolute path to new appsettings.json):/app/appsettings.json validator
+
+
+docker run --name <container-name> -d -v  (absolute path to new appsettings.json):/app/appsettings.json <image-name>

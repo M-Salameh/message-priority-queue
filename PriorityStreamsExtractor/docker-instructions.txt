@@ -1,0 +1,7 @@
+
+docker build -t priority-streams-extractor .
+
+docker run --name priority-streams-extractor-1 -d -v  (absolute path to new appsettings.json):/app/appsettings.json priority-streams-extractor
+
+
+docker run --name <container-name> -d -v  (absolute path to new appsettings.json):/app/appsettings.json <image-name>

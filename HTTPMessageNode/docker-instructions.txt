@@ -1,0 +1,7 @@
+
+docker build -t http-msgs-node .
+
+docker run --name http-msg-node-1 -d -v  (absolute path to new appsettings.json):/app/appsettings.json http-msg-node
+
+
+docker run --name <container-name> -d -v  (absolute path to new appsettings.json):/app/appsettings.json <image-name>

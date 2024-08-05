@@ -1,0 +1,7 @@
+
+docker build -t http-msgs-gen .
+
+docker run --name http-msg-gen-1 -d -v  (absolute path to new appsettings.json):/app/appsettings.json http-msg-gen
+
+
+docker run --name <container-name> -d -v  (absolute path to new appsettings.json):/app/appsettings.json <image-name>

@@ -1,0 +1,4 @@
+docker build -t final-msgs-consumer .
+
+
+docker run --name <container-name> -d -v  (absolute path to new appsettings.json):/app/appsettings.json <image-name>

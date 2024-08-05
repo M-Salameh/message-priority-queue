@@ -20,14 +20,15 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
 		
 		<PackageReference Include="MongoDB.Driver" Version="2.27.0" />
 		<PackageReference Include="OpenTelemetry.Collector.AspNetCore" Version="0.2.0-alpha.179" />
 		<PackageReference Include="OpenTelemetry.Collector.Dependencies" Version="0.2.0-alpha.179" />
 		<PackageReference Include="OpenTelemetry.Exporter.ApplicationInsights" Version="0.2.0-alpha.179" />
 
-		<PackageReference Include="OpenTelemetry.Exporter.Jaeger" />
-		<PackageReference Include="OpenTelemetry.Exporter.Console" />
+		<PackageReference Include="OpenTelemetry.Exporter.Jaeger"  Version="1.5.1"/>
+		<PackageReference Include="OpenTelemetry.Exporter.Console"  Version="1.9.0"/>
 		<PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.9.0" />
 		<PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.9.0" />
 		<PackageReference Include="OpenTelemetry.Instrumentation.GrpcNetClient" Version="1.9.0-beta.1" />
@@ -36,6 +37,8 @@
 
 	<PropertyGroup>
 		<SteeltoeVersion>3.2.6</SteeltoeVersion>
+		<UserSecretsId>3b210252-c1eb-407a-b147-9d54da5b6f88</UserSecretsId>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
 	</PropertyGroup>
 
 	<ItemGroup>
