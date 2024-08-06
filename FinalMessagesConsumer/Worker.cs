@@ -23,7 +23,7 @@ namespace FinalMessagesConsumer
                 turn ^= 1;
                 //Console.WriteLine("**************************************************");
 
-                await Task.Delay(100000);
+                await Task.Delay(1000);
             }
         }
     }

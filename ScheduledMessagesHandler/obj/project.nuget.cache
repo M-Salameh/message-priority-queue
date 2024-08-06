@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "8Z/07k8v/vH5JrOkVnduHZQbyoe6WJTr9KYEWhTFtgkJiirn88nMA8cjxWoqq/yUdIAjJtHhYbR60Zt4IShHYA==",
+  "dgSpecHash": "pwhqu7hMMpBHuqqlnhy9sJ+eNqLQ75WiVbB8iQB5/M1mYe01RFWDi+5ZtqGTxCt8Xf2sq3cvT7P+1cmgkoLGxg==",
   "success": true,
   "projectFilePath": "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\message-priority-queue\\ScheduledMessagesHandler\\ScheduledMessagesHandler.csproj",
   "expectedPackageFiles": [
@@ -40,7 +40,6 @@
     "C:\\Users\\moham\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
-    "C:\\Users\\moham\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.14.0\\microsoft.visualstudio.azure.containers.tools.targets.1.14.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\mongodb.bson\\2.27.0\\mongodb.bson.2.27.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\mongodb.driver\\2.27.0\\mongodb.driver.2.27.0.nupkg.sha512",

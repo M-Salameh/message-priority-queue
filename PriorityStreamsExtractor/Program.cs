@@ -1,11 +1,13 @@
 using PriorityStreamsExtractor;
 using PriorityStreamsExtractor.Initializer;
 using PriorityStreamsExtractor.StreamsHandler;
+using Steeltoe.Discovery.Client;
 
 IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureServices(services =>
     {
         services.AddHostedService<Worker>();
+        services.AddDiscoveryClient();
     })
     .Build();
 

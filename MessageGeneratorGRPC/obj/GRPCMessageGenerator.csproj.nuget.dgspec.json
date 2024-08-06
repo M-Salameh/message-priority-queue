@@ -62,10 +62,6 @@
               "target": "Package",
               "version": "[6.0.0, )"
             },
-            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
-              "target": "Package",
-              "version": "[1.14.0, )"
-            },
             "Steeltoe.Connector.ConnectorCore": {
               "target": "Package",
               "version": "[3.2.6, )"

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "bMegakWxl9VXyhB2QeTwvpYHbl01KCVDUm0Fc8gGgMIFiBdUSiOdyrm4L8CNw1yX8MhZUuYVQMJu9Vyq9rhVEw==",
+  "dgSpecHash": "+Sr2x/Njipz8BhHkXlMceBb6f6rzQR5LNJSXSEw8Coal2exR8nAinrobfI283qSyCdVnX2+oR03UhrbH/dCkLA==",
   "success": true,
   "projectFilePath": "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\message-priority-queue\\HTTPMessageNode\\HTTPMessageNode.csproj",
   "expectedPackageFiles": [
@@ -50,15 +50,14 @@
     "C:\\Users\\moham\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
-    "C:\\Users\\moham\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.14.0\\microsoft.visualstudio.azure.containers.tools.targets.1.14.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\opentelemetry\\1.9.0\\opentelemetry.1.9.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\opentelemetry.api\\1.9.0\\opentelemetry.api.1.9.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\opentelemetry.api.providerbuilderextensions\\1.9.0\\opentelemetry.api.providerbuilderextensions.1.9.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\opentelemetry.collector.aspnetcore\\0.2.0-alpha.179\\opentelemetry.collector.aspnetcore.0.2.0-alpha.179.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\opentelemetry.collector.dependencies\\0.2.0-alpha.179\\opentelemetry.collector.dependencies.0.2.0-alpha.179.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\opentelemetry.exporter.applicationinsights\\0.2.0-alpha.179\\opentelemetry.exporter.applicationinsights.0.2.0-alpha.179.nupkg.sha512",
-    "C:\\Users\\moham\\.nuget\\packages\\opentelemetry.exporter.console\\1.0.1\\opentelemetry.exporter.console.1.0.1.nupkg.sha512",
-    "C:\\Users\\moham\\.nuget\\packages\\opentelemetry.exporter.jaeger\\1.0.1\\opentelemetry.exporter.jaeger.1.0.1.nupkg.sha512",
+    "C:\\Users\\moham\\.nuget\\packages\\opentelemetry.exporter.console\\1.9.0\\opentelemetry.exporter.console.1.9.0.nupkg.sha512",
+    "C:\\Users\\moham\\.nuget\\packages\\opentelemetry.exporter.jaeger\\1.5.1\\opentelemetry.exporter.jaeger.1.5.1.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\opentelemetry.extensions.hosting\\1.9.0\\opentelemetry.extensions.hosting.1.9.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\opentelemetry.instrumentation.aspnetcore\\1.9.0\\opentelemetry.instrumentation.aspnetcore.1.9.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\opentelemetry.instrumentation.grpcnetclient\\1.9.0-beta.1\\opentelemetry.instrumentation.grpcnetclient.1.9.0-beta.1.nupkg.sha512",
@@ -90,28 +89,8 @@
     "C:\\Users\\moham\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\system.text.encodings.web\\6.0.0\\system.text.encodings.web.6.0.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\system.text.json\\6.0.0\\system.text.json.6.0.0.nupkg.sha512",
-    "C:\\Users\\moham\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512"
+    "C:\\Users\\moham\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
+    "C:\\Users\\moham\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1604",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Project dependency OpenTelemetry.Exporter.Console does not contain an inclusive lower bound. Include a lower bound in the dependency version to ensure consistent restore results.",
-      "libraryId": "OpenTelemetry.Exporter.Console",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v6.0"
-      ]
-    },
-    {
-      "code": "NU1604",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Project dependency OpenTelemetry.Exporter.Jaeger does not contain an inclusive lower bound. Include a lower bound in the dependency version to ensure consistent restore results.",
-      "libraryId": "OpenTelemetry.Exporter.Jaeger",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v6.0"
-      ]
-    }
-  ]
+  "logs": []
 }

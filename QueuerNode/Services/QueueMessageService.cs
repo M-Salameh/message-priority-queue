@@ -54,7 +54,7 @@ namespace SchedulerNode.Services
         {
             string reqId = MessageQueues.addMessage(message);
 
-            Console.WriteLine("req id grcp que = " + reqId);
+            Console.WriteLine("req id ASAP que = " + reqId);
 
             if (reqId.Equals(MessageQueues.RedisConnectionError))
             {
@@ -81,6 +81,7 @@ namespace SchedulerNode.Services
         private Acknowledgement Schedule(ref Message message)
         {
             string res = MongoMessagesShceduler.insertMessage(ref message);
+            Console.WriteLine("req id SCHEDULED que = " + res);
             if (res.Equals (MongoMessagesShceduler.ConnectionError))
             {
                 return new Acknowledgement

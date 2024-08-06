@@ -118,7 +118,8 @@ namespace PriorityStreamsExtractor.Extractor
 
                     if (success)
                     {
-                        db.StreamAcknowledge(stream, stream, messageId);
+                        Console.WriteLine("Success");
+                        db.StreamAcknowledge(stream, groupName, messageId);
                         id = messageId;
                     }
                     else

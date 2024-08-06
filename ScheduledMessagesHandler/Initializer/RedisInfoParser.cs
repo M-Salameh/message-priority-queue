@@ -13,7 +13,15 @@
             string? mtn = config.GetSection("RedisInfo").GetSection("Providors").GetSection("MTN").Value;
             if (conn == null || syr == null || mtn == null)
             {
-                throw new ArgumentException("Redis Full Info (connection + providers) Not Defined in appsettings.json");
+                
+                while(true)
+                {
+                    Console.WriteLine("conn" + conn);
+                    Console.WriteLine("syr" + syr);
+                    Console.WriteLine("mtn" + mtn);
+                    Task.Delay(10000);
+                }
+                //throw new ArgumentException("Redis Full Info (connection + providers) Not Defined in appsettings.json");
             }
 
             connection = conn;
