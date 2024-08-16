@@ -4,11 +4,11 @@ namespace Validator.MongoDBAccess
 {
     public class InformationHolder
     {
-        private static readonly string URL = AccountsDBParser.connection;
-        private static readonly string DBName = AccountsDBParser.DBName;
-        private static readonly string collection = AccountsDBParser.collection;
+        private readonly string URL = AccountsDBParser.connection;
+        private readonly string DBName = AccountsDBParser.DBName;
+        private readonly string collection = AccountsDBParser.collection;
 
-        public static void checkMessage(MessageMetaData metaData)
+        public  void checkMessage(MessageMetaData metaData)
         {
             //check for auther + authen + quota
         }

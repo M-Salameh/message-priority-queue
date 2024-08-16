@@ -17,10 +17,17 @@ namespace GGRPCMessageGenerator
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             string address = getAddress();
+            Console.WriteLine(address);
             if(address == ServersNotAvail)
             {
                 return;
             }
+          //  address = "http://localhost:9091";
+
+            /**using var channel = GrpcChannel.ForAddress(address , new GrpcChannelOptions
+            {
+                Credentials = Grpc.Core.ChannelCredentials.Insecure
+            });*/
             using var channel = GrpcChannel.ForAddress(address);
             try
             {
@@ -47,6 +54,7 @@ namespace GGRPCMessageGenerator
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return;
                 //return Task.something;
             }

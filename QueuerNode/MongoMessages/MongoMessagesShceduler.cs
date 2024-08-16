@@ -9,20 +9,20 @@ namespace Scheduler.MongoMessages
 {
     public class MongoMessagesShceduler
     {
-        private static string MongoURL = MessagesMongoDBParser.connection;
-        private static string DataBaseName = MessagesMongoDBParser.database;
-        private static string myCollection = MessagesMongoDBParser.collection;
+        private string MongoURL = MessagesMongoDBParser.connection;
+        private string DataBaseName = MessagesMongoDBParser.database;
+        private string myCollection = MessagesMongoDBParser.collection;
         
-        private static IMongoCollection<BsonDocument> collection;
-        public static string ConnectionError = "Error Connecting to MongoDB on : " + MongoURL;
-        private static string NotTaken = "Not-Taken";
+        //private  IMongoCollection<BsonDocument> collection;
+        public string ConnectionError = "Error Connecting to MongoDB on : " + MessagesMongoDBParser.connection;
+        private string NotTaken = "Not-Taken";
         
         /// <summary>
         /// Connects to MongoDB to Store Messges and Set Things Up
         /// </summary>
         /// <param name="MyId"></param>
         /// <returns>string : ok if all goes well , otherwise something else</returns>
-        public static string init()
+        /*public  string init()
         {
             try
             {
@@ -39,19 +39,21 @@ namespace Scheduler.MongoMessages
                 return ex.Message;
             }
 
-        }
+        }*/
         
         /// <summary>
         /// insert a scheduled message in the mongodb 
         /// </summary>
         /// <param name="message"></param>
         /// <returns>string: ok or else</returns>
-        public static string insertMessage(ref Message message)
+        public  string insertMessage(ref Message message)
         {
             try 
             {
+                IMongoCollection<BsonDocument> collection = MongoSettingsInitializer.collection;
 
                 DateTime date = new DateTime(message.Year, message.Month, message.Day, message.Hour, message.Minute, 2);
+                Console.WriteLine(date);
                 var document = new BsonDocument
                     {
                         { "sender", message.ClientID},

@@ -11,8 +11,6 @@ IHost host = Host.CreateDefaultBuilder(args)
 IConfiguration config = host.Services.GetRequiredService<IConfiguration>();
 Initializer.init(ref config);
 
-string redis_read = ReadRedisInfoParser.connection;
-
 try
 {
     TotalWorker.setAll();

@@ -17,4 +17,6 @@ RUN dotnet publish "Scheduler.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+ENV ASPNETCORE_URLS=http://localhost:5004;http://localhost:9090
+# ENV ASPNETCORE_ENVIRONMENT=Development
 ENTRYPOINT ["dotnet", "Scheduler.dll"]

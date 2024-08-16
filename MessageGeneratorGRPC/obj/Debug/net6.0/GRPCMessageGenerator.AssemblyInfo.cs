@@ -11,7 +11,6 @@
 using System;
 using System.Reflection;
 
-[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("dotnet-MessageGeneratorGRPC-685F4B88-9109-41BE-B200-D1916D3E7EAB")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("GRPCMessageGenerator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]

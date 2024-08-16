@@ -19,8 +19,9 @@ config = host.Services.GetRequiredService<IConfiguration>();
 
 Initializer.init(ref config);
 
-MessageQueues.init();
 
-MongoMessagesShceduler.init();
+RedisSettingsInitializer.init();
+
+MongoSettingsInitializer.init();
 
 await host.RunAsync();

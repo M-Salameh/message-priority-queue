@@ -1,28 +1,32 @@
 ﻿using Newtonsoft.Json;
-using ScheduledMessagesHandler;
 using ScheduledMessagesHandler.Initializer;
 using StackExchange.Redis;
 using Steeltoe.Discovery;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ScheduledMessagesHandler.RedisQueuer
 {
     public class MessageQueues
     {
-        private readonly static string RedisURL = RedisInfoParser.connection;
+        private readonly string RedisURL = RedisInfoParser.connection;
 
-        private readonly static string Syriatel = RedisInfoParser.Syriatel;
-        private readonly static string MTN = RedisInfoParser.MTN;
-        public readonly static string RedisConnectionError = "Error Writing to Redis";
+        private readonly string Syriatel = RedisInfoParser.Syriatel;
+        private readonly string MTN = RedisInfoParser.MTN;
 
-        private static int LEVELS = 6;
-        private static int StreamMaxLength = 100000000;
-        private static IDatabase db = null;
-        
+        private readonly int LEVELS = 6;
+        private int StreamMaxLength = 100000000;
+        ///private IDatabase db = null;
+        public readonly string RedisConnectionError = "Error Writing to Redis";
+
         /// <summary>
         /// Connects to Redis Stream With Streams for Each Priority and create consuming groups
         /// if not created
         /// </summary>
-        public static void init()
+       /* public void init()
         {
 
             var redis = ConnectionMultiplexer.Connect(RedisURL);
@@ -53,44 +57,46 @@ namespace ScheduledMessagesHandler.RedisQueuer
                 }
             }
            
-        }
-        
+        }*/
+
+
         /// <summary>
-        /// Add a Message by Casting the MessageDTO to According Redis Stream 
+        /// Add a Message to the According Redis Stream 
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>
-        public static string addMessage(MessageDTO message)
+        public string addMessage(MessageDTO message)
         {
             string id = "Error";
             string temp = string.Empty;
-            
+           
             var resid = addMessageRedisAsync(message, RedisURL);
             temp = resid.Result;
             
-
             if (temp.Equals(RedisConnectionError))
             {
                 return RedisConnectionError;
             }
             id = message.tag + ":" + message.localPriority + ":" + temp;
+            //id = Guid.NewGuid().ToString();
             return id;
         }
        
         
-        private static async Task<string> addMessageRedisAsync(MessageDTO message, string URL)
+        private async Task<string> addMessageRedisAsync(MessageDTO message, string URL)
         {
             try
             {
+                IDatabase db = RedisSettingsInitializer.db;
                 string tag = getTag(ref message);
 
                 string streamName = tag + "_" + message.localPriority.ToString();
 
-                //Console.WriteLine("stream name  = " + streamName);
+                Console.WriteLine("stream name  = " + streamName);
 
                 var serializedMessage = JsonConvert.SerializeObject(message);
 
-                //Console.WriteLine("Sending to stream : " + streamName);
+                Console.WriteLine("Sending to stream : " + streamName);
 
                 var messageId = await db.StreamAddAsync
                                     (streamName,
@@ -98,13 +104,14 @@ namespace ScheduledMessagesHandler.RedisQueuer
                                              {
                                                  new NameValueEntry("message", serializedMessage)
                                              },
-                                null,
-                                StreamMaxLength,
-                                true);
+                                          null,
+                                          StreamMaxLength,
+                                          true        
+                                     );
 
 
-                //Console.WriteLine("Done Sending to stream : " + streamName);
-                //Console.WriteLine("Stream msg id = " + messageId);
+                Console.WriteLine("Done Sending to stream : " + streamName);
+                Console.WriteLine("Stream msg id = " + messageId);
                 //var messageId = "YES";
                 return messageId.ToString();
             }
@@ -115,7 +122,7 @@ namespace ScheduledMessagesHandler.RedisQueuer
             }
         }
 
-        private static string getTag (ref MessageDTO message)
+        private string getTag (ref MessageDTO message)
         {
             
             if(message.tag.Contains(Syriatel, StringComparison.OrdinalIgnoreCase))

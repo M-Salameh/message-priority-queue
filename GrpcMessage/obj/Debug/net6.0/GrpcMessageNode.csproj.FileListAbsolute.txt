@@ -114,3 +114,4 @@ D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\GrpcMessage
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\GrpcMessage\obj\Debug\net6.0\ref\GrpcMessageNode.dll
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\GrpcMessage\obj\Debug\net6.0\GrpcMessageNode.pdb
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\GrpcMessage\obj\Debug\net6.0\GrpcMessageNode.genruntimeconfig.cache
+D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\GrpcMessage\obj\Debug\net6.0\GrpcMessageNode.csproj.AssemblyReference.cache

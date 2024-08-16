@@ -20,7 +20,8 @@ namespace ScheduledMessagesHandler
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            MongoMessagesShceduler.getDuedMessagesAndQueue();
+            MongoMessages.ScheduledMessagesHandler mongoMessagesHandler = new MongoMessages.ScheduledMessagesHandler();
+            mongoMessagesHandler.getDuedMessagesAndQueue();
         }
     }
 }

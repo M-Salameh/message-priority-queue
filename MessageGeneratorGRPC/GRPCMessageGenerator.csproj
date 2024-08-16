@@ -4,7 +4,6 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>dotnet-MessageGeneratorGRPC-685F4B88-9109-41BE-B200-D1916D3E7EAB</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

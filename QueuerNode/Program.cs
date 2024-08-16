@@ -1,12 +1,11 @@
 using Scheduler.MongoMessages;
-using SchedulerNode.RedisQueuer;
 using SchedulerNode.Services;
 using Steeltoe.Discovery.Client;
-using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 using Scheduler.Initializer;
+using Scheduler.RedisQueuer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,9 +18,11 @@ builder.Services.AddDiscoveryClient();
 IConfiguration config = builder.Configuration;
 Initializer.init(ref config);
 
-MessageQueues.init();
+//MessageQueues.init();
+RedisSettingsInitializer.init();
 
-MongoMessagesShceduler.init();
+//MongoMessagesShceduler.init();
+MongoSettingsInitializer.init();
 
 string serviceName = ServiceNameParser.serviceName;
 /*

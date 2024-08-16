@@ -1,46 +1,37 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
+using ScheduledMessagesHandler;
 using ScheduledMessagesHandler.Initializer;
 using ScheduledMessagesHandler.RedisQueuer;
 
 namespace ScheduledMessagesHandler.MongoMessages
 {
-    public class MongoMessagesShceduler
+    public class ScheduledMessagesHandler
     {
-        private static string MongoURL = MessagesMongoDBParser.connection;
-        private static string DataBaseName = MessagesMongoDBParser.database;
-        private static string myCollection = MessagesMongoDBParser.collection;
-
-
-        public static string ConnectionError = "Error Connecting to MongoDB on : " + MongoURL;
-        private static IMongoCollection<BsonDocument> collection;
-        private static string Pending = "Pending";
-        private static string Acked = "Acked";
-        //this NotTaken here must be the same of NotTaken in scheduler
-        private static string NotTaken = "Not-Taken";
-        private static int limit = 100000;
+        private string MongoURL = MessagesMongoDBParser.connection;
+        private string DataBaseName = MessagesMongoDBParser.database;
+        private string myCollection = MessagesMongoDBParser.collection;
         
+        //private  IMongoCollection<BsonDocument> collection;
+        public string ConnectionError = "Error Connecting to MongoDB on : " + MessagesMongoDBParser.connection;
+        private string NotTaken = "Not-Taken";
+        private string Pending = "Pending";
+        private string Acked = "Acked";
+        private int limit = 100000;
         /// <summary>
-        /// Connects to MongoDB Where Scheduled Messages Are Stored by The Scheduler Service
+        /// Connects to MongoDB to Store Messges and Set Things Up
         /// </summary>
-        /// <returns>string : ok if every thing goes fine</returns>
-        public static string init()
+        /// <param name="MyId"></param>
+        /// <returns>string : ok if all goes well , otherwise something else</returns>
+        /*public  string init()
         {
             try
             {
                 var client = new MongoClient(MongoURL);
 
                 var database = client.GetDatabase(DataBaseName);
-                
+
                 collection = database.GetCollection<BsonDocument>(myCollection);
-
-                var keys = Builders<BsonDocument>.IndexKeys.Ascending("timestamp").Ascending("status");
-
-                var indexOptions = new CreateIndexOptions { Background = true };
-
-                var indexModel = new CreateIndexModel<BsonDocument>(keys, indexOptions);
-
-                collection.Indexes.CreateOne(indexModel);
 
                 return "ok";
             }
@@ -49,28 +40,28 @@ namespace ScheduledMessagesHandler.MongoMessages
                 return ex.Message;
             }
 
-        }
+        }*/
 
         /// <summary>
         /// extract dued scheduled messages cautiously and write them to Redis Stream by Priority
         /// </summary>
-        public static void getDuedMessagesAndQueue()
+        public void getDuedMessagesAndQueue()
         {
             bool thereArePending = true;
             while (true)
             {
                 if (thereArePending)
                 {
-                   thereArePending = getBulkMessages(Pending);  
+                    thereArePending = getBulkMessages(Pending);
                 }
 
-                if (! thereArePending)
+                if (!thereArePending)
                 {
                     thereArePending = getBulkMessages(NotTaken);
                 }
-                
+
             }
-            
+
         }
 
         /// <summary>
@@ -78,8 +69,10 @@ namespace ScheduledMessagesHandler.MongoMessages
         /// </summary>
         /// <param name="status"></param>
         /// <returns></returns>
-        private static bool getBulkMessages(string status)
+        private bool getBulkMessages(string status)
         {
+            IMongoCollection<BsonDocument> collection = MongoSettingsInitializer.collection;
+            MessageQueues messageQueues = new MessageQueues();
             var specificTime = DateTime.UtcNow;
 
             var filter = Builders<BsonDocument>.Filter.And(
@@ -93,7 +86,7 @@ namespace ScheduledMessagesHandler.MongoMessages
                                  .Limit(limit)
                                  .Sort(sort)
                                  .ToList<BsonDocument>();
-            
+
             if (docs.Count == 0)
             {
                 return false;
@@ -110,20 +103,20 @@ namespace ScheduledMessagesHandler.MongoMessages
                 {
                     collection.UpdateOne(_filter, updatePending);
                 }
-                string result = MessageQueues.addMessage(message);
-                if (!result.Equals (MessageQueues.RedisConnectionError))
+                string result = messageQueues.addMessage(message);
+                if (!result.Equals(messageQueues.RedisConnectionError))
                 {
                     collection.UpdateOne(_filter, updateAck);
                     //Console.WriteLine(message);
                 }
-                
+
             }
 
             return true;
-            
+
         }
 
-        private static MessageDTO getMessage(BsonDocument doc)
+        private MessageDTO getMessage(BsonDocument doc)
         {
             MessageDTO message = new MessageDTO();
             message.clientID = (string)doc["sender"];
@@ -133,7 +126,14 @@ namespace ScheduledMessagesHandler.MongoMessages
             message.phoneNumber = (string)doc["phone-number"];
             message.msgId = (string)doc["msg-id"];
             message.apiKey = (string)doc["api-key"];
-            message.year = message.month = message.day = message.hour = message.minute = 0;
+            DateTime dd = (DateTime)doc["timestamp"];
+            Console.WriteLine(dd);
+            message.year = dd.Year;
+            message.month = dd.Month;
+            message.hour = dd.Hour;
+            message.day = dd.Day;
+            message.minute = dd.Minute;
+            //message.year = message.month = message.day = message.hour = message.minute = 0;
             return message;
         }
     }

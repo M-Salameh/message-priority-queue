@@ -1,8 +1,6 @@
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
 EXPOSE 5783
 EXPOSE 9091
 
@@ -20,4 +18,8 @@ RUN dotnet publish "GrpcMessageNode.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+ENV ASPNETCORE_URLS=http://localhost:9091;http://localhost:5273
+# ENV ASPNETCORE_ENVIRONMENT=Development
+EXPOSE 9091
+EXPOSE 5273
 ENTRYPOINT ["dotnet", "GrpcMessageNode.dll"]

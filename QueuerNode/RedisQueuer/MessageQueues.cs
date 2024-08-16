@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Scheduler.Initializer;
+using Scheduler.RedisQueuer;
 using StackExchange.Redis;
 using Steeltoe.Discovery;
 using System;
@@ -12,21 +13,21 @@ namespace SchedulerNode.RedisQueuer
 {
     public class MessageQueues
     {
-        private readonly static string RedisURL = RedisInfoParser.connection;
+        private readonly string RedisURL = RedisInfoParser.connection;
 
-        private readonly static string Syriatel = RedisInfoParser.Syriatel;
-        private readonly static string MTN = RedisInfoParser.MTN;
+        private readonly string Syriatel = RedisInfoParser.Syriatel;
+        private readonly string MTN = RedisInfoParser.MTN;
 
-        private readonly static int LEVELS = 6;
-        private static int StreamMaxLength = 100000000;
-        private static IDatabase db = null;
-        public readonly static string RedisConnectionError = "Error Writing to Redis";
+        private readonly int LEVELS = 6;
+        private int StreamMaxLength = 100000000;
+        ///private IDatabase db = null;
+        public readonly string RedisConnectionError = "Error Writing to Redis";
 
         /// <summary>
         /// Connects to Redis Stream With Streams for Each Priority and create consuming groups
         /// if not created
         /// </summary>
-        public static void init()
+       /* public void init()
         {
 
             var redis = ConnectionMultiplexer.Connect(RedisURL);
@@ -57,7 +58,7 @@ namespace SchedulerNode.RedisQueuer
                 }
             }
            
-        }
+        }*/
 
 
         /// <summary>
@@ -65,7 +66,7 @@ namespace SchedulerNode.RedisQueuer
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>
-        public static string addMessage(Message message)
+        public string addMessage(Message message)
         {
             string id = "Error";
             string temp = string.Empty;
@@ -83,10 +84,11 @@ namespace SchedulerNode.RedisQueuer
         }
        
         
-        private static async Task<string> addMessageRedisAsync(Message message, string URL)
+        private async Task<string> addMessageRedisAsync(Message message, string URL)
         {
             try
             {
+                IDatabase db = RedisSettingsInitializer.db;
                 string tag = getTag(ref message);
 
                 string streamName = tag + "_" + message.LocalPriority.ToString();
@@ -121,7 +123,7 @@ namespace SchedulerNode.RedisQueuer
             }
         }
 
-        private static string getTag (ref Message message)
+        private string getTag (ref Message message)
         {
             
             if(message.Tag.Contains(Syriatel, StringComparison.OrdinalIgnoreCase))

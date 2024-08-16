@@ -1,5 +1,5 @@
 
-docker build -t grpc-msg-node .
+docker build -t grpc-msgs-node .
 
 
 docker run --name <container-name> -d -v  (absolute path to new appsettings.json):/app/appsettings.json <image-name>

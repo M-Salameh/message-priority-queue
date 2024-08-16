@@ -1,5 +1,6 @@
 using GrpcMessageNode.Initializer;
 using GrpcMessageNode.Services;
+using Microsoft.AspNetCore.Server.Kestrel.Https;
 using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
@@ -13,30 +14,17 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+            
 
-        // Additional configuration is required to successfully run gRPC on macOS.
-        // For instructions on how to configure Kestrel and gRPC clients on macOS, visit https://go.microsoft.com/fwlink/?linkid=2099682
-
-        // Add services to the container.
         builder.Services.AddGrpc();
         
-        builder.Services.AddDiscoveryClient(builder.Configuration);
+        builder.Services.AddDiscoveryClient();
 
         IConfiguration config = builder.Configuration;
         Initializer.init(ref config);
         string serviceName = ServiceNameParser.serviceName;
 
-        /*builder.Logging.AddOpenTelemetry(options =>
-        {
-            options
-                .SetResourceBuilder(
-                    ResourceBuilder.CreateDefault()
-                        .AddService(serviceName))
-                .AddConsoleExporter();
-
-        });*/
-
-
+        //;https://localhost:9091
         builder.Services.AddOpenTelemetry()
               .ConfigureResource(resource => resource.AddService(serviceName))
               .WithTracing(tracing => tracing
@@ -50,9 +38,10 @@ public class Program
 
         var app = builder.Build();
 
-        // Configure the HTTP request pipeline.
-
-       
+       // app.UseHttpsRedirection();
+        app.UseRouting();
+        app.UseHttpsRedirection();
+        
         app.MapGrpcService<SendMessageService>();
         
 

@@ -52,11 +52,12 @@ namespace SchedulerNode.Services
         /// <returns>Acknowledgment: status of request and id if all goes well</returns>
         private Acknowledgement SendAsap(ref Message message)
         {
-            string reqId = MessageQueues.addMessage(message);
+            MessageQueues Mq = new MessageQueues();
+            string reqId = Mq.addMessage(message);
 
             Console.WriteLine("req id ASAP que = " + reqId);
 
-            if (reqId.Equals(MessageQueues.RedisConnectionError))
+            if (reqId.Equals(Mq.RedisConnectionError))
             {
                 return (new Acknowledgement
                 {
@@ -80,9 +81,10 @@ namespace SchedulerNode.Services
         /// <returns>Acknowledgment: status of request and id if all goes well</returns>
         private Acknowledgement Schedule(ref Message message)
         {
-            string res = MongoMessagesShceduler.insertMessage(ref message);
+            MongoMessagesShceduler mongoMessagesShceduler = new MongoMessagesShceduler();
+            string res = mongoMessagesShceduler.insertMessage(ref message);
             Console.WriteLine("req id SCHEDULED que = " + res);
-            if (res.Equals (MongoMessagesShceduler.ConnectionError))
+            if (res.Equals (mongoMessagesShceduler.ConnectionError))
             {
                 return new Acknowledgement
                 {
