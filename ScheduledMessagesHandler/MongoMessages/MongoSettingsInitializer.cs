@@ -29,6 +29,14 @@ namespace ScheduledMessagesHandler.MongoMessages
 
                 collection = database.GetCollection<BsonDocument>(myCollection);
 
+                var keys = Builders<BsonDocument>.IndexKeys.Ascending("timestamp").Ascending("status");
+
+                var indexOptions = new CreateIndexOptions { Background = true };
+
+                var indexModel = new CreateIndexModel<BsonDocument>(keys, indexOptions);
+
+                collection.Indexes.CreateOne(indexModel);
+
                 return "ok";
             }
             catch (Exception ex)

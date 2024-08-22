@@ -5,6 +5,7 @@ using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 using Validator.Initializer;
+using Validator.MongoMessages;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +17,7 @@ builder.Services.AddGrpc();
 builder.Services.AddDiscoveryClient();
 IConfiguration config = builder.Configuration;
 Initializer.init(ref config);
-
+MongoSettingsInitializer.init();
 string serviceName = ServiceNameParser.serviceName;
 
 builder.Services.AddOpenTelemetry()

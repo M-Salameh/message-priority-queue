@@ -70,3 +70,16 @@ D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\Validator\o
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\Validator\obj\Debug\net6.0\ref\Validator.dll
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\Validator\obj\Debug\net6.0\Validator.pdb
 D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\Validator\obj\Debug\net6.0\Validator.genruntimeconfig.cache
+D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\Validator\bin\Debug\net6.0\AWSSDK.Core.dll
+D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\Validator\bin\Debug\net6.0\AWSSDK.SecurityToken.dll
+D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\Validator\bin\Debug\net6.0\DnsClient.dll
+D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\Validator\bin\Debug\net6.0\MongoDB.Bson.dll
+D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\Validator\bin\Debug\net6.0\MongoDB.Driver.dll
+D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\Validator\bin\Debug\net6.0\MongoDB.Driver.Core.dll
+D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\Validator\bin\Debug\net6.0\MongoDB.Libmongocrypt.dll
+D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\Validator\bin\Debug\net6.0\SharpCompress.dll
+D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\Validator\bin\Debug\net6.0\Snappier.dll
+D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\Validator\bin\Debug\net6.0\ZstdSharp.dll
+D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\Validator\bin\Debug\net6.0\runtimes\linux\native\libmongocrypt.so
+D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\Validator\bin\Debug\net6.0\runtimes\osx\native\libmongocrypt.dylib
+D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\Validator\bin\Debug\net6.0\runtimes\win\native\mongocrypt.dll
