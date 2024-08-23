@@ -7,36 +7,42 @@ using System.Text.Json;
 
 MessageDTO message = new MessageDTO();
 message.text = "Hello World !";
-message.apiKey = "Api-Key";
-message.clientID = "m-salameh";
+message.apiKey = "a";
+message.clientID = "1";
 message.localPriority = 1;
 message.msgId = "msg-id=1";
 message.phoneNumber = "043 33 00 83";
-message.tag = "SYR";
+message.tag = "mtn";
 //message.year = message.month = message.day = message.minute = 0;
-message.year = 2024;
-message.month = 8;
-message.day = 16;
-message.hour = 23;
-message.minute = 59;
+message.year = 0;
+message.month = 0;
+message.day = 0;
+message.hour = 0;
+message.minute = 0;
 
 CancellationTokenSource cancel = new CancellationTokenSource();
-/*
+
 var client = new HttpClient();
 
 StringContent payload = new(JsonSerializer.Serialize(message), Encoding.UTF8, "application/json");
 
+
 try
 {
-    HttpResponseMessage reply = await client.PostAsync("http://localhost:7095/queue-msg", payload);
+    HttpResponseMessage rr = await client.PostAsync("http://localhost:7095/queue-msg", payload);
+ 
+    string json = await rr.Content.ReadAsStringAsync();
+    Reply reply = JsonSerializer.Deserialize<Reply>(json);
 
-    Console.WriteLine(reply.Content.ToString());
+    // Access the properties of the parsed object
+    Console.WriteLine($"replyCode: {reply.replyCode}");
+    Console.WriteLine($"requestID: {reply.requestID}");
 }
 catch (Exception ex)
 {
     Console.Error.WriteLine("Error Processing - Connection Problem");
 }
-*/
+
 /*
 var task1 = Task.Run(async () =>
 {
@@ -60,7 +66,7 @@ var task1 = Task.Run(async () =>
     }
 });*/
 
-
+/*
 Task[] tsks = new Task[6];
 for (int i=0; i < tsks.Length; i++)
 {
@@ -87,4 +93,4 @@ for (int i=0; i < tsks.Length; i++)
     });
 }
 
-Task.WaitAll(tsks);
+Task.WaitAll(tsks);*/

@@ -20,13 +20,23 @@ namespace HTTPEndUser
 
             try
             {
-                HttpResponseMessage reply =  await client.PostAsync("http://localhost:7095/queue-msg", payload);
+                HttpResponseMessage rr = await client.PostAsync("http://localhost:7095/queue-msg", payload);
+
+                string json = await rr.Content.ReadAsStringAsync();
+                Reply reply = JsonSerializer.Deserialize<Reply>(json);
+
+                if (reply.replyCode.Contains("OK" , StringComparison.OrdinalIgnoreCase))
+                {
+                    Response.Text = "Response : " + reply.replyCode + "\n"+reply.requestID;
+                    Response.ForeColor = Color.Green;
+                }
+
+                else
+                {
+                    Response.Text = "Response : " + reply.replyCode + "\n"+reply.requestID;
+                    Response.ForeColor = Color.Red;
+                }
                 
-                Response.Text = "Respose : " + reply.Content.ToString();
-                Response.ForeColor = Color.Green;
-
-
-                //Console.WriteLine(reply.Content.ToString());
             }
             catch (Exception ex)
             {
