@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option csharp_namespace = "HTTPEndUser";
+
+package Tranmitter;
+
+message Message {
+  string clientID = 1;
+  string apiKey = 2;
+  string msgId = 3;
+  string phoneNumber = 4;
+  int32 localPriority = 5;
+  string text = 6;
+  string tag = 7;
+  int32 year = 8;
+  int32 month = 9;
+  int32 day = 10;
+  int32 hour = 11;
+  int32 minute = 12;
+}
+
+
+message Acknowledgement
+{
+  string replyCode = 1;
+  string requestID = 2;
+}
+
+service Send {
+  rpc SendMessage(Message) returns (Acknowledgement);
+}
+
+
+
+

@@ -1,0 +1,2 @@
+obj\Release\net6.0\Protos/Schema.cs \
+obj\Release\net6.0\Protos/SchemaGrpc.cs: Protos/schema.proto

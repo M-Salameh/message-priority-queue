@@ -1,0 +1,2 @@
+obj\Release\net6.0\Protos/Schema-queueGrpc.cs \
+obj\Release\net6.0\Protos/SchemaQueue.cs: Protos/schema-queue.proto
