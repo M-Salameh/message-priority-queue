@@ -100,7 +100,7 @@ namespace PriorityStreamsExtractor.Extractor
 
                 foreach (var entry in messages)
                 {
-                    Console.WriteLine("EXtraacting");
+                    //Console.WriteLine("EXtraacting");
 
                     var messageId = entry.Id;
 
@@ -108,17 +108,17 @@ namespace PriorityStreamsExtractor.Extractor
 
                     string? serializedMessage = entry.Values[0].Value.ToString();
 
-                    Console.WriteLine(serializedMessage);
+                    //Console.WriteLine(serializedMessage);
 
                     MessageDTO? message = JsonConvert.DeserializeObject<MessageDTO>(serializedMessage);
 
-                    Console.WriteLine(message);
+                    //Console.WriteLine(message);
 
                     bool success = await Writer.Writer.writeMessageAsync(message, write_stream);
 
                     if (success)
                     {
-                        Console.WriteLine("Success");
+                        //Console.WriteLine("Success");
                         db.StreamAcknowledge(stream, groupName, messageId);
                         id = messageId;
                     }
@@ -137,7 +137,7 @@ namespace PriorityStreamsExtractor.Extractor
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error while Reading or Acking");
+                //Console.WriteLine("Error while Reading or Acking");
                 return await Task.FromResult(id);
             }
 

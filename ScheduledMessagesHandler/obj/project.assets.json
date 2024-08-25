@@ -2969,23 +2969,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\moham\\.nuget\\packages\\": {},
+    "C:\\Users\\Mr.Salameh\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\message-priority-queue\\ScheduledMessagesHandler\\ScheduledMessagesHandler.csproj",
+      "projectUniqueName": "D:\\Project\\Message-Priority-Queue\\message-priority-queue\\ScheduledMessagesHandler\\ScheduledMessagesHandler.csproj",
       "projectName": "ScheduledMessagesHandler",
-      "projectPath": "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\message-priority-queue\\ScheduledMessagesHandler\\ScheduledMessagesHandler.csproj",
-      "packagesPath": "C:\\Users\\moham\\.nuget\\packages\\",
-      "outputPath": "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\message-priority-queue\\ScheduledMessagesHandler\\obj\\",
+      "projectPath": "D:\\Project\\Message-Priority-Queue\\message-priority-queue\\ScheduledMessagesHandler\\ScheduledMessagesHandler.csproj",
+      "packagesPath": "C:\\Users\\Mr.Salameh\\.nuget\\packages\\",
+      "outputPath": "D:\\Project\\Message-Priority-Queue\\message-priority-queue\\ScheduledMessagesHandler\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\moham\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Mr.Salameh\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

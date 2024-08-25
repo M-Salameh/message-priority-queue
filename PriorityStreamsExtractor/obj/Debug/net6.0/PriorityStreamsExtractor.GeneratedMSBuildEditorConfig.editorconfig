@@ -7,4 +7,4 @@ build_property.InvariantGlobalization =
 build_property.PlatformNeutralAssembly = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = PriorityStreamsExtractor
-build_property.ProjectDir = D:\HIAST\FIY\Project-MSGPriorityQ\GrpcMessage\message-priority-queue\PriorityStreamsExtractor\
+build_property.ProjectDir = D:\Project\Message-Priority-Queue\message-priority-queue\PriorityStreamsExtractor\

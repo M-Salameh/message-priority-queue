@@ -22,7 +22,7 @@ namespace GrpcMessageNode.DataBaseAccess
         /// <returns> string : Success or an Error</returns>
         public static string getPriority(ref Message message , string validatorAddress)
         {
-            Console.WriteLine("Validating NOW IN GRPC !! ");
+            //Console.WriteLine("Validating NOW IN GRPC !! ");
             int x = message.LocalPriority;
             ValidatorReply reply = ValidateAsync(message , validatorAddress);
 
@@ -50,7 +50,7 @@ namespace GrpcMessageNode.DataBaseAccess
             var client = new Validate.ValidateClient(channel);
             MessageMetaData messageMeta = extractMetaData(message);
            
-            Console.WriteLine("Calling GRPC for address = " + validatorAddress);
+            //Console.WriteLine("Calling GRPC for address = " + validatorAddress);
             
             try
             {
@@ -58,13 +58,13 @@ namespace GrpcMessageNode.DataBaseAccess
 
                 var ans = reply.GetAwaiter().GetResult();
 
-                Console.WriteLine("OK , Validator DONE !!");
+                //Console.WriteLine("OK , Validator DONE !!");
 
                 return ans;
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error connecting to validator - address = " + validatorAddress);
+                //Console.WriteLine("Error connecting to validator - address = " + validatorAddress);
 
                 return new ValidatorReply() { AccountPriority = -1, ReplyCode = ValidatorConnectionAndValidationError };
             }

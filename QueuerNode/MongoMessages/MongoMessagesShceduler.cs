@@ -53,7 +53,7 @@ namespace Scheduler.MongoMessages
                 IMongoCollection<BsonDocument> collection = MongoSettingsInitializer.collection;
 
                 DateTime date = new DateTime(message.Year, message.Month, message.Day, message.Hour, message.Minute, 2);
-                Console.WriteLine(date);
+                //Console.WriteLine(date);
                 var document = new BsonDocument
                     {
                         { "sender", message.ClientID},

@@ -93,11 +93,11 @@ namespace SchedulerNode.RedisQueuer
 
                 string streamName = tag + "_" + message.LocalPriority.ToString();
 
-                Console.WriteLine("stream name  = " + streamName);
+                //Console.WriteLine("stream name  = " + streamName);
 
                 var serializedMessage = JsonConvert.SerializeObject(message);
 
-                Console.WriteLine("Sending to stream : " + streamName);
+                //Console.WriteLine("Sending to stream : " + streamName);
 
                 var messageId = await db.StreamAddAsync
                                     (streamName,
@@ -111,8 +111,8 @@ namespace SchedulerNode.RedisQueuer
                                      );
 
 
-                Console.WriteLine("Done Sending to stream : " + streamName);
-                Console.WriteLine("Stream msg id = " + messageId);
+                //Console.WriteLine("Done Sending to stream : " + streamName);
+                //Console.WriteLine("Stream msg id = " + messageId);
                 //var messageId = "YES";
                 return messageId.ToString();
             }

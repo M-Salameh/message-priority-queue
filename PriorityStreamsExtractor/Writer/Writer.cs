@@ -85,7 +85,7 @@ namespace PriorityStreamsExtractor.Writer
             {
                 var serializedMessage = JsonConvert.SerializeObject(message);
 
-                Console.WriteLine("Writing  : " + message);
+                //Console.WriteLine("Writing  : " + message);
 
                 var temp = await db.StreamAddAsync
                         (provider,
@@ -108,7 +108,7 @@ namespace PriorityStreamsExtractor.Writer
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error while Writing");
+                //Console.WriteLine("Error while Writing");
                 return await Task.FromResult(false);
 
             }

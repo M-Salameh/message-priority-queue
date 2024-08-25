@@ -43,7 +43,7 @@ namespace HTTPMessageNode.Controllers
 
             Message message = copyMessage(messageDTO);
 
-            Console.WriteLine("old prio = " + message.LocalPriority);
+            //Console.WriteLine("old prio = " + message.LocalPriority);
 
             string res = PriorityHandling.SetPriority.setFinalPriority(ref message , validator);
 
@@ -57,7 +57,7 @@ namespace HTTPMessageNode.Controllers
                 });
             }
 
-            Console.WriteLine("new prio = " + message.LocalPriority);
+            //Console.WriteLine("new prio = " + message.LocalPriority);
 
 
             string address = LoadBalancer.AddressResolver.getAddressOfInstance(Scheduler, ref discoveryClient);

@@ -36,7 +36,7 @@ namespace FinalMessagesConsumer.Extractor
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                //Console.WriteLine(ex.Message);
                 return false;
             }
         }
@@ -67,17 +67,17 @@ namespace FinalMessagesConsumer.Extractor
 
                 foreach (var entry in messages)
                 {
-                    Console.WriteLine("EXtraacting");
+                    //Console.WriteLine("EXtraacting");
 
                     var messageId = entry.Id;
 
                     string? serializedMessage = entry.Values[0].Value.ToString();
 
-                    Console.WriteLine(serializedMessage);
+                    //Console.WriteLine(serializedMessage);
 
                     MessageDTO? message = JsonConvert.DeserializeObject<MessageDTO>(serializedMessage);
 
-                    Console.WriteLine(message);
+                   // Console.WriteLine(message);
 
                     Writer.Writer.writeMessage(message);
 
@@ -94,8 +94,8 @@ namespace FinalMessagesConsumer.Extractor
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error while Reading or Acking");
-                Console.WriteLine(ex.Message);
+                //Console.WriteLine("Error while Reading or Acking");
+                //Console.WriteLine(ex.Message);
                 return await Task.FromResult(id);
             }
 

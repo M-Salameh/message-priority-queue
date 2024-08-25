@@ -32,13 +32,13 @@ namespace PriorityStreamsExtractor.StreamsHandler
         {
             if (!Extractor.Extractor.setDatabase(RedisRead))
             {
-                Console.WriteLine("ERROR : " + RedisRead);
+                //Console.WriteLine("ERROR : " + RedisRead);
                 throw new Exception("ERROR : " + RedisRead);
             }
 
             if (!Writer.Writer.setDatabase(RedisWrite))
             {
-                Console.WriteLine("ERROR: " + RedisWrite);
+                //Console.WriteLine("ERROR: " + RedisWrite);
                 throw new Exception("ERROR: " + RedisWrite);
 
             }

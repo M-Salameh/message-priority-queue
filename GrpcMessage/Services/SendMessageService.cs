@@ -35,7 +35,7 @@ namespace GrpcMessageNode.Services
                     RequestID = ErrorDBConnection
                 }) ;
             }
-            Console.WriteLine("Pr = " + message.LocalPriority);
+            //Console.WriteLine("Pr = " + message.LocalPriority);
 
             
             string res = PriorityHandling.SetPriority.setFinalPriority(ref message , validator);
@@ -50,7 +50,7 @@ namespace GrpcMessageNode.Services
                 });
             }
 
-            Console.WriteLine("new Pr = " + message.LocalPriority);
+            //Console.WriteLine("new Pr = " + message.LocalPriority);
 
 
             //Console.WriteLine("Account Checker Passed ");

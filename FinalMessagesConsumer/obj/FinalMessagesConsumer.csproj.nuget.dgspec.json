@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\message-priority-queue\\FinalMessagesConsumer\\FinalMessagesConsumer.csproj": {}
+    "D:\\Project\\Message-Priority-Queue\\message-priority-queue\\FinalMessagesConsumer\\FinalMessagesConsumer.csproj": {}
   },
   "projects": {
-    "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\message-priority-queue\\FinalMessagesConsumer\\FinalMessagesConsumer.csproj": {
+    "D:\\Project\\Message-Priority-Queue\\message-priority-queue\\FinalMessagesConsumer\\FinalMessagesConsumer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\message-priority-queue\\FinalMessagesConsumer\\FinalMessagesConsumer.csproj",
+        "projectUniqueName": "D:\\Project\\Message-Priority-Queue\\message-priority-queue\\FinalMessagesConsumer\\FinalMessagesConsumer.csproj",
         "projectName": "FinalMessagesConsumer",
-        "projectPath": "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\message-priority-queue\\FinalMessagesConsumer\\FinalMessagesConsumer.csproj",
-        "packagesPath": "C:\\Users\\moham\\.nuget\\packages\\",
-        "outputPath": "D:\\HIAST\\FIY\\Project-MSGPriorityQ\\GrpcMessage\\message-priority-queue\\FinalMessagesConsumer\\obj\\",
+        "projectPath": "D:\\Project\\Message-Priority-Queue\\message-priority-queue\\FinalMessagesConsumer\\FinalMessagesConsumer.csproj",
+        "packagesPath": "C:\\Users\\Mr.Salameh\\.nuget\\packages\\",
+        "outputPath": "D:\\Project\\Message-Priority-Queue\\message-priority-queue\\FinalMessagesConsumer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\moham\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Mr.Salameh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
