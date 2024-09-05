@@ -1,3 +1,21 @@
+# Project Title
+
+Distributed Message Real Time Transferring System supporting multi-protocol connections and message priority with scheduing.
+
+## Description
+Distributed App build with ASP.NET Framework in microservices architecture aims to recieve messages with some information from
+devices using different communication protocols where each one can set message priority and message sending date and provider.
+My System assumes there are some gateways whcih are the real network to export the messages (Cellular Network , Internet Network , ...) 
+each provide a certain sms_rate which represents the number of messages per second it can send out.
+Using redis streams , MongoDB and Indexing, GRPC Communication and Tracing with Eureka Discovery and Registry Server.
+It is my Graduation Project.
+some points are still improvable but it is steady and tested using K6 Tool.
+
+
+## Images and Designs
+check out the System Architecture Folder for more information about Desing
+
+## Getting Started
 how to run project
 
 Docker:
@@ -52,6 +70,10 @@ Enjoy!!
 ////////////////////////////////////////////////
 
 
+## Authors
 
+Contributors names and contact info
 
-
+* Name: Mohammed Salameh
+* email : mohammedsalameh37693@gmail.com
+* LinkedIn : www.linkedin.com/in/mohammed-salameh-8b4811313
